@@ -1,0 +1,17 @@
+{
+  "info": "Kurs-Codes der App als SHA-256 von \"focus:\" + Code (Großbuchstaben). Pflege mit node tools/access-code.mjs.",
+  "codes": [
+    {
+      "label": "alle",
+      "sha256": "0b030a40d93cd030bed74bbe470aabb143b4a760f2bd1af6aecc4527a45f30f5",
+      "active": true,
+      "added": "2026-10-15"
+    },
+    {
+      "label": "QR-Code",
+      "sha256": "69f8992135fcec57401937d7b17ecefcf9eae30a1e16af80d286ff264ef79a6b",
+      "active": true,
+      "added": "2026-10-16"
+    }
+  ]
+}

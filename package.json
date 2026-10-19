@@ -1,0 +1,16 @@
+{
+  "name": "focus-lab",
+  "version": "1.48.0",
+  "private": true,
+  "description": "Begleit-App zum Fotokurs: Licht, Blende, Camera Obscura. PWA ohne Build-Schritt.",
+  "type": "module",
+  "scripts": {
+    "start": "node tools/serve.mjs",
+    "test": "node --test tests/",
+    "build": "node tools/build-dist.mjs",
+    "deploy": "node tools/deploy.mjs"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}

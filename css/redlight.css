@@ -1,0 +1,32 @@
+/* Rotlichtmodus: alles in Rot auf Schwarz, Helligkeit stark reduziert.
+   Schont die Dunkeladaption der Augen. Wird per html[data-theme="redlight"] aktiv.
+   Werte aus dem Design-System „focus“ (tokens.json, Thema redlight). */
+html[data-theme="redlight"] {
+  color-scheme: dark;
+  --bg: #000000;
+  --bg-elev: #0a0000;
+  --bg-active: #1a0000;
+  --bg-input: #000000;
+  --fg: #c4271b;
+  --fg-muted: #8a1a11;
+  --border: #3a0806;
+  --accent: #e8331f;
+  --accent-soft: #e8331f29;
+  --on-accent: #000000;
+  --danger: #e8331f;
+  --success: #c4271b;
+  --info: #8a1a11;
+  --overlay: #000000a6;
+  --viewfinder: #000000;
+  --shadow-toast: none;
+}
+
+/* Bilder, Video, Canvas: ebenfalls rot einfärben und abdunkeln (dim-video 0.45),
+   damit kein weißes Vorschaubild die Augen blendet. */
+html[data-theme="redlight"] img,
+html[data-theme="redlight"] video,
+html[data-theme="redlight"] canvas {
+  filter: grayscale(1) brightness(0.45) sepia(1) saturate(8) hue-rotate(-35deg);
+}
+
+html[data-theme="redlight"] .toast { border: 1px solid var(--border); }

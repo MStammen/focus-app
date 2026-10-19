@@ -1,0 +1,11 @@
+{
+  "schema": 1,
+  "updated": "2026-10-13",
+  "description": "Geräteprofile für Lernkarten, Simulator und Äquivalenzrechnung. Keine Markenmodelle, nur typische Werte. Vom Kursleiter pflegbar.",
+  "devices": [
+    { "id": "phone", "name": "Handy, Hauptkamera", "sensorWidth": 9.8, "sensorHeight": 7.3, "focal": 6, "aperture": 1.8, "apertureFixed": true, "isoMin": 50, "isoMax": 6400, "note": "Typische Werte aktueller Handys: kleiner Sensor, kurze Brennweite, feste Blende. Entspricht etwa 24 mm Kleinbild." },
+    { "id": "ff", "name": "Vollformat (Kleinbild)", "sensorWidth": 36, "sensorHeight": 24, "focal": 50, "aperture": 1.8, "apertureMin": 1.4, "apertureMax": 22, "apertureFixed": false, "isoMin": 100, "isoMax": 51200, "note": "Digitale Vollformatkamera oder analoge Kleinbildkamera mit 50-mm-Objektiv." },
+    { "id": "mf", "name": "Mittelformat 6×7", "sensorWidth": 56, "sensorHeight": 42, "focal": 80, "aperture": 2.8, "apertureMin": 2.8, "apertureMax": 32, "apertureFixed": false, "isoMin": 50, "isoMax": 3200, "note": "Rollfilm 120, Format 6×7 cm." },
+    { "id": "pinhole", "name": "Lochkamera 4×5″", "sensorWidth": 127, "sensorHeight": 101.6, "focal": 150, "aperture": 250, "apertureFixed": true, "isoMin": 50, "isoMax": 400, "note": "Bildweite 150 mm, Loch 0,6 mm, also f/250. Keine Blende, keine Schärfentiefe im üblichen Sinn: alles gleich (un)scharf." }
+  ]
+}

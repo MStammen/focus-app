@@ -1,0 +1,3682 @@
+{
+  "schema": 1,
+  "updated": "2026-10-16",
+  "description": "Modusrad-Übersetzer: Was die Belichtungsmodi bei den gängigen Herstellern heißen. Konzepte sind überall gleich, nur die Beschriftung unterscheidet sich. Vom Kursleiter pflegbar; Angaben nach gängigen Modellreihen, einzelne Modelle weichen ab.",
+  "concepts": [
+    {
+      "id": "program",
+      "name": "Programmautomatik",
+      "youSet": "nichts (nur ISO, Korrektur)",
+      "cameraSets": "Zeit und Blende"
+    },
+    {
+      "id": "aperturePriority",
+      "name": "Blendenvorwahl",
+      "alias": "auch „Zeitautomatik“ genannt, weil die Kamera die Zeit wählt",
+      "youSet": "Blende",
+      "cameraSets": "Zeit"
+    },
+    {
+      "id": "shutterPriority",
+      "name": "Zeitvorwahl",
+      "alias": "auch „Blendenautomatik“ genannt, weil die Kamera die Blende wählt",
+      "youSet": "Zeit",
+      "cameraSets": "Blende"
+    },
+    {
+      "id": "manual",
+      "name": "Manuell",
+      "youSet": "Zeit und Blende",
+      "cameraSets": "nichts (ISO-Automatik möglich)"
+    },
+    {
+      "id": "bulb",
+      "name": "Bulb / Langzeit",
+      "youSet": "Verschluss offen, solange du drückst (Bulb) oder bis zum zweiten Druck (Time)",
+      "cameraSets": "nichts"
+    }
+  ],
+  "brands": [
+    {
+      "id": "canon",
+      "name": "Canon",
+      "modes": {
+        "program": "P",
+        "aperturePriority": "Av",
+        "shutterPriority": "Tv",
+        "manual": "M",
+        "bulb": "B"
+      },
+      "notes": {
+        "aperturePriority": "Av = Aperture value",
+        "shutterPriority": "Tv = Time value",
+        "bulb": "B auf dem Rad bei vielen Modellen; sonst in M hinter 30″ weiterdrehen. Neuere Spiegellose haben zusätzlich Fv (flexible Automatik)."
+      },
+      "longExposure": "M oder B wählen. In M bis 30 s direkt einstellbar, darüber B (Bulb) mit Fernauslöser oder Timer der Kamera. Spiegelvorauslösung bzw. elektronischer Verschluss gegen Erschütterung.",
+      "layout": "pasm",
+      "dials": {
+        "names": {
+          "front": "Hauptwahlrad",
+          "rear": "Schnellwahlrad"
+        },
+        "aperturePriority": {
+          "aperture": "front"
+        },
+        "shutterPriority": {
+          "shutter": "front"
+        },
+        "manual": {
+          "shutter": "front",
+          "aperture": "rear"
+        },
+        "bulb": {
+          "aperture": "front"
+        },
+        "confidence": "hoch",
+        "note": "Im manuellen Modus stellt das Hauptwahlrad vorn die Zeit, das Schnellwahlrad hinten die Blende. Bei R-Modellen lässt sich zusätzlich der Objektivring belegen."
+      },
+      "limits": {
+        "maxShutter": 30,
+        "isoMin": 100,
+        "isoMax": 25600,
+        "bulb": "B"
+      },
+      "body": {
+        "ref": "EOS R6, R6 Mark II",
+        "modeDial": "right",
+        "topLcd": false,
+        "evf": "center",
+        "front": "release",
+        "rear": "ring",
+        "ringCenter": "SET",
+        "topButtons": [
+          "M-Fn"
+        ],
+        "rearButtons": [
+          "AF-ON",
+          "✱",
+          "Q",
+          "▶"
+        ],
+        "confidence": "mittel",
+        "note": "Allgemeine Bauform. Wähl dein Modell, dann stimmen Räder und Tasten."
+      },
+      "models": [
+        {
+          "id": "2000d",
+          "name": "EOS 2000D / 4000D",
+          "source": "Canon EOS 2000D Bedienungsanleitung (DE), S. 26–27",
+          "body": {
+            "modeDial": "right",
+            "topLcd": false,
+            "evf": "center",
+            "front": "release",
+            "rear": null,
+            "pad": true,
+            "topButtons": [],
+            "rearButtons": [
+              "Av±",
+              "✱",
+              "Q",
+              "▶"
+            ],
+            "confidence": "hoch"
+          },
+          "dials": {
+            "names": {
+              "front": "Hauptwahlrad"
+            },
+            "aperturePriority": {
+              "aperture": "front"
+            },
+            "shutterPriority": {
+              "shutter": "front"
+            },
+            "manual": {
+              "shutter": "front",
+              "aperture": "front+Av±"
+            },
+            "bulb": {
+              "aperture": "front+Av±"
+            },
+            "confidence": "hoch",
+            "note": "Nur ein Einstellrad: In M stellt das Hauptwahlrad die Zeit; mit gedrückter Taste Av± stellt es die Blende."
+          },
+          "functions": {
+            "af": {
+              "where": "Kreuztaste rechts (AF) drücken, dann One-Shot AF, AI Focus AF oder AI Servo AF wählen.",
+              "part": "pad",
+              "source": "Bedienungsanleitung S. 97",
+              "confidence": "hoch"
+            },
+            "timer": {
+              "where": "Kreuztaste links (Betriebsart/Selbstauslöser): 10 s, 2 s oder 10 s mit Serie.",
+              "part": "pad",
+              "source": "Bedienungsanleitung S. 103",
+              "confidence": "hoch"
+            },
+            "shake": {
+              "type": "mirror",
+              "where": "Eine Spiegelverriegelung steht nicht in der Anleitung. Nimm den Selbstauslöser mit 2 s.",
+              "source": "Bedienungsanleitung S. 103",
+              "confidence": "mittel"
+            },
+            "afmf": {
+              "where": "Fokussierschalter am Objektiv auf AF oder MF.",
+              "part": "lens",
+              "source": "Bedienungsanleitung, S. 97",
+              "confidence": "hoch"
+            },
+            "points": {
+              "where": "Taste AF-Messfeldwahl (hinten oben rechts) drücken, dann das Messfeld mit den Kreuztasten oder dem Hauptwahlrad wählen.",
+              "part": "pad",
+              "source": "Bedienungsanleitung, S. 99",
+              "confidence": "hoch"
+            },
+            "metering": {
+              "where": "MENU → Aufnahme, Registerkarte 2 → Messmethode: Mehrfeld-, Selektiv- oder mittenbetonte Messung.",
+              "source": "Bedienungsanleitung, S. 115",
+              "confidence": "hoch"
+            },
+            "drive": {
+              "where": "Kreuztaste links (Betriebsart) drücken, dann Einzelbild oder Reihenaufnahme wählen.",
+              "part": "pad",
+              "source": "Bedienungsanleitung, S. 102",
+              "confidence": "hoch"
+            },
+            "quality": {
+              "where": "MENU → Aufnahme, Registerkarte 1 → Bildqualität: RAW, JPEG oder beides.",
+              "source": "Bedienungsanleitung, S. 88",
+              "confidence": "hoch"
+            },
+            "iso": {
+              "where": "Kreuztaste oben (ISO) drücken, Wert wählen.",
+              "part": "pad",
+              "source": "Bedienungsanleitung, S. 92",
+              "confidence": "hoch"
+            },
+            "stab": {
+              "where": "Schalter STABILIZER am Objektiv auf ON (nur Objektive mit IS). Die Kamera selbst stabilisiert nicht.",
+              "part": "lens",
+              "source": "Bedienungsanleitung, S. 181 (Hinweis)",
+              "confidence": "mittel"
+            }
+          },
+          "sensor": {
+            "format": "APS-C",
+            "size": "ca. 22,3 × 14,9 mm",
+            "crop": 1.6,
+            "source": "Technische Daten des Herstellers"
+          }
+        },
+        {
+          "id": "250d",
+          "name": "EOS 250D / 200D",
+          "source": "Canon EOS 200D Bedienungsanleitung (DE), S. 28–29 (250D gleiche Bauform)",
+          "body": {
+            "modeDial": "right",
+            "topLcd": false,
+            "evf": "center",
+            "front": "release",
+            "rear": null,
+            "pad": true,
+            "topButtons": [
+              "ISO"
+            ],
+            "rearButtons": [
+              "Av±",
+              "✱",
+              "Q",
+              "▶"
+            ],
+            "confidence": "mittel",
+            "note": "Für die 250D nach der Anleitung der 200D, gleiche Bauform."
+          },
+          "dials": {
+            "names": {
+              "front": "Hauptwahlrad"
+            },
+            "aperturePriority": {
+              "aperture": "front"
+            },
+            "shutterPriority": {
+              "shutter": "front"
+            },
+            "manual": {
+              "shutter": "front",
+              "aperture": "front+Av±"
+            },
+            "bulb": {
+              "aperture": "front+Av±"
+            },
+            "confidence": "hoch",
+            "note": "Nur ein Einstellrad: In M stellt das Hauptwahlrad die Zeit; mit gedrückter Taste Av± stellt es die Blende."
+          },
+          "functions": {
+            "af": {
+              "where": "MENU → Aufnahme, Registerkarte 1 → AF-Betrieb: One-Shot AF, AI Focus AF oder AI Servo AF.",
+              "source": "EOS 200D Bedienungsanleitung, S. 114",
+              "confidence": "hoch"
+            },
+            "timer": {
+              "where": "Q-Taste → Betriebsart: Selbstauslöser 10 s oder 2 s.",
+              "part": "button:Q",
+              "source": "EOS 200D Bedienungsanleitung, S. 125",
+              "confidence": "hoch"
+            },
+            "shake": {
+              "type": "mirror",
+              "where": "MENU → Einstellung → Individualfunktionen (C.Fn) 6: Spiegelverriegelung → 1: Eingeschaltet.",
+              "source": "EOS 200D Bedienungsanleitung S. 179",
+              "confidence": "mittel"
+            },
+            "afmf": {
+              "where": "Fokussierschalter am Objektiv auf AF oder MF.",
+              "part": "lens",
+              "source": "EOS 200D Bedienungsanleitung, S. 114",
+              "confidence": "hoch"
+            },
+            "points": {
+              "where": "Taste AF-Messfeldwahl (hinten oben rechts) drücken, dann das Messfeld mit den Kreuztasten wählen.",
+              "part": "pad",
+              "source": "EOS 200D Bedienungsanleitung, S. 119",
+              "confidence": "hoch"
+            },
+            "metering": {
+              "where": "MENU → Aufnahme, Registerkarte 3 → Messmethode: Mehrfeld-, Selektiv-, Spot- oder mittenbetonte Messung.",
+              "source": "EOS 200D Bedienungsanleitung, S. 172",
+              "confidence": "hoch"
+            },
+            "drive": {
+              "where": "Q-Taste → Betriebsart: Einzelbild oder Reihenaufnahme.",
+              "part": "button:Q",
+              "source": "EOS 200D Bedienungsanleitung, S. 123",
+              "confidence": "hoch"
+            },
+            "quality": {
+              "where": "MENU → Aufnahme, Registerkarte 1 → Bildqualität: RAW, JPEG oder beides.",
+              "source": "EOS 200D Bedienungsanleitung, S. 128",
+              "confidence": "hoch"
+            },
+            "iso": {
+              "where": "Taste ISO oben drücken, Wert wählen.",
+              "part": "button:ISO",
+              "source": "EOS 200D Bedienungsanleitung, S. 132",
+              "confidence": "hoch"
+            },
+            "stab": {
+              "where": "Schalter STABILIZER am Objektiv auf ON (nur Objektive mit IS). Die Kamera selbst stabilisiert nicht.",
+              "part": "lens",
+              "source": "EOS 200D Bedienungsanleitung, S. 231 (Hinweis)",
+              "confidence": "mittel"
+            }
+          },
+          "sensor": {
+            "format": "APS-C",
+            "size": "ca. 22,3 × 14,9 mm",
+            "crop": 1.6,
+            "source": "Technische Daten des Herstellers"
+          }
+        },
+        {
+          "id": "850d",
+          "name": "EOS 850D",
+          "source": "Canon EOS 850D Online-Handbuch, Part Names",
+          "body": {
+            "modeDial": "right",
+            "topLcd": false,
+            "evf": "center",
+            "front": "release",
+            "rear": "ring",
+            "ringCenter": "SET",
+            "topButtons": [
+              "ISO"
+            ],
+            "rearButtons": [
+              "AF-ON",
+              "✱",
+              "Q",
+              "▶"
+            ],
+            "confidence": "hoch"
+          },
+          "dials": {
+            "names": {
+              "front": "Hauptwahlrad",
+              "rear": "Schnellwahlrad"
+            },
+            "aperturePriority": {
+              "aperture": "front"
+            },
+            "shutterPriority": {
+              "shutter": "front"
+            },
+            "manual": {
+              "shutter": "front",
+              "aperture": "rear"
+            },
+            "bulb": {
+              "aperture": "rear"
+            },
+            "confidence": "hoch",
+            "note": "In M stellt das Hauptwahlrad hinter dem Auslöser die Zeit, das Schnellwahlrad die Blende."
+          },
+          "functions": {
+            "af": {
+              "where": "Taste AF (rechts am Schnellwahlrad) drücken, dann One-Shot AF, AI Focus AF oder AI Servo AF wählen.",
+              "source": "EOS 850D Online-Handbuch (PDF), S. 170–171",
+              "confidence": "hoch"
+            },
+            "timer": {
+              "where": "Taste Betriebsart (links am Schnellwahlrad) drücken, dann Selbstauslöser 10 s oder 2 s wählen.",
+              "source": "EOS 850D Online-Handbuch (PDF), S. 206",
+              "confidence": "hoch"
+            },
+            "shake": {
+              "type": "mirror",
+              "where": "MENU → Einstellung → Individualfunktionen (C.Fn) 10: Spiegelverriegelung → Aktivieren. Erster Druck klappt den Spiegel hoch, der zweite löst aus.",
+              "source": "EOS 850D Online-Handbuch (PDF), S. 166",
+              "confidence": "hoch"
+            },
+            "afmf": {
+              "where": "Fokussierschalter am Objektiv auf AF oder MF.",
+              "part": "lens",
+              "source": "EOS 850D Online-Handbuch (PDF), S. 170",
+              "confidence": "hoch"
+            },
+            "points": {
+              "where": "Taste AF-Messfeldwahl (hinten oben rechts) oder die Taste neben ISO drücken, dann das Messfeld mit Haupt- oder Schnellwahlrad wählen.",
+              "source": "EOS 850D Online-Handbuch (PDF), S. 181–182",
+              "confidence": "hoch"
+            },
+            "metering": {
+              "where": "MENU → Aufnahme → Messmethode: Mehrfeld-, Selektiv-, Spot- oder mittenbetonte Messung.",
+              "source": "EOS 850D Online-Handbuch (PDF), S. 210",
+              "confidence": "hoch"
+            },
+            "drive": {
+              "where": "Taste Betriebsart (links am Schnellwahlrad) drücken, dann Einzelbild oder Reihenaufnahme wählen.",
+              "source": "EOS 850D Online-Handbuch (PDF), S. 204",
+              "confidence": "hoch"
+            },
+            "quality": {
+              "where": "MENU → Aufnahme → Bildqualität: RAW, JPEG oder beides.",
+              "source": "EOS 850D Online-Handbuch (PDF), S. 275",
+              "confidence": "hoch"
+            },
+            "iso": {
+              "where": "Taste ISO oben drücken, Wert wählen.",
+              "part": "button:ISO",
+              "source": "EOS 850D Online-Handbuch (PDF), S. 292",
+              "confidence": "hoch"
+            },
+            "stab": {
+              "where": "Schalter STABILIZER am Objektiv auf ON (nur Objektive mit IS). Die Kamera selbst stabilisiert nicht.",
+              "part": "lens",
+              "source": "EOS 850D Online-Handbuch (PDF), S. 342 (Hinweis)",
+              "confidence": "mittel"
+            }
+          },
+          "sensor": {
+            "format": "APS-C",
+            "size": "ca. 22,3 × 14,9 mm",
+            "crop": 1.6,
+            "source": "Technische Daten des Herstellers"
+          }
+        },
+        {
+          "id": "90d",
+          "name": "EOS 90D / 80D",
+          "source": "Canon EOS 90D Erweitertes Benutzerhandbuch (DE), S. 31–32",
+          "body": {
+            "modeDial": "left",
+            "topLcd": true,
+            "evf": "center",
+            "front": "release",
+            "rear": "ring",
+            "ringCenter": "SET",
+            "topButtons": [
+              "ISO",
+              "AF",
+              "DRIVE"
+            ],
+            "rearButtons": [
+              "AF-ON",
+              "✱",
+              "Q",
+              "▶"
+            ],
+            "confidence": "hoch"
+          },
+          "dials": {
+            "names": {
+              "front": "Hauptwahlrad",
+              "rear": "Schnellwahlrad"
+            },
+            "aperturePriority": {
+              "aperture": "front"
+            },
+            "shutterPriority": {
+              "shutter": "front"
+            },
+            "manual": {
+              "shutter": "front",
+              "aperture": "rear"
+            },
+            "bulb": {
+              "aperture": "rear"
+            },
+            "confidence": "hoch",
+            "note": "In M stellt das Hauptwahlrad hinter dem Auslöser die Zeit, das Schnellwahlrad die Blende."
+          },
+          "functions": {
+            "af": {
+              "where": "Taste AF oben drücken, mit Haupt- oder Schnellwahlrad One-Shot AF, AI Focus AF oder AI Servo AF wählen.",
+              "part": "button:AF",
+              "source": "Erweitertes Benutzerhandbuch S. 124",
+              "confidence": "hoch"
+            },
+            "timer": {
+              "where": "Taste DRIVE oben drücken, mit dem Hauptwahlrad Selbstauslöser 10 s oder 2 s wählen.",
+              "part": "button:DRIVE",
+              "source": "Erweitertes Benutzerhandbuch S. 153",
+              "confidence": "hoch"
+            },
+            "shake": {
+              "type": "mirror",
+              "where": "MENU → Aufnahme → Spiegelverriegelung → Aktiv. Erster Druck klappt den Spiegel hoch, zweiter belichtet.",
+              "source": "Erweitertes Benutzerhandbuch S. 263",
+              "confidence": "hoch"
+            },
+            "afmf": {
+              "where": "Fokussierschalter am Objektiv auf AF oder MF.",
+              "part": "lens",
+              "source": "Erweitertes Benutzerhandbuch S. 124",
+              "confidence": "hoch"
+            },
+            "points": {
+              "where": "Taste AF-Messfeldwahl (hinten oben rechts) drücken, dann das Messfeld mit dem Multi-Controller oder den Wahlrädern wählen.",
+              "source": "Erweitertes Benutzerhandbuch S. 132",
+              "confidence": "hoch"
+            },
+            "metering": {
+              "where": "Taste Messmethode oben drücken (oder Q-Taste), mit Haupt- oder Schnellwahlrad Mehrfeld-, Selektiv-, Spot- oder mittenbetonte Messung wählen.",
+              "source": "Erweitertes Benutzerhandbuch S. 158",
+              "confidence": "hoch"
+            },
+            "drive": {
+              "where": "Taste DRIVE oben drücken, mit dem Hauptwahlrad Einzelbild oder Reihenaufnahme wählen.",
+              "part": "button:DRIVE",
+              "source": "Erweitertes Benutzerhandbuch S. 150",
+              "confidence": "hoch"
+            },
+            "quality": {
+              "where": "MENU → Aufnahme → Bildqualität: RAW mit dem Hauptwahlrad, JPEG getrennt wählen.",
+              "source": "Erweitertes Benutzerhandbuch S. 199",
+              "confidence": "hoch"
+            },
+            "iso": {
+              "where": "Taste ISO oben drücken, Wert wählen.",
+              "part": "button:ISO",
+              "source": "Erweitertes Benutzerhandbuch S. 213",
+              "confidence": "hoch"
+            },
+            "stab": {
+              "where": "Schalter STABILIZER am Objektiv auf ON (nur Objektive mit IS). Die Kamera selbst stabilisiert nicht.",
+              "part": "lens",
+              "source": "Erweitertes Benutzerhandbuch S. 270 (Hinweis)",
+              "confidence": "mittel"
+            }
+          },
+          "sensor": {
+            "format": "APS-C",
+            "size": "ca. 22,3 × 14,9 mm",
+            "crop": 1.6,
+            "source": "Technische Daten des Herstellers"
+          }
+        },
+        {
+          "id": "6d2",
+          "name": "EOS 6D Mark II",
+          "source": "Canon EOS 6D Mark II Bedienungsanleitung (DE), S. 28–29",
+          "body": {
+            "modeDial": "left",
+            "topLcd": true,
+            "evf": "center",
+            "front": "release",
+            "rear": "ring",
+            "ringCenter": "SET",
+            "topButtons": [
+              "ISO",
+              "AF",
+              "DRIVE"
+            ],
+            "rearButtons": [
+              "AF-ON",
+              "✱",
+              "Q",
+              "▶"
+            ],
+            "confidence": "hoch"
+          },
+          "dials": {
+            "names": {
+              "front": "Hauptwahlrad",
+              "rear": "Schnellwahlrad"
+            },
+            "aperturePriority": {
+              "aperture": "front"
+            },
+            "shutterPriority": {
+              "shutter": "front"
+            },
+            "manual": {
+              "shutter": "front",
+              "aperture": "rear"
+            },
+            "bulb": {
+              "aperture": "rear"
+            },
+            "confidence": "hoch",
+            "note": "In M stellt das Hauptwahlrad hinter dem Auslöser die Zeit, das Schnellwahlrad die Blende."
+          },
+          "functions": {
+            "af": {
+              "where": "Taste AF oben drücken, mit dem Hauptwahlrad One-Shot AF, AI Focus AF oder AI Servo AF wählen.",
+              "part": "button:AF",
+              "source": "Bedienungsanleitung, S. 130",
+              "confidence": "hoch"
+            },
+            "timer": {
+              "where": "Taste DRIVE oben drücken, mit dem Hauptwahlrad Selbstauslöser 10 s oder 2 s wählen.",
+              "part": "button:DRIVE",
+              "source": "Bedienungsanleitung, S. 159",
+              "confidence": "hoch"
+            },
+            "shake": {
+              "type": "mirror",
+              "where": "MENU → Aufnahme, Registerkarte 4 → Spiegelverriegelung → Aktivieren.",
+              "source": "Bedienungsanleitung S. 265",
+              "confidence": "hoch"
+            },
+            "afmf": {
+              "where": "Fokussierschalter am Objektiv auf AF oder MF.",
+              "part": "lens",
+              "source": "Bedienungsanleitung, S. 130",
+              "confidence": "hoch"
+            },
+            "points": {
+              "where": "Taste AF-Messfeldwahl (hinten oben rechts) drücken, dann das Messfeld mit dem Multi-Controller wählen.",
+              "source": "Bedienungsanleitung, S. 137",
+              "confidence": "hoch"
+            },
+            "metering": {
+              "where": "Taste Messmethode oben drücken, mit Haupt- oder Schnellwahlrad Mehrfeld-, Selektiv-, Spot- oder mittenbetonte Messung wählen.",
+              "source": "Bedienungsanleitung, S. 243",
+              "confidence": "hoch"
+            },
+            "drive": {
+              "where": "Taste DRIVE oben drücken, mit dem Hauptwahlrad Einzelbild oder Reihenaufnahme wählen.",
+              "part": "button:DRIVE",
+              "source": "Bedienungsanleitung, S. 156",
+              "confidence": "hoch"
+            },
+            "quality": {
+              "where": "MENU → Aufnahme, Registerkarte 1 → Bildqualität: RAW, JPEG oder beides.",
+              "source": "Bedienungsanleitung, S. 162",
+              "confidence": "hoch"
+            },
+            "iso": {
+              "where": "Taste ISO oben drücken, Wert mit dem Hauptwahlrad wählen.",
+              "part": "button:ISO",
+              "source": "Bedienungsanleitung, S. 170",
+              "confidence": "hoch"
+            },
+            "stab": {
+              "where": "Schalter STABILIZER am Objektiv auf ON (nur Objektive mit IS). Die Kamera selbst stabilisiert nicht.",
+              "part": "lens",
+              "source": "Bedienungsanleitung, S. 380 (Hinweis)",
+              "confidence": "mittel"
+            }
+          },
+          "sensor": {
+            "format": "Vollformat",
+            "size": "36 × 24 mm",
+            "crop": 1,
+            "source": "Technische Daten des Herstellers"
+          }
+        },
+        {
+          "id": "5d4",
+          "name": "EOS 5D Mark IV",
+          "source": "Canon EOS 5D Mark IV Bedienungsanleitung (DE), S. 28–30 (Teilebezeichnungen), S. 35 (Modus-Wahlrad)",
+          "body": {
+            "modeDial": "left",
+            "topLcd": true,
+            "evf": "center",
+            "front": "release",
+            "rear": "ring",
+            "ringCenter": "SET",
+            "topButtons": [
+              "WB",
+              "AF·DRIVE",
+              "ISO"
+            ],
+            "rearButtons": [
+              "AF-ON",
+              "✱",
+              "Q",
+              "▶"
+            ],
+            "confidence": "mittel",
+            "note": "Modus-Wahlrad links mit Sperrtaste in der Mitte (A+, P, Tv, Av, M, B, C1–C3). Vor der LCD-Anzeige die Tasten für Weißabgleich/Messmethode, AF-Betrieb/Antriebsmodus und ISO; Reihenfolge der Tasten bitte am Gerät prüfen."
+          },
+          "dials": {
+            "names": {
+              "front": "Hauptwahlrad",
+              "rear": "Schnellwahlrad"
+            },
+            "aperturePriority": {
+              "aperture": "front"
+            },
+            "shutterPriority": {
+              "shutter": "front"
+            },
+            "manual": {
+              "shutter": "front",
+              "aperture": "rear"
+            },
+            "bulb": {
+              "aperture": "front"
+            },
+            "confidence": "hoch",
+            "note": "In M stellt das Hauptwahlrad hinter dem Auslöser die Zeit, das Schnellwahlrad die Blende (S. 251). In B geht die Blende mit beiden Rädern (S. 260)."
+          },
+          "functions": {
+            "af": {
+              "where": "Taste AF·DRIVE oben drücken, mit dem Hauptwahlrad One-Shot AF, AI Focus AF oder AI Servo AF wählen.",
+              "part": "button:AF·DRIVE",
+              "source": "Bedienungsanleitung S. 100",
+              "confidence": "hoch"
+            },
+            "timer": {
+              "where": "Taste AF·DRIVE oben drücken, mit dem Schnellwahlrad Selbstauslöser 10 s oder 2 s wählen.",
+              "part": "button:AF·DRIVE",
+              "source": "Bedienungsanleitung S. 163",
+              "confidence": "hoch"
+            },
+            "shake": {
+              "type": "mirror",
+              "where": "MENU → Aufnahme, Registerkarte 4 → Spiegelverriegelung → Aktivieren. Erster Druck auf den Auslöser klappt den Spiegel hoch, der zweite löst aus.",
+              "source": "Bedienungsanleitung S. 276",
+              "confidence": "hoch"
+            },
+            "afmf": {
+              "where": "Fokussierschalter am Objektiv auf AF bzw. MF stellen.",
+              "part": "lens",
+              "source": "Bedienungsanleitung S. 100",
+              "confidence": "hoch"
+            },
+            "points": {
+              "where": "Taste AF-Messfeldwahl (hinten oben rechts) drücken, dann das Messfeld mit dem Multi-Controller verschieben. Die Taste daneben wechselt den AF-Bereich.",
+              "source": "Bedienungsanleitung S. 61, 106",
+              "confidence": "hoch"
+            },
+            "metering": {
+              "where": "Taste WB/Messmethode oben drücken, mit dem Hauptwahlrad Mehrfeld-, Selektiv-, Spot- oder mittenbetonte Messung wählen.",
+              "part": "button:WB",
+              "source": "Bedienungsanleitung S. 253",
+              "confidence": "hoch"
+            },
+            "drive": {
+              "where": "Taste AF·DRIVE oben drücken, mit dem Schnellwahlrad Einzelbild oder Reihenaufnahme (schnell, langsam, leise) wählen.",
+              "part": "button:AF·DRIVE",
+              "source": "Bedienungsanleitung S. 160",
+              "confidence": "hoch"
+            },
+            "quality": {
+              "where": "MENU → Aufnahme, Registerkarte 1 → Bildqualität: Hauptwahlrad wählt RAW, Schnellwahlrad wählt JPEG.",
+              "source": "Bedienungsanleitung S. 169",
+              "confidence": "hoch"
+            },
+            "iso": {
+              "where": "Taste ISO oben drücken, mit dem Hauptwahlrad die ISO wählen (100 bis 32000, A = Auto).",
+              "part": "button:ISO",
+              "source": "Bedienungsanleitung S. 177",
+              "confidence": "hoch"
+            },
+            "stab": {
+              "where": "Schalter STABILIZER am Objektiv auf ON (nur Objektive mit IS). Die Kamera selbst stabilisiert nicht.",
+              "part": "lens",
+              "source": "Bedienungsanleitung, S. 332 (Hinweis)",
+              "confidence": "mittel"
+            }
+          },
+          "sensor": {
+            "format": "Vollformat",
+            "size": "36 × 24 mm",
+            "crop": 1,
+            "source": "Technische Daten des Herstellers"
+          }
+        },
+        {
+          "id": "r100",
+          "name": "EOS R100",
+          "source": "Canon EOS R100 Online-Handbuch, Part Names",
+          "body": {
+            "modeDial": "right",
+            "topLcd": false,
+            "evf": "center",
+            "front": "release",
+            "rear": null,
+            "pad": true,
+            "topButtons": [],
+            "rearButtons": [
+              "✱",
+              "Q",
+              "▶",
+              "MENU"
+            ],
+            "confidence": "hoch"
+          },
+          "dials": {
+            "names": {
+              "front": "Wahlrad"
+            },
+            "aperturePriority": {
+              "aperture": "front"
+            },
+            "shutterPriority": {
+              "shutter": "front"
+            },
+            "manual": {
+              "shutter": "front",
+              "aperture": "front+±"
+            },
+            "bulb": {
+              "aperture": "front+±"
+            },
+            "confidence": "hoch",
+            "note": "Nur ein Einstellrad: In M stellt das Wahlrad die Zeit; mit gedrückter Taste ± stellt es die Blende."
+          },
+          "functions": {
+            "af": {
+              "where": "MENU → AF → AF-Betrieb: One-Shot AF für ruhende Motive, Servo AF für bewegte.",
+              "source": "EOS R100 Online-Handbuch (PDF), S. 142–143",
+              "confidence": "hoch"
+            },
+            "timer": {
+              "where": "MENU → Aufnahme → Betriebsart: Selbstauslöser 10 s oder 2 s.",
+              "source": "EOS R100 Online-Handbuch (PDF), S. 166",
+              "confidence": "hoch"
+            },
+            "shake": {
+              "type": "efc",
+              "where": "Die R100 löst immer mit elektronischem 1. Verschlussvorhang aus, das hält Erschütterungen klein. Ein Menüpunkt dafür ist nicht nötig.",
+              "source": "EOS R100 Online-Handbuch (PDF), S. 680 (Technische Daten)",
+              "confidence": "hoch"
+            },
+            "afmf": {
+              "where": "Fokussierschalter am Objektiv auf AF oder MF. Objektive ohne Schalter: MENU → AF → Fokussiermodus.",
+              "part": "lens",
+              "source": "EOS R100 Online-Handbuch (PDF), S. 142, 265",
+              "confidence": "hoch"
+            },
+            "points": {
+              "where": "Taste AF-Messfeldwahl drücken, dann das Messfeld mit den Kreuztasten verschieben. Taste MENU setzt es in die Mitte.",
+              "part": "pad",
+              "source": "EOS R100 Online-Handbuch (PDF), S. 154",
+              "confidence": "hoch"
+            },
+            "metering": {
+              "where": "MENU → Aufnahme → Messmethode: Mehrfeld-, Selektiv- oder mittenbetonte Messung.",
+              "source": "EOS R100 Online-Handbuch (PDF), S. 170",
+              "confidence": "hoch"
+            },
+            "drive": {
+              "where": "MENU → Aufnahme → Betriebsart: Einzelbild oder Reihenaufnahme.",
+              "source": "EOS R100 Online-Handbuch (PDF), S. 165",
+              "confidence": "hoch"
+            },
+            "quality": {
+              "where": "MENU → Aufnahme → Bildqualität: RAW, JPEG oder beides.",
+              "source": "EOS R100 Online-Handbuch (PDF), S. 209",
+              "confidence": "hoch"
+            },
+            "iso": {
+              "where": "Kreuztaste links (ISO) drücken, Wert wählen.",
+              "part": "pad",
+              "source": "EOS R100 Online-Handbuch (PDF), S. 217",
+              "confidence": "hoch"
+            },
+            "stab": {
+              "where": "Schalter STABILIZER am Objektiv auf ON (nur Objektive mit IS). Objektive ohne Schalter: MENU → Aufnahme → IS (Bildstabilisator) Modus. Die Kamera selbst stabilisiert nicht.",
+              "part": "lens",
+              "source": "EOS R100 Online-Handbuch (PDF), S. 269",
+              "confidence": "hoch"
+            }
+          },
+          "sensor": {
+            "format": "APS-C",
+            "size": "ca. 22,3 × 14,9 mm",
+            "crop": 1.6,
+            "source": "Technische Daten des Herstellers"
+          }
+        },
+        {
+          "id": "r50",
+          "name": "EOS R50",
+          "source": "Canon EOS R50 Online-Handbuch, Part Names",
+          "body": {
+            "modeDial": "right",
+            "topLcd": false,
+            "evf": "center",
+            "front": "release",
+            "rear": null,
+            "pad": true,
+            "topButtons": [
+              "ISO"
+            ],
+            "rearButtons": [
+              "✱",
+              "Q",
+              "▶",
+              "MENU"
+            ],
+            "confidence": "hoch"
+          },
+          "dials": {
+            "names": {
+              "front": "Wahlrad"
+            },
+            "aperturePriority": {
+              "aperture": "front"
+            },
+            "shutterPriority": {
+              "shutter": "front"
+            },
+            "manual": {
+              "shutter": "front",
+              "aperture": "front+±"
+            },
+            "bulb": {
+              "aperture": "front+±"
+            },
+            "confidence": "hoch",
+            "note": "Nur ein Einstellrad: In M stellt das Wahlrad die Zeit; mit gedrückter Taste ± stellt es die Blende."
+          },
+          "functions": {
+            "af": {
+              "where": "MENU → AF → AF-Betrieb: One-Shot AF für ruhende Motive, Servo AF für bewegte.",
+              "source": "EOS R50 Online-Handbuch (PDF), S. 426–427",
+              "confidence": "hoch"
+            },
+            "timer": {
+              "where": "Kreuztaste rechts (Betriebsart) drücken, dann Selbstauslöser 10 s oder 2 s wählen.",
+              "part": "pad",
+              "source": "EOS R50 Online-Handbuch (PDF), S. 484",
+              "confidence": "hoch"
+            },
+            "shake": {
+              "type": "efc",
+              "where": "MENU → Aufnahme → Auslöser-Modus: Elek.1.Verschl. (weniger Erschütterung) oder Elektronisch (keine Verschlussbewegung).",
+              "source": "EOS R50 Online-Handbuch (PDF), S. 286",
+              "confidence": "hoch"
+            },
+            "afmf": {
+              "where": "Fokussierschalter am Objektiv auf AF oder MF. Objektive ohne Schalter: MENU → AF → Fokussiermodus.",
+              "part": "lens",
+              "source": "EOS R50 Online-Handbuch (PDF), S. 426, 452",
+              "confidence": "hoch"
+            },
+            "points": {
+              "where": "Taste AF-Messfeldwahl drücken, dann das Messfeld mit den Kreuztasten verschieben. Antippen am Bildschirm geht auch.",
+              "part": "pad",
+              "source": "EOS R50 Online-Handbuch (PDF), S. 454",
+              "confidence": "hoch"
+            },
+            "metering": {
+              "where": "MENU → Aufnahme → Messmethode: Mehrfeld-, Selektiv-, Spot- oder mittenbetonte Messung.",
+              "source": "EOS R50 Online-Handbuch (PDF), S. 227",
+              "confidence": "hoch"
+            },
+            "drive": {
+              "where": "Kreuztaste rechts (Betriebsart) drücken, dann Einzelbild oder Reihenaufnahme wählen.",
+              "part": "pad",
+              "source": "EOS R50 Online-Handbuch (PDF), S. 481",
+              "confidence": "hoch"
+            },
+            "quality": {
+              "where": "MENU → Aufnahme → Bildqualität: RAW, JPEG oder beides.",
+              "source": "EOS R50 Online-Handbuch (PDF), S. 198",
+              "confidence": "hoch"
+            },
+            "iso": {
+              "where": "Taste ISO oben drücken, Wert mit dem Wahlrad einstellen.",
+              "part": "button:ISO",
+              "source": "EOS R50 Online-Handbuch (PDF), S. 212",
+              "confidence": "hoch"
+            },
+            "stab": {
+              "where": "Schalter STABILIZER am Objektiv auf ON (nur Objektive mit IS). Objektive ohne Schalter: MENU → Aufnahme → IS (Bildstabilisator) Modus. Die Kamera selbst stabilisiert nicht.",
+              "part": "lens",
+              "source": "EOS R50 Online-Handbuch (PDF), S. 289",
+              "confidence": "hoch"
+            }
+          },
+          "sensor": {
+            "format": "APS-C",
+            "size": "ca. 22,3 × 14,9 mm",
+            "crop": 1.6,
+            "source": "Technische Daten des Herstellers"
+          }
+        },
+        {
+          "id": "r10",
+          "name": "EOS R10",
+          "source": "Canon EOS R10 Online-Handbuch, Part Names",
+          "body": {
+            "modeDial": "right",
+            "topLcd": false,
+            "evf": "center",
+            "front": "release",
+            "rear": "thumbTop",
+            "pad": true,
+            "topButtons": [
+              "M-Fn"
+            ],
+            "rearButtons": [
+              "AF-ON",
+              "✱",
+              "Q",
+              "▶"
+            ],
+            "confidence": "hoch",
+            "note": "Das Schnellwahlrad sitzt oben hinter dem Hauptwahlrad, nicht als Ring auf der Rückseite."
+          },
+          "dials": {
+            "names": {
+              "front": "Hauptwahlrad",
+              "rear": "Schnellwahlrad"
+            },
+            "aperturePriority": {
+              "aperture": "front"
+            },
+            "shutterPriority": {
+              "shutter": "front"
+            },
+            "manual": {
+              "shutter": "front",
+              "aperture": "rear"
+            },
+            "bulb": {
+              "aperture": "rear"
+            },
+            "confidence": "hoch",
+            "note": "In M stellt das Hauptwahlrad hinter dem Auslöser die Zeit, das Schnellwahlrad die Blende."
+          },
+          "functions": {
+            "af": {
+              "where": "MENU → AF → AF-Betrieb: One-Shot AF für ruhende Motive, Servo AF für bewegte.",
+              "source": "EOS R10 Online-Handbuch (PDF), S. 453–455",
+              "confidence": "hoch"
+            },
+            "timer": {
+              "where": "Taste M-Fn oben drücken, dann Selbstauslöser 10 s oder 2 s wählen.",
+              "part": "button:M-Fn",
+              "source": "EOS R10 Online-Handbuch (PDF), S. 529",
+              "confidence": "hoch"
+            },
+            "shake": {
+              "type": "efc",
+              "where": "MENU → Aufnahme → Auslöser-Modus: Elek.1.Verschl. (weniger Erschütterung) oder Elektronisch (keine Verschlussbewegung).",
+              "source": "EOS R10 Online-Handbuch (PDF), S. 316",
+              "confidence": "hoch"
+            },
+            "afmf": {
+              "where": "Fokussierschalter am Objektiv auf AF oder MF. Objektive ohne Schalter: MENU → AF → Fokussiermodus.",
+              "part": "lens",
+              "source": "EOS R10 Online-Handbuch (PDF), S. 453, 481",
+              "confidence": "hoch"
+            },
+            "points": {
+              "where": "Das Messfeld mit dem Multi-Controller (kleiner Joystick hinten) verschieben. Antippen am Bildschirm geht auch.",
+              "source": "EOS R10 Online-Handbuch (PDF), S. 483–484",
+              "confidence": "hoch"
+            },
+            "metering": {
+              "where": "MENU → Aufnahme → Messmethode: Mehrfeld-, Selektiv-, Spot- oder mittenbetonte Messung.",
+              "source": "EOS R10 Online-Handbuch (PDF), S. 239",
+              "confidence": "hoch"
+            },
+            "drive": {
+              "where": "Taste M-Fn oben drücken, dann Einzelbild oder Reihenaufnahme wählen.",
+              "part": "button:M-Fn",
+              "source": "EOS R10 Online-Handbuch (PDF), S. 526",
+              "confidence": "hoch"
+            },
+            "quality": {
+              "where": "MENU → Aufnahme → Bildqualität: RAW, JPEG oder beides.",
+              "source": "EOS R10 Online-Handbuch (PDF), S. 202",
+              "confidence": "hoch"
+            },
+            "iso": {
+              "where": "Taste ISO am Steuerkreuz drücken, Wert wählen.",
+              "part": "pad",
+              "source": "EOS R10 Online-Handbuch (PDF), S. 217",
+              "confidence": "hoch"
+            },
+            "stab": {
+              "where": "Schalter STABILIZER am Objektiv auf ON (nur Objektive mit IS). Objektive ohne Schalter: MENU → Aufnahme → IS (Bildstabilisator) Modus. Die Kamera selbst stabilisiert nicht.",
+              "part": "lens",
+              "source": "EOS R10 Online-Handbuch (PDF), S. 320",
+              "confidence": "hoch"
+            }
+          },
+          "sensor": {
+            "format": "APS-C",
+            "size": "ca. 22,3 × 14,9 mm",
+            "crop": 1.6,
+            "source": "Technische Daten des Herstellers"
+          }
+        },
+        {
+          "id": "r8",
+          "name": "EOS R8 / RP",
+          "source": "Canon EOS R8 Online-Handbuch, Part Names",
+          "body": {
+            "modeDial": "right",
+            "topLcd": false,
+            "evf": "center",
+            "front": "release",
+            "rear": "thumbTop",
+            "pad": true,
+            "topButtons": [
+              "M-Fn"
+            ],
+            "rearButtons": [
+              "AF-ON",
+              "✱",
+              "Q",
+              "▶"
+            ],
+            "confidence": "mittel",
+            "note": "Das Schnellwahlrad sitzt oben hinten rechts. RP nach Bauähnlichkeit."
+          },
+          "dials": {
+            "names": {
+              "front": "Hauptwahlrad",
+              "rear": "Schnellwahlrad"
+            },
+            "aperturePriority": {
+              "aperture": "front"
+            },
+            "shutterPriority": {
+              "shutter": "front"
+            },
+            "manual": {
+              "shutter": "front",
+              "aperture": "rear"
+            },
+            "bulb": {
+              "aperture": "rear"
+            },
+            "confidence": "hoch",
+            "note": "In M stellt das Hauptwahlrad hinter dem Auslöser die Zeit, das Schnellwahlrad die Blende."
+          },
+          "functions": {
+            "af": {
+              "where": "MENU → AF → AF-Betrieb: One-Shot AF für ruhende Motive, Servo AF für bewegte.",
+              "source": "EOS R8 Online-Handbuch (PDF), S. 475–476",
+              "confidence": "hoch"
+            },
+            "timer": {
+              "where": "Taste M-Fn oben drücken, dann Selbstauslöser 10 s oder 2 s wählen.",
+              "part": "button:M-Fn",
+              "source": "EOS R8 Online-Handbuch (PDF), S. 557",
+              "confidence": "hoch"
+            },
+            "shake": {
+              "type": "efc",
+              "where": "MENU → Aufnahme → Auslöser-Modus: Elek.1.Verschl. (weniger Erschütterung) oder Elektronisch (keine Verschlussbewegung).",
+              "source": "EOS R8 Online-Handbuch (PDF), S. 311",
+              "confidence": "hoch"
+            },
+            "afmf": {
+              "where": "Fokussierschalter am Objektiv auf AF oder MF. Objektive ohne Schalter: MENU → AF → Fokussiermodus.",
+              "part": "lens",
+              "source": "EOS R8 Online-Handbuch (PDF), S. 475, 506",
+              "confidence": "hoch"
+            },
+            "points": {
+              "where": "Taste AF-Messfeldwahl drücken, dann das Messfeld mit den Kreuztasten verschieben. Antippen am Bildschirm geht auch.",
+              "part": "pad",
+              "source": "EOS R8 Online-Handbuch (PDF), S. 507",
+              "confidence": "hoch"
+            },
+            "metering": {
+              "where": "MENU → Aufnahme → Messmethode: Mehrfeld-, Selektiv-, Spot- oder mittenbetonte Messung.",
+              "source": "EOS R8 Online-Handbuch (PDF), S. 234",
+              "confidence": "hoch"
+            },
+            "drive": {
+              "where": "Taste M-Fn oben drücken, dann Einzelbild oder Reihenaufnahme wählen.",
+              "part": "button:M-Fn",
+              "source": "EOS R8 Online-Handbuch (PDF), S. 554",
+              "confidence": "hoch"
+            },
+            "quality": {
+              "where": "MENU → Aufnahme → Bildqualität: RAW, JPEG oder beides.",
+              "source": "EOS R8 Online-Handbuch (PDF), S. 167",
+              "confidence": "hoch"
+            },
+            "iso": {
+              "where": "ISO unten rechts am Bildschirm antippen, Wert mit dem Schnellwahlrad einstellen.",
+              "part": "rearDial",
+              "source": "EOS R8 Online-Handbuch (PDF), S. 184–185",
+              "confidence": "hoch"
+            },
+            "stab": {
+              "where": "Schalter STABILIZER am Objektiv auf ON (nur Objektive mit IS). Objektive ohne Schalter: MENU → Aufnahme → IS (Bildstabilisator) Modus. Die Kamera selbst stabilisiert nicht.",
+              "part": "lens",
+              "source": "EOS R8 Online-Handbuch (PDF), S. 314",
+              "confidence": "hoch"
+            }
+          },
+          "sensor": {
+            "format": "Vollformat",
+            "size": "36 × 24 mm",
+            "crop": 1,
+            "source": "Technische Daten des Herstellers"
+          }
+        },
+        {
+          "id": "r7",
+          "name": "EOS R7",
+          "source": "Canon EOS R7 Online-Handbuch, Part Names",
+          "body": {
+            "modeDial": "right",
+            "topLcd": false,
+            "evf": "center",
+            "front": "release",
+            "rear": "ring",
+            "ringCenter": "",
+            "topButtons": [
+              "ISO",
+              "M-Fn"
+            ],
+            "rearButtons": [
+              "AF-ON",
+              "✱",
+              "Q",
+              "▶"
+            ],
+            "confidence": "mittel",
+            "note": "Das Schnellwahlrad liegt als Ring um den Multi-Controller oben rechts auf der Rückseite."
+          },
+          "dials": {
+            "names": {
+              "front": "Hauptwahlrad",
+              "rear": "Schnellwahlrad"
+            },
+            "aperturePriority": {
+              "aperture": "front"
+            },
+            "shutterPriority": {
+              "shutter": "front"
+            },
+            "manual": {
+              "shutter": "front",
+              "aperture": "rear"
+            },
+            "bulb": {
+              "aperture": "rear"
+            },
+            "confidence": "hoch",
+            "note": "In M stellt das Hauptwahlrad hinter dem Auslöser die Zeit, das Schnellwahlrad die Blende."
+          },
+          "functions": {
+            "af": {
+              "where": "MENU → AF → AF-Betrieb: One-Shot AF für ruhende Motive, Servo AF für bewegte.",
+              "source": "EOS R7 Online-Handbuch (PDF), S. 464–466",
+              "confidence": "hoch"
+            },
+            "timer": {
+              "where": "Taste M-Fn oben drücken, dann Selbstauslöser 10 s oder 2 s wählen.",
+              "part": "button:M-Fn",
+              "source": "EOS R7 Online-Handbuch (PDF), S. 540",
+              "confidence": "hoch"
+            },
+            "shake": {
+              "type": "efc",
+              "where": "MENU → Aufnahme → Auslöser-Modus: Elek.1.Verschl. (weniger Erschütterung) oder Elektronisch (keine Verschlussbewegung).",
+              "source": "EOS R7 Online-Handbuch (PDF), S. 306",
+              "confidence": "hoch"
+            },
+            "afmf": {
+              "where": "Fokussierschalter am Objektiv auf AF oder MF. Objektive ohne Schalter: MENU → AF → Fokussiermodus.",
+              "part": "lens",
+              "source": "EOS R7 Online-Handbuch (PDF), S. 464, 492",
+              "confidence": "hoch"
+            },
+            "points": {
+              "where": "Das Messfeld mit dem Multi-Controller (kleiner Joystick hinten) verschieben. Antippen am Bildschirm geht auch.",
+              "source": "EOS R7 Online-Handbuch (PDF), S. 494–495",
+              "confidence": "hoch"
+            },
+            "metering": {
+              "where": "MENU → Aufnahme → Messmethode: Mehrfeld-, Selektiv-, Spot- oder mittenbetonte Messung.",
+              "source": "EOS R7 Online-Handbuch (PDF), S. 229",
+              "confidence": "hoch"
+            },
+            "drive": {
+              "where": "Taste M-Fn oben drücken, dann Einzelbild oder Reihenaufnahme wählen.",
+              "part": "button:M-Fn",
+              "source": "EOS R7 Online-Handbuch (PDF), S. 537",
+              "confidence": "hoch"
+            },
+            "quality": {
+              "where": "MENU → Aufnahme → Bildqualität: RAW, JPEG oder beides.",
+              "source": "EOS R7 Online-Handbuch (PDF), S. 172",
+              "confidence": "hoch"
+            },
+            "iso": {
+              "where": "Taste ISO oben drücken, Wert mit dem Wahlrad einstellen.",
+              "part": "button:ISO",
+              "source": "EOS R7 Online-Handbuch (PDF), S. 188",
+              "confidence": "hoch"
+            },
+            "stab": {
+              "where": "Die Kamera stabilisiert selbst, auch mit Objektiven ohne IS: MENU → Aufnahme → IS (Bildstabilisator) Modus → Ein. Objektive mit IS-Schalter: Schalter auf ON, dann arbeiten Objektiv und Kamera zusammen.",
+              "part": "lens",
+              "source": "EOS R7 Online-Handbuch (PDF), S. 310",
+              "confidence": "hoch"
+            }
+          },
+          "sensor": {
+            "format": "APS-C",
+            "size": "ca. 22,3 × 14,9 mm",
+            "crop": 1.6,
+            "source": "Technische Daten des Herstellers"
+          }
+        },
+        {
+          "id": "r6",
+          "name": "EOS R6 Mark II / R6",
+          "source": "Canon EOS R6 Mark II Online-Handbuch, Part Names",
+          "body": {
+            "modeDial": "right",
+            "topLcd": false,
+            "evf": "center",
+            "front": "release",
+            "rear": "thumb",
+            "ring": "Schnellwahlrad 1",
+            "ringCenter": "SET",
+            "topButtons": [
+              "M-Fn"
+            ],
+            "rearButtons": [
+              "AF-ON",
+              "✱",
+              "Q",
+              "▶"
+            ],
+            "confidence": "hoch"
+          },
+          "dials": {
+            "names": {
+              "front": "Hauptwahlrad",
+              "rear": "Schnellwahlrad 2",
+              "wheel": "Schnellwahlrad 1"
+            },
+            "aperturePriority": {
+              "aperture": "front"
+            },
+            "shutterPriority": {
+              "shutter": "front"
+            },
+            "manual": {
+              "shutter": "front",
+              "aperture": "wheel"
+            },
+            "bulb": {
+              "aperture": "wheel"
+            },
+            "confidence": "mittel",
+            "note": "In M: Hauptwahlrad die Zeit, Schnellwahlrad 1 (Ring hinten) die Blende. Schnellwahlrad 2 oben hinten ist ab Werk für ISO gedacht."
+          },
+          "functions": {
+            "af": {
+              "where": "MENU → AF → AF-Betrieb: One-Shot AF für ruhende Motive, Servo AF für bewegte.",
+              "source": "EOS R6 Mark II Online-Handbuch (PDF), S. 497–498",
+              "confidence": "hoch"
+            },
+            "timer": {
+              "where": "Taste M-Fn oben drücken, dann Selbstauslöser 10 s oder 2 s wählen.",
+              "part": "button:M-Fn",
+              "source": "EOS R6 Mark II Online-Handbuch (PDF), S. 579",
+              "confidence": "hoch"
+            },
+            "shake": {
+              "type": "efc",
+              "where": "MENU → Aufnahme → Auslöser-Modus: Elek.1.Verschl. (weniger Erschütterung) oder Elektronisch (keine Verschlussbewegung).",
+              "source": "EOS R6 Mark II Online-Handbuch (PDF), S. 326",
+              "confidence": "hoch"
+            },
+            "afmf": {
+              "where": "Fokussierschalter am Objektiv auf AF oder MF. Objektive ohne Schalter: MENU → AF → Fokussiermodus.",
+              "part": "lens",
+              "source": "EOS R6 Mark II Online-Handbuch (PDF), S. 497, 528",
+              "confidence": "hoch"
+            },
+            "points": {
+              "where": "Das Messfeld mit dem Multi-Controller (kleiner Joystick hinten) verschieben. Antippen am Bildschirm geht auch.",
+              "source": "EOS R6 Mark II Online-Handbuch (PDF), S. 529",
+              "confidence": "hoch"
+            },
+            "metering": {
+              "where": "MENU → Aufnahme → Messmethode: Mehrfeld-, Selektiv-, Spot- oder mittenbetonte Messung.",
+              "source": "EOS R6 Mark II Online-Handbuch (PDF), S. 248",
+              "confidence": "hoch"
+            },
+            "drive": {
+              "where": "Taste M-Fn oben drücken, dann Einzelbild oder Reihenaufnahme wählen.",
+              "part": "button:M-Fn",
+              "source": "EOS R6 Mark II Online-Handbuch (PDF), S. 577",
+              "confidence": "hoch"
+            },
+            "quality": {
+              "where": "MENU → Aufnahme → Bildqualität: RAW, JPEG oder beides.",
+              "source": "EOS R6 Mark II Online-Handbuch (PDF), S. 178",
+              "confidence": "hoch"
+            },
+            "iso": {
+              "where": "Bei angezeigtem Aufnahmebild das Schnellwahlrad 2 (großes Rad hinten) drehen.",
+              "part": "rearDial",
+              "source": "EOS R6 Mark II Online-Handbuch (PDF), S. 196",
+              "confidence": "hoch"
+            },
+            "stab": {
+              "where": "Die Kamera stabilisiert selbst, auch mit Objektiven ohne IS: MENU → Aufnahme → IS (Bildstabilisator) Modus → Ein. Objektive mit IS-Schalter: Schalter auf ON, dann arbeiten Objektiv und Kamera zusammen.",
+              "part": "lens",
+              "source": "EOS R6 Mark II Online-Handbuch (PDF), S. 330",
+              "confidence": "hoch"
+            }
+          },
+          "sensor": {
+            "format": "Vollformat",
+            "size": "36 × 24 mm",
+            "crop": 1,
+            "source": "Technische Daten des Herstellers"
+          }
+        },
+        {
+          "id": "r5m2",
+          "name": "EOS R5 Mark II / R5",
+          "source": "Canon EOS R5 Mark II Online-Handbuch: Teilebezeichnungen, P, Tv, Av, M, BULB",
+          "body": {
+            "modeDial": "button",
+            "topLcd": true,
+            "evf": "center",
+            "front": "release",
+            "rear": "thumb",
+            "ring": "Schnellwahlrad 1",
+            "ringCenter": "SET",
+            "topButtons": [
+              "M-Fn",
+              "●"
+            ],
+            "rearButtons": [
+              "AF-ON",
+              "✱",
+              "Q",
+              "▶"
+            ],
+            "confidence": "hoch",
+            "note": "Kein Modusrad: MODE-Taste drücken und mit dem Hauptwahlrad P, Tv, Av, M oder BULB wählen; der Modus steht im Schulterdisplay. R5 nach Bauähnlichkeit."
+          },
+          "dials": {
+            "names": {
+              "front": "Hauptwahlrad",
+              "rear": "Schnellwahlrad 2",
+              "wheel": "Schnellwahlrad 1"
+            },
+            "aperturePriority": {
+              "aperture": "front"
+            },
+            "shutterPriority": {
+              "shutter": "front"
+            },
+            "manual": {
+              "shutter": "front",
+              "aperture": "wheel"
+            },
+            "bulb": {
+              "aperture": "front"
+            },
+            "confidence": "hoch",
+            "note": "In M: Hauptwahlrad die Zeit, Schnellwahlrad 1 (Ring hinten) die Blende. In Av, Tv und BULB stellt das Hauptwahlrad den Wert."
+          },
+          "functions": {
+            "af": {
+              "where": "MENU → AF → AF-Betrieb: One-Shot AF für ruhende Motive, Servo AF für bewegte.",
+              "source": "EOS R5 Mark II Online-Handbuch (PDF), S. 519",
+              "confidence": "hoch"
+            },
+            "timer": {
+              "where": "Taste M-Fn oben drücken, dann Selbstauslöser 10 s oder 2 s wählen.",
+              "part": "button:M-Fn",
+              "source": "EOS R5 Mark II Online-Handbuch (PDF), S. 622",
+              "confidence": "hoch"
+            },
+            "shake": {
+              "type": "efc",
+              "where": "MENU → Aufnahme → Verschlussmodus: Mechanisch, Elektronischer 1. Verschlussvorhang oder Elektronisch. Am wenigsten Vibration: Elektronisch.",
+              "source": "R5 Mark II Online-Handbuch, Verschlussmodus",
+              "confidence": "hoch"
+            },
+            "afmf": {
+              "where": "Fokussierschalter am Objektiv auf AF oder MF. Objektive ohne Schalter: MENU → AF → Fokussiermodus.",
+              "part": "lens",
+              "source": "EOS R5 Mark II Online-Handbuch (PDF), S. 519",
+              "confidence": "hoch"
+            },
+            "points": {
+              "where": "Das Messfeld mit dem Multi-Controller (kleiner Joystick hinten) verschieben. Antippen am Bildschirm geht auch.",
+              "source": "EOS R5 Mark II Online-Handbuch (PDF), S. 552",
+              "confidence": "hoch"
+            },
+            "metering": {
+              "where": "MENU → Aufnahme → Messmethode: Mehrfeld-, Selektiv-, Spot- oder mittenbetonte Messung.",
+              "source": "EOS R5 Mark II Online-Handbuch (PDF), S. 354",
+              "confidence": "hoch"
+            },
+            "drive": {
+              "where": "Taste M-Fn oben drücken, dann Einzelbild oder Reihenaufnahme wählen.",
+              "part": "button:M-Fn",
+              "source": "EOS R5 Mark II Online-Handbuch (PDF), S. 618",
+              "confidence": "hoch"
+            },
+            "quality": {
+              "where": "MENU → Aufnahme → Bildqualität: RAW-Größe und JPEG/HEIF-Größe getrennt wählen.",
+              "source": "EOS R5 Mark II Online-Handbuch (PDF), S. 180–181",
+              "confidence": "hoch"
+            },
+            "iso": {
+              "where": "Bei angezeigtem Aufnahmebild das Schnellwahlrad 2 (großes Rad hinten) drehen.",
+              "part": "rearDial",
+              "source": "EOS R5 Mark II Online-Handbuch (PDF), S. 195",
+              "confidence": "hoch"
+            },
+            "stab": {
+              "where": "Die Kamera stabilisiert selbst, auch mit Objektiven ohne IS: MENU → Aufnahme → IS (Bildstabilisator) Modus → Ein. Objektive mit IS-Schalter: Schalter auf ON, dann arbeiten Objektiv und Kamera zusammen.",
+              "part": "lens",
+              "source": "EOS R5 Mark II Online-Handbuch (PDF), S. 313",
+              "confidence": "hoch"
+            }
+          },
+          "sensor": {
+            "format": "Vollformat",
+            "size": "36 × 24 mm",
+            "crop": 1,
+            "source": "Technische Daten des Herstellers"
+          }
+        }
+      ]
+    },
+    {
+      "id": "nikon",
+      "name": "Nikon",
+      "modes": {
+        "program": "P",
+        "aperturePriority": "A",
+        "shutterPriority": "S",
+        "manual": "M",
+        "bulb": "Bulb / Time in M"
+      },
+      "notes": {
+        "bulb": "In M hinter 30″ erscheint „Bulb“ (gedrückt halten) und „Time“ (ein Druck öffnet, der zweite schließt). Z-Modelle erlauben in M auch bis 900 s direkt."
+      },
+      "longExposure": "M wählen, Zeit auf 30 s oder bei Z-Modellen länger; sonst „Time“ hinter 30 s: einmal drücken, Timer der App laufen lassen, wieder drücken.",
+      "layout": "pasm",
+      "dials": {
+        "names": {
+          "front": "Subbefehlsrad",
+          "rear": "Hauptbefehlsrad"
+        },
+        "aperturePriority": {
+          "aperture": "front"
+        },
+        "shutterPriority": {
+          "shutter": "rear"
+        },
+        "manual": {
+          "shutter": "rear",
+          "aperture": "front"
+        },
+        "bulb": {
+          "aperture": "front"
+        },
+        "confidence": "hoch",
+        "note": "Hauptbefehlsrad hinten für die Zeit, Subbefehlsrad vorn für die Blende. Im Menü vertauschbar."
+      },
+      "limits": {
+        "maxShutter": 30,
+        "isoMin": 100,
+        "isoMax": 25600,
+        "bulb": "Bulb oder Time"
+      },
+      "body": {
+        "ref": "Z 5, Z 6, Z 7",
+        "modeDial": "left",
+        "topLcd": true,
+        "evf": "center",
+        "front": "grip",
+        "rear": "thumb",
+        "pad": true,
+        "topButtons": [
+          "ISO",
+          "±",
+          "●"
+        ],
+        "rearButtons": [
+          "AF-ON",
+          "i",
+          "▶"
+        ],
+        "confidence": "mittel",
+        "note": "Allgemeine Bauform. Wähl dein Modell, dann stimmen Räder und Tasten."
+      },
+      "models": [
+        {
+          "id": "z30",
+          "name": "Z 30",
+          "source": "Nikon Z 30 Online-Handbuch, Teile der Kamera",
+          "body": {
+            "modeDial": "right",
+            "topLcd": false,
+            "evf": "none",
+            "front": "grip",
+            "rear": "thumb",
+            "pad": true,
+            "topButtons": [
+              "ISO",
+              "±",
+              "●"
+            ],
+            "rearButtons": [
+              "i",
+              "▶",
+              "MENU"
+            ],
+            "confidence": "hoch",
+            "note": "Kein Sucher, nur der Bildschirm."
+          },
+          "dials": {
+            "names": {
+              "front": "Subbefehlsrad",
+              "rear": "Hauptbefehlsrad"
+            },
+            "aperturePriority": {
+              "aperture": "front"
+            },
+            "shutterPriority": {
+              "shutter": "rear"
+            },
+            "manual": {
+              "shutter": "rear",
+              "aperture": "front"
+            },
+            "bulb": {
+              "aperture": "front"
+            },
+            "confidence": "hoch",
+            "note": "Hauptbefehlsrad hinten: Zeit. Subbefehlsrad vorn am Griff: Blende."
+          },
+          "functions": {
+            "af": {
+              "where": "i-Taste → Fokusmodus: AF-S (einmal), AF-C (nachführend) oder MF. Auch MENU → Fotoaufnahme → Fokusmodus.",
+              "part": "button:i",
+              "source": "Z 50 Online-Handbuch, Fokusmodus",
+              "confidence": "mittel"
+            },
+            "timer": {
+              "where": "i-Taste → Aufnahmebetriebsart → Selbstauslöser. Die Vorlaufzeit (2, 5, 10 oder 20 s) steht unter MENU → Individualfunktionen c2.",
+              "part": "button:i",
+              "source": "Z 50 Online-Handbuch, Aufnahmebetriebsart und c2",
+              "confidence": "mittel"
+            },
+            "shake": {
+              "type": "efc",
+              "where": "MENU → Individualfunktionen, Gruppe d: Verschlussart auf Elektronischer erster Verschlussvorhang, dazu Belichtungsverzögerung.",
+              "source": "Z 50 Online-Handbuch, d3 und d4",
+              "confidence": "mittel"
+            }
+          },
+          "sensor": {
+            "format": "DX (APS-C)",
+            "size": "ca. 23,5 × 15,6 mm",
+            "crop": 1.5,
+            "source": "Technische Daten des Herstellers"
+          }
+        },
+        {
+          "id": "z50",
+          "name": "Z 50",
+          "source": "Nikon Z 50 Online-Handbuch, Teile der Kamera",
+          "body": {
+            "modeDial": "right",
+            "topLcd": false,
+            "evf": "center",
+            "front": "grip",
+            "rear": "thumb",
+            "pad": true,
+            "topButtons": [
+              "ISO",
+              "±",
+              "●"
+            ],
+            "rearButtons": [
+              "AE-L",
+              "i",
+              "▶",
+              "MENU"
+            ],
+            "confidence": "hoch"
+          },
+          "dials": {
+            "names": {
+              "front": "Subbefehlsrad",
+              "rear": "Hauptbefehlsrad"
+            },
+            "aperturePriority": {
+              "aperture": "front"
+            },
+            "shutterPriority": {
+              "shutter": "rear"
+            },
+            "manual": {
+              "shutter": "rear",
+              "aperture": "front"
+            },
+            "bulb": {
+              "aperture": "front"
+            },
+            "confidence": "hoch",
+            "note": "Hauptbefehlsrad hinten: Zeit. Subbefehlsrad vorn am Griff: Blende."
+          },
+          "functions": {
+            "af": {
+              "where": "i-Taste → Fokusmodus: AF-S (einmal), AF-C (nachführend) oder MF. Auch MENU → Fotoaufnahme → Fokusmodus.",
+              "part": "button:i",
+              "source": "Z 50 Online-Handbuch, Fokusmodus",
+              "confidence": "hoch"
+            },
+            "timer": {
+              "where": "i-Taste → Aufnahmebetriebsart → Selbstauslöser. Die Vorlaufzeit (2, 5, 10 oder 20 s) steht unter MENU → Individualfunktionen c2.",
+              "part": "button:i",
+              "source": "Z 50 Online-Handbuch, Aufnahmebetriebsart und c2",
+              "confidence": "hoch"
+            },
+            "shake": {
+              "type": "efc",
+              "where": "MENU → Individualfunktionen d4 Verschlussart → Elektronischer erster Verschlussvorhang. Dazu d3 Belichtungsverzögerung (0,2 bis 3 s).",
+              "source": "Z 50 Online-Handbuch, d3 und d4",
+              "confidence": "hoch"
+            }
+          },
+          "sensor": {
+            "format": "DX (APS-C)",
+            "size": "ca. 23,5 × 15,6 mm",
+            "crop": 1.5,
+            "source": "Technische Daten des Herstellers"
+          }
+        },
+        {
+          "id": "z5",
+          "name": "Z 5",
+          "source": "Nikon Z 5 Online-Handbuch, Teile der Kamera",
+          "body": {
+            "modeDial": "right",
+            "topLcd": false,
+            "evf": "center",
+            "front": "grip",
+            "rear": "thumb",
+            "pad": true,
+            "topButtons": [
+              "ISO",
+              "±",
+              "●"
+            ],
+            "rearButtons": [
+              "AF-ON",
+              "i",
+              "▶",
+              "MENU"
+            ],
+            "confidence": "hoch"
+          },
+          "dials": {
+            "names": {
+              "front": "Subbefehlsrad",
+              "rear": "Hauptbefehlsrad"
+            },
+            "aperturePriority": {
+              "aperture": "front"
+            },
+            "shutterPriority": {
+              "shutter": "rear"
+            },
+            "manual": {
+              "shutter": "rear",
+              "aperture": "front"
+            },
+            "bulb": {
+              "aperture": "front"
+            },
+            "confidence": "hoch",
+            "note": "Hauptbefehlsrad hinten: Zeit. Subbefehlsrad vorn am Griff: Blende."
+          },
+          "functions": {
+            "af": {
+              "where": "i-Taste → Fokusmodus: AF-S (einmal), AF-C (nachführend) oder MF. Auch MENU → Fotoaufnahme → Fokusmodus.",
+              "part": "button:i",
+              "source": "Z 50 Online-Handbuch, Fokusmodus",
+              "confidence": "mittel"
+            },
+            "timer": {
+              "where": "i-Taste → Aufnahmebetriebsart → Selbstauslöser. Die Vorlaufzeit (2, 5, 10 oder 20 s) steht unter MENU → Individualfunktionen c2.",
+              "part": "button:i",
+              "source": "Z 50 Online-Handbuch, Aufnahmebetriebsart und c2",
+              "confidence": "mittel"
+            },
+            "shake": {
+              "type": "efc",
+              "where": "MENU → Individualfunktionen, Gruppe d: Verschlussart auf Elektronischer erster Verschlussvorhang, dazu Belichtungsverzögerung.",
+              "source": "Z 50 Online-Handbuch, d3 und d4",
+              "confidence": "mittel"
+            }
+          },
+          "sensor": {
+            "format": "FX (Vollformat)",
+            "size": "36 × 24 mm",
+            "crop": 1,
+            "source": "Technische Daten des Herstellers"
+          }
+        },
+        {
+          "id": "z6",
+          "name": "Z 6II / Z 7II / Z 6 / Z 7",
+          "source": "Nikon Z 7II/Z 6II Online-Handbuch, Teile der Kamera",
+          "body": {
+            "modeDial": "left",
+            "topLcd": true,
+            "evf": "center",
+            "front": "grip",
+            "rear": "thumb",
+            "pad": true,
+            "topButtons": [
+              "ISO",
+              "±",
+              "●"
+            ],
+            "rearButtons": [
+              "AF-ON",
+              "i",
+              "▶",
+              "MENU"
+            ],
+            "confidence": "hoch"
+          },
+          "dials": {
+            "names": {
+              "front": "Subbefehlsrad",
+              "rear": "Hauptbefehlsrad"
+            },
+            "aperturePriority": {
+              "aperture": "front"
+            },
+            "shutterPriority": {
+              "shutter": "rear"
+            },
+            "manual": {
+              "shutter": "rear",
+              "aperture": "front"
+            },
+            "bulb": {
+              "aperture": "front"
+            },
+            "confidence": "hoch",
+            "note": "Hauptbefehlsrad hinten: Zeit. Subbefehlsrad vorn am Griff: Blende."
+          },
+          "functions": {
+            "af": {
+              "where": "i-Taste → Fokusmodus: AF-S (einmal), AF-C (nachführend) oder MF. Auch MENU → Fotoaufnahme → Fokusmodus.",
+              "part": "button:i",
+              "source": "Z 50 Online-Handbuch, Fokusmodus",
+              "confidence": "mittel"
+            },
+            "timer": {
+              "where": "i-Taste → Aufnahmebetriebsart → Selbstauslöser. Die Vorlaufzeit (2, 5, 10 oder 20 s) steht unter MENU → Individualfunktionen c2.",
+              "part": "button:i",
+              "source": "Z 50 Online-Handbuch, Aufnahmebetriebsart und c2",
+              "confidence": "mittel"
+            },
+            "shake": {
+              "type": "efc",
+              "where": "MENU → Individualfunktionen, Gruppe d: Verschlussart auf Elektronischer erster Verschlussvorhang, dazu Belichtungsverzögerung.",
+              "source": "Z 50 Online-Handbuch, d3 und d4",
+              "confidence": "mittel"
+            }
+          },
+          "sensor": {
+            "format": "FX (Vollformat)",
+            "size": "36 × 24 mm",
+            "crop": 1,
+            "source": "Technische Daten des Herstellers"
+          }
+        },
+        {
+          "id": "zfc",
+          "name": "Z fc",
+          "source": "Nikon Z fc Online-Handbuch, Teile der Kamera",
+          "body": {
+            "modeDial": "left",
+            "modeDialLabel": "ISO-Rad + P/S/A/M",
+            "shutterDial": true,
+            "evDial": true,
+            "topLcd": false,
+            "evf": "center",
+            "front": "grip",
+            "rear": "thumb",
+            "pad": true,
+            "topButtons": [
+              "●"
+            ],
+            "rearButtons": [
+              "AE-L",
+              "i",
+              "▶",
+              "MENU"
+            ],
+            "confidence": "hoch",
+            "note": "Klassische Räder: ISO-Rad links mit dem Moduswähler P/S/A/M darunter, Zeitenrad und Belichtungskorrekturrad rechts."
+          },
+          "dials": {
+            "names": {
+              "front": "Subbefehlsrad",
+              "rear": "Hauptbefehlsrad",
+              "shutterDial": "Zeitenrad"
+            },
+            "aperturePriority": {
+              "aperture": "front"
+            },
+            "shutterPriority": {
+              "shutter": "shutterDial"
+            },
+            "manual": {
+              "shutter": "shutterDial",
+              "aperture": "front"
+            },
+            "bulb": {
+              "aperture": "front"
+            },
+            "confidence": "hoch",
+            "note": "P/S/A/M mit dem Moduswähler unter dem ISO-Rad. Zeit am Zeitenrad (auf 1/3 STEP mit dem Hauptbefehlsrad), Blende mit dem Subbefehlsrad vorn."
+          },
+          "functions": {
+            "af": {
+              "where": "i-Taste → Fokusmodus: AF-S (einmal), AF-C (nachführend) oder MF. Auch MENU → Fotoaufnahme → Fokusmodus.",
+              "part": "button:i",
+              "source": "Z 50 Online-Handbuch, Fokusmodus",
+              "confidence": "mittel"
+            },
+            "timer": {
+              "where": "i-Taste → Aufnahmebetriebsart → Selbstauslöser. Die Vorlaufzeit (2, 5, 10 oder 20 s) steht unter MENU → Individualfunktionen c2.",
+              "part": "button:i",
+              "source": "Z 50 Online-Handbuch, Aufnahmebetriebsart und c2",
+              "confidence": "mittel"
+            },
+            "shake": {
+              "type": "efc",
+              "where": "MENU → Individualfunktionen, Gruppe d: Verschlussart auf Elektronischer erster Verschlussvorhang, dazu Belichtungsverzögerung.",
+              "source": "Z 50 Online-Handbuch, d3 und d4",
+              "confidence": "mittel"
+            }
+          },
+          "sensor": {
+            "format": "DX (APS-C)",
+            "size": "ca. 23,5 × 15,6 mm",
+            "crop": 1.5,
+            "source": "Technische Daten des Herstellers"
+          }
+        },
+        {
+          "id": "zf",
+          "name": "Z f",
+          "source": "Nikon Z f Online-Handbuch, Teile der Kamera",
+          "body": {
+            "modeDial": "left",
+            "modeDialLabel": "ISO-Rad + P/S/A/M",
+            "shutterDial": true,
+            "evDial": true,
+            "topLcd": false,
+            "evf": "center",
+            "front": "grip",
+            "rear": "thumb",
+            "pad": true,
+            "topButtons": [
+              "●"
+            ],
+            "rearButtons": [
+              "AE-L",
+              "i",
+              "▶",
+              "MENU"
+            ],
+            "confidence": "hoch",
+            "note": "Klassische Räder wie die Z fc."
+          },
+          "dials": {
+            "names": {
+              "front": "Subbefehlsrad",
+              "rear": "Hauptbefehlsrad",
+              "shutterDial": "Zeitenrad"
+            },
+            "aperturePriority": {
+              "aperture": "front"
+            },
+            "shutterPriority": {
+              "shutter": "shutterDial"
+            },
+            "manual": {
+              "shutter": "shutterDial",
+              "aperture": "front"
+            },
+            "bulb": {
+              "aperture": "front"
+            },
+            "confidence": "hoch",
+            "note": "P/S/A/M mit dem Moduswähler unter dem ISO-Rad. Zeit am Zeitenrad (auf 1/3 STEP mit dem Hauptbefehlsrad), Blende mit dem Subbefehlsrad vorn."
+          },
+          "functions": {
+            "af": {
+              "where": "i-Taste → Fokusmodus: AF-S (einmal), AF-C (nachführend) oder MF. Auch MENU → Fotoaufnahme → Fokusmodus.",
+              "part": "button:i",
+              "source": "Z 50 Online-Handbuch, Fokusmodus",
+              "confidence": "mittel"
+            },
+            "timer": {
+              "where": "i-Taste → Aufnahmebetriebsart → Selbstauslöser. Die Vorlaufzeit (2, 5, 10 oder 20 s) steht unter MENU → Individualfunktionen c2.",
+              "part": "button:i",
+              "source": "Z 50 Online-Handbuch, Aufnahmebetriebsart und c2",
+              "confidence": "mittel"
+            },
+            "shake": {
+              "type": "efc",
+              "where": "MENU → Individualfunktionen, Gruppe d: Verschlussart auf Elektronischer erster Verschlussvorhang, dazu Belichtungsverzögerung.",
+              "source": "Z 50 Online-Handbuch, d3 und d4",
+              "confidence": "mittel"
+            }
+          },
+          "sensor": {
+            "format": "FX (Vollformat)",
+            "size": "36 × 24 mm",
+            "crop": 1,
+            "source": "Technische Daten des Herstellers"
+          }
+        },
+        {
+          "id": "z8",
+          "name": "Z 8",
+          "source": "Nikon Z 8 Online-Handbuch: Kameragehäuse, Fokus, Aufnahmebetriebsart",
+          "body": {
+            "modeDial": "button",
+            "modeButtonSide": "left",
+            "leftTopButtons": [
+              "BKT",
+              "WB",
+              "MODE",
+              "⧉"
+            ],
+            "topLcd": true,
+            "evf": "center",
+            "front": "grip",
+            "rear": "thumb",
+            "pad": true,
+            "topButtons": [
+              "ISO",
+              "±",
+              "●"
+            ],
+            "rearButtons": [
+              "AF-ON",
+              "i",
+              "▶",
+              "MENU"
+            ],
+            "confidence": "hoch",
+            "note": "Kein Modusrad: MODE-Taste links oben gedrückt halten und das Hauptbefehlsrad drehen. Der Modus steht im Schulterdisplay."
+          },
+          "dials": {
+            "names": {
+              "front": "Subbefehlsrad",
+              "rear": "Hauptbefehlsrad"
+            },
+            "aperturePriority": {
+              "aperture": "front"
+            },
+            "shutterPriority": {
+              "shutter": "rear"
+            },
+            "manual": {
+              "shutter": "rear",
+              "aperture": "front"
+            },
+            "bulb": {
+              "aperture": "front"
+            },
+            "confidence": "hoch",
+            "note": "Hauptbefehlsrad hinten: Zeit. Subbefehlsrad vorn am Griff: Blende."
+          },
+          "functions": {
+            "af": {
+              "where": "Fokusmodus-Taste vorn neben dem Objektivanschluss gedrückt halten und das Hauptbefehlsrad drehen: AF-S, AF-C oder MF.",
+              "source": "Z 8 Online-Handbuch, Fokus",
+              "confidence": "hoch"
+            },
+            "timer": {
+              "where": "Taste für die Aufnahmebetriebsart links oben gedrückt halten und das Hauptbefehlsrad auf Selbstauslöser drehen, mit dem Subbefehlsrad die Vorlaufzeit.",
+              "part": "button:⧉",
+              "source": "Z 8 Online-Handbuch, Aufnahmebetriebsart",
+              "confidence": "hoch"
+            },
+            "shake": {
+              "type": "efc",
+              "where": "Kein mechanischer Verschluss, nur ein elektronischer: Es gibt keinen Verschlussschlag. Nimm trotzdem den Selbstauslöser, damit das Drücken nicht wackelt.",
+              "source": "Nikon-Produkttext „Electronic Shutter-Only Design“",
+              "confidence": "hoch"
+            }
+          },
+          "sensor": {
+            "format": "FX (Vollformat)",
+            "size": "36 × 24 mm",
+            "crop": 1,
+            "source": "Technische Daten des Herstellers"
+          }
+        },
+        {
+          "id": "z9",
+          "name": "Z 9",
+          "source": "Nikon Z 9 Online-Handbuch: Teile der Kamera",
+          "body": {
+            "modeDial": "button",
+            "modeButtonSide": "left",
+            "releaseDial": true,
+            "leftTopButtons": [
+              "BKT",
+              "⚡",
+              "MODE",
+              "WB"
+            ],
+            "topLcd": true,
+            "evf": "center",
+            "front": "grip",
+            "rear": "thumb",
+            "pad": true,
+            "topButtons": [
+              "ISO",
+              "±",
+              "●"
+            ],
+            "rearButtons": [
+              "AF-ON",
+              "i",
+              "▶",
+              "MENU"
+            ],
+            "confidence": "mittel",
+            "note": "Kein Modusrad: MODE-Taste links oben auf dem Aufnahmebetriebsart-Rad, gedrückt halten und das Hauptbefehlsrad drehen. Hochformatgriff mit eigenem Auslöser."
+          },
+          "dials": {
+            "names": {
+              "front": "Subbefehlsrad",
+              "rear": "Hauptbefehlsrad"
+            },
+            "aperturePriority": {
+              "aperture": "front"
+            },
+            "shutterPriority": {
+              "shutter": "rear"
+            },
+            "manual": {
+              "shutter": "rear",
+              "aperture": "front"
+            },
+            "bulb": {
+              "aperture": "front"
+            },
+            "confidence": "hoch",
+            "note": "Hauptbefehlsrad hinten: Zeit. Subbefehlsrad vorn am Griff: Blende."
+          },
+          "functions": {
+            "af": {
+              "where": "Fokusmodus-Taste vorn neben dem Objektivanschluss gedrückt halten und das Hauptbefehlsrad drehen: AF-S, AF-C oder MF.",
+              "source": "nach Z 8 Online-Handbuch",
+              "confidence": "mittel"
+            },
+            "timer": {
+              "where": "Aufnahmebetriebsart-Rad links oben (Entriegelung drücken) auf Selbstauslöser drehen. Vorlaufzeit unter Individualfunktion c2.",
+              "part": "releaseDial",
+              "source": "Z 9 Online-Handbuch, Teile der Kamera",
+              "confidence": "mittel"
+            },
+            "shake": {
+              "type": "efc",
+              "where": "Kein mechanischer Verschluss, nur ein elektronischer: Es gibt keinen Verschlussschlag. Nimm trotzdem den Selbstauslöser, damit das Drücken nicht wackelt.",
+              "source": "Nikon-Produkttext „Electronic Shutter-Only Design“",
+              "confidence": "hoch"
+            }
+          },
+          "sensor": {
+            "format": "FX (Vollformat)",
+            "size": "36 × 24 mm",
+            "crop": 1,
+            "source": "Technische Daten des Herstellers"
+          }
+        },
+        {
+          "id": "d3500",
+          "name": "D3500 / D5600",
+          "source": "Nikon D3500 Online-Handbuch, Kamerabeschreibung",
+          "body": {
+            "modeDial": "right",
+            "topLcd": false,
+            "evf": "center",
+            "front": null,
+            "rear": "thumb",
+            "pad": true,
+            "topButtons": [
+              "±",
+              "●"
+            ],
+            "rearButtons": [
+              "AE-L",
+              "i",
+              "▶",
+              "MENU"
+            ],
+            "confidence": "mittel",
+            "note": "D5600 nach Bauähnlichkeit."
+          },
+          "dials": {
+            "names": {
+              "rear": "Einstellrad"
+            },
+            "aperturePriority": {
+              "aperture": "rear"
+            },
+            "shutterPriority": {
+              "shutter": "rear"
+            },
+            "manual": {
+              "shutter": "rear",
+              "aperture": "rear+±"
+            },
+            "bulb": {
+              "aperture": "rear+±"
+            },
+            "confidence": "hoch",
+            "note": "Nur ein Einstellrad: In M stellt es die Zeit; mit gedrückter Taste ± stellt es die Blende."
+          },
+          "functions": {
+            "af": {
+              "where": "i-Taste → Fokusmodus: AF-S, AF-C, AF-A oder MF.",
+              "part": "button:i",
+              "source": "nach Z 50 und D3500 Online-Handbuch",
+              "confidence": "mittel"
+            },
+            "timer": {
+              "where": "i-Taste → Aufnahmebetriebsart → Selbstauslöser.",
+              "part": "button:i",
+              "source": "D3500 Online-Handbuch",
+              "confidence": "mittel"
+            }
+          },
+          "sensor": {
+            "format": "DX (APS-C)",
+            "size": "ca. 23,5 × 15,6 mm",
+            "crop": 1.5,
+            "source": "Technische Daten des Herstellers"
+          }
+        },
+        {
+          "id": "d780",
+          "name": "D780 / D7500",
+          "source": "Nikon D780 Online-Handbuch, Teile der Kamera",
+          "body": {
+            "modeDial": "left",
+            "topLcd": true,
+            "evf": "center",
+            "front": "grip",
+            "rear": "thumb",
+            "pad": true,
+            "topButtons": [
+              "ISO",
+              "±",
+              "●"
+            ],
+            "rearButtons": [
+              "AF-ON",
+              "i",
+              "▶",
+              "MENU"
+            ],
+            "confidence": "mittel",
+            "note": "Unter dem Modusrad sitzt das Aufnahmebetriebsart-Rad. D7500 nach Bauähnlichkeit."
+          },
+          "dials": {
+            "names": {
+              "front": "Subbefehlsrad",
+              "rear": "Hauptbefehlsrad"
+            },
+            "aperturePriority": {
+              "aperture": "front"
+            },
+            "shutterPriority": {
+              "shutter": "rear"
+            },
+            "manual": {
+              "shutter": "rear",
+              "aperture": "front"
+            },
+            "bulb": {
+              "aperture": "front"
+            },
+            "confidence": "hoch",
+            "note": "Hauptbefehlsrad hinten: Zeit. Subbefehlsrad vorn am Griff: Blende."
+          },
+          "functions": {
+            "af": {
+              "where": "AF-Modus-Taste vorn neben dem Objektivanschluss gedrückt halten und das Hauptbefehlsrad drehen: AF-S oder AF-C.",
+              "source": "D780 Online-Handbuch, Teile der Kamera",
+              "confidence": "mittel"
+            },
+            "timer": {
+              "where": "Aufnahmebetriebsart-Rad unter dem Modusrad auf das Selbstauslöser-Symbol drehen.",
+              "part": "modeDial",
+              "source": "D780 Online-Handbuch, Teile der Kamera",
+              "confidence": "mittel"
+            }
+          },
+          "sensor": {
+            "format": "FX (Vollformat)",
+            "size": "36 × 24 mm",
+            "crop": 1,
+            "source": "Technische Daten des Herstellers"
+          }
+        },
+        {
+          "id": "d850",
+          "name": "D850",
+          "source": "Nikon D850 Online-Handbuch: Kamerabeschreibung, Belichtungssteuerung, Aufnahmebetriebsart",
+          "body": {
+            "modeDial": "button",
+            "modeButtonSide": "left",
+            "releaseDial": true,
+            "leftTopButtons": [
+              "QUAL",
+              "WB",
+              "MODE",
+              "BKT"
+            ],
+            "topLcd": true,
+            "evf": "center",
+            "front": "grip",
+            "rear": "thumb",
+            "pad": true,
+            "topButtons": [
+              "ISO",
+              "±",
+              "●"
+            ],
+            "rearButtons": [
+              "AF-ON",
+              "i",
+              "▶",
+              "MENU"
+            ],
+            "confidence": "mittel",
+            "note": "Kein Modusrad: MODE-Taste links oben auf dem Aufnahmebetriebsart-Rad drücken und das Hauptbefehlsrad drehen; der Modus steht im Schulterdisplay."
+          },
+          "dials": {
+            "names": {
+              "front": "Subbefehlsrad",
+              "rear": "Hauptbefehlsrad"
+            },
+            "aperturePriority": {
+              "aperture": "front"
+            },
+            "shutterPriority": {
+              "shutter": "rear"
+            },
+            "manual": {
+              "shutter": "rear",
+              "aperture": "front"
+            },
+            "bulb": {
+              "aperture": "front"
+            },
+            "confidence": "hoch",
+            "note": "Laut Anleitung: S Hauptbefehlsrad, A Subbefehlsrad, M Hauptbefehlsrad die Zeit und Subbefehlsrad die Blende."
+          },
+          "functions": {
+            "af": {
+              "where": "AF-Modus-Taste vorn neben dem Objektivanschluss gedrückt halten und das Hauptbefehlsrad drehen: AF-S oder AF-C.",
+              "source": "D850 Online-Handbuch, Kamerabeschreibung",
+              "confidence": "mittel"
+            },
+            "timer": {
+              "where": "Entriegelung am Aufnahmebetriebsart-Rad links oben drücken und auf E (Selbstauslöser) drehen. Vorlaufzeit unter Individualfunktion c3.",
+              "part": "releaseDial",
+              "source": "D850 Online-Handbuch, Selbstauslöser",
+              "confidence": "hoch"
+            },
+            "shake": {
+              "type": "mirror",
+              "where": "Entriegelung drücken und das Aufnahmebetriebsart-Rad auf Mup drehen: erster Druck klappt den Spiegel hoch, zweiter belichtet.",
+              "part": "releaseDial",
+              "source": "D850 Online-Handbuch, Spiegelvorauslösung (Mup)",
+              "confidence": "hoch"
+            }
+          },
+          "sensor": {
+            "format": "FX (Vollformat)",
+            "size": "36 × 24 mm",
+            "crop": 1,
+            "source": "Technische Daten des Herstellers"
+          }
+        }
+      ]
+    },
+    {
+      "id": "sony",
+      "name": "Sony",
+      "modes": {
+        "program": "P",
+        "aperturePriority": "A",
+        "shutterPriority": "S",
+        "manual": "M",
+        "bulb": "BULB in M"
+      },
+      "notes": {
+        "bulb": "In M hinter 30″ weiterdrehen bis BULB. Bulb-Timer in neueren Modellen im Menü."
+      },
+      "longExposure": "M wählen, bis 30 s direkt; darüber BULB mit Fernauslöser oder Bulb-Timer. Langzeit-Rauschminderung verdoppelt die Wartezeit, für den Kurs ausschalten.",
+      "layout": "pasm",
+      "dials": {
+        "names": {
+          "front": "vorderes Einstellrad",
+          "rear": "hinteres Einstellrad"
+        },
+        "aperturePriority": {
+          "aperture": "front"
+        },
+        "shutterPriority": {
+          "shutter": "rear"
+        },
+        "manual": {
+          "shutter": "rear",
+          "aperture": "front"
+        },
+        "bulb": {
+          "aperture": "front"
+        },
+        "confidence": "mittel",
+        "note": "Bei Alpha-Modellen ab etwa 2018 so voreingestellt; ältere Modelle nutzen das Drehrad hinten für die Zeit. Frei belegbar."
+      },
+      "limits": {
+        "maxShutter": 30,
+        "isoMin": 100,
+        "isoMax": 25600,
+        "bulb": "BULB"
+      },
+      "body": {
+        "ref": "Alpha 7 III/IV",
+        "modeDial": "right",
+        "topLcd": false,
+        "evf": "center",
+        "front": "grip",
+        "rear": "thumb",
+        "ring": "Steuerrad",
+        "evDial": true,
+        "topButtons": [
+          "C1",
+          "C2"
+        ],
+        "rearButtons": [
+          "AF-ON",
+          "Fn",
+          "▶"
+        ],
+        "confidence": "mittel",
+        "note": "Allgemeine Bauform. Wähl dein Modell, dann stimmen Räder und Tasten."
+      },
+      "models": [
+        {
+          "id": "a6400",
+          "name": "Alpha 6400 / 6100 / 6000",
+          "source": "Sony Hilfe ILCE-6400: Bezeichnung der Teile, Manuelle Belichtung",
+          "body": {
+            "modeDial": "right",
+            "topLcd": false,
+            "evf": "left",
+            "front": null,
+            "rear": "thumb",
+            "ring": "Drehrad",
+            "ringCenter": "",
+            "topButtons": [
+              "C1"
+            ],
+            "rearButtons": [
+              "MENU",
+              "Fn",
+              "▶",
+              "C2"
+            ],
+            "confidence": "hoch",
+            "note": "Sucher links außen. 6100 und 6000 nach Bauähnlichkeit."
+          },
+          "dials": {
+            "names": {
+              "rear": "Einstellrad",
+              "wheel": "Drehrad"
+            },
+            "aperturePriority": {
+              "aperture": "rear"
+            },
+            "shutterPriority": {
+              "shutter": "rear"
+            },
+            "manual": {
+              "shutter": "wheel",
+              "aperture": "rear"
+            },
+            "bulb": {
+              "aperture": "rear"
+            },
+            "confidence": "hoch",
+            "note": "Kein vorderes Rad: In M stellt das Drehrad hinten die Zeit, das Einstellrad oben die Blende."
+          },
+          "functions": {
+            "af": {
+              "where": "MENU → Kamera-Einstellungen 1 → Fokusmodus: AF-S (einmal), AF-A, AF-C (nachführend), DMF oder MF. Schneller über die Fn-Taste.",
+              "part": "button:Fn",
+              "source": "Hilfe ILCE-6400/7M3, Fokusmodus",
+              "confidence": "hoch"
+            },
+            "timer": {
+              "where": "Drehrad links drücken (Bildfolgemodus) → Selbstauslöser, mit links/rechts 2, 5 oder 10 s.",
+              "part": "controlWheel",
+              "source": "Hilfe ILCE-6400/7M3, Bildfolgemodus",
+              "confidence": "hoch"
+            },
+            "shake": {
+              "type": "efc",
+              "where": "MENU → Kamera-Einstellungen 2 → e-Front-Verschluss: Ein.",
+              "source": "Hilfe ILCE-6400/7M3, e-Front-Verschluss",
+              "confidence": "hoch"
+            },
+            "afmf": {
+              "where": "MENU → Kameraeinstlg. 1 → Fokusmodus → MF. Kurz umschalten: Hebel AF/MF/AEL auf AF/MF stellen und die Taste in seiner Mitte drücken.",
+              "part": "lens",
+              "source": "Sony Hilfe ILCE-6400 (Druckfassung), S. 36, 81",
+              "confidence": "hoch"
+            },
+            "points": {
+              "where": "MENU → Kameraeinstlg. 1 → Fokusfeld: Größe wählen (Breit, Feld, Mitte, Flexible Spot …). Bei Flexible Spot lässt sich der Rahmen verschieben.",
+              "source": "Sony Hilfe ILCE-6400 (Druckfassung), S. 83",
+              "confidence": "hoch"
+            },
+            "metering": {
+              "where": "MENU → Kameraeinstlg. 1 → Messmodus: Multi, Mitte, Spot und weitere.",
+              "source": "Sony Hilfe ILCE-6400 (Druckfassung), S. 182",
+              "confidence": "hoch"
+            },
+            "drive": {
+              "where": "Einstellrad links drücken (Bildfolgemodus), mit links/rechts Einzelaufnahme oder Serienaufnahme wählen.",
+              "part": "controlWheel",
+              "source": "Sony Hilfe ILCE-6400 (Druckfassung), S. 122",
+              "confidence": "hoch"
+            },
+            "quality": {
+              "where": "MENU → Kameraeinstlg. 1 → Dateiformat: RAW, RAW & JPEG oder JPEG.",
+              "source": "Sony Hilfe ILCE-6400 (Druckfassung), S. 148",
+              "confidence": "hoch"
+            },
+            "iso": {
+              "where": "Einstellrad rechts drücken (ISO), Wert mit dem Einstellrad wählen.",
+              "part": "controlWheel",
+              "source": "Sony Hilfe ILCE-6400 (Druckfassung), S. 194",
+              "confidence": "hoch"
+            },
+            "stab": {
+              "where": "MENU → Kameraeinstlg. 2 → SteadyShot: Ein/Aus. Wirkt nur mit Objektiven, die „OSS“ im Namen tragen; auf dem Stativ empfiehlt Sony Aus.",
+              "part": "lens",
+              "source": "Sony Hilfe ILCE-6400 (Druckfassung), S. 223",
+              "confidence": "hoch"
+            }
+          },
+          "sensor": {
+            "format": "APS-C",
+            "size": "ca. 23,5 × 15,6 mm",
+            "crop": 1.5,
+            "source": "Technische Daten des Herstellers"
+          }
+        },
+        {
+          "id": "a6700",
+          "name": "Alpha 6700",
+          "source": "Sony Hilfe ILCE-6700: Bezeichnung der Teile, Manuelle Belichtung",
+          "body": {
+            "modeDial": "right",
+            "topLcd": false,
+            "evf": "left",
+            "front": "grip",
+            "rear": "thumb",
+            "ring": "Drehrad",
+            "ringCenter": "",
+            "topButtons": [
+              "C1"
+            ],
+            "rearButtons": [
+              "AF-ON",
+              "Fn",
+              "▶",
+              "MENU"
+            ],
+            "confidence": "mittel",
+            "note": "Sucher links außen."
+          },
+          "dials": {
+            "names": {
+              "front": "vorderes Einstellrad",
+              "rear": "hinteres Einstellrad",
+              "wheel": "Drehrad"
+            },
+            "aperturePriority": {
+              "aperture": "front"
+            },
+            "shutterPriority": {
+              "shutter": "rear"
+            },
+            "manual": {
+              "shutter": "rear",
+              "aperture": "front"
+            },
+            "bulb": {
+              "aperture": "front"
+            },
+            "confidence": "hoch",
+            "note": "In M: vorderes Einstellrad die Blende, hinteres Einstellrad die Zeit. In A und S geht jedes der beiden."
+          },
+          "functions": {
+            "af": {
+              "where": "MENU → Fokus → AF/MF → Fokusmodus: AF-S, AF-A, AF-C, DMF oder MF. Schneller über die Fn-Taste.",
+              "part": "button:Fn",
+              "source": "Hilfe ILCE-7M4",
+              "confidence": "mittel"
+            },
+            "timer": {
+              "where": "Drehrad links drücken (Bildfolgemodus) → Selbstauslöser, mit links/rechts 2, 5 oder 10 s.",
+              "part": "controlWheel",
+              "source": "Hilfe ILCE-7M4, Bildfolgemodus",
+              "confidence": "hoch"
+            },
+            "shake": {
+              "type": "efc",
+              "where": "MENU → Aufnahme → Verschluss/Lautlos → e-Front-Verschluss: Ein.",
+              "source": "Hilfe ILCE-7M4, e-Front-Verschluss",
+              "confidence": "hoch"
+            },
+            "afmf": {
+              "where": "MENU → Fokus → AF/MF → Fokusmodus → Manuellfokus. Hat das Objektiv einen Schalter AF/MF, dort umschalten.",
+              "part": "lens",
+              "source": "Sony Hilfe ILCE-6700 (Druckfassung), S. 135",
+              "confidence": "hoch"
+            },
+            "points": {
+              "where": "MENU → Fokus → Fokusfeld → Fokusfeld: Größe wählen; bei Spot lässt sich der Rahmen verschieben. Ab Werk liegt Fokusfeld auf der Taste C2.",
+              "source": "Sony Hilfe ILCE-6700 (Druckfassung), S. 137",
+              "confidence": "hoch"
+            },
+            "metering": {
+              "where": "MENU → Belichtung/Farbe → Messung → Messmodus.",
+              "source": "Sony Hilfe ILCE-6700 (Druckfassung), S. 205",
+              "confidence": "hoch"
+            },
+            "drive": {
+              "where": "Einstellrad links drücken (Bildfolgemodus), mit links/rechts Einzelaufnahme oder Serienaufnahme wählen.",
+              "part": "controlWheel",
+              "source": "Sony Hilfe ILCE-6700 (Druckfassung), S. 240",
+              "confidence": "hoch"
+            },
+            "quality": {
+              "where": "MENU → Aufnahme → Bildquali./Aufn. → Dateiformat: RAW, RAW & JPEG, JPEG.",
+              "source": "Sony Hilfe ILCE-6700 (Druckfassung), S. 261",
+              "confidence": "hoch"
+            },
+            "iso": {
+              "where": "Einstellrad rechts drücken (ISO), Wert mit dem Einstellrad oder vorderen Drehrad wählen.",
+              "part": "controlWheel",
+              "source": "Sony Hilfe ILCE-6700 (Druckfassung), S. 213",
+              "confidence": "hoch"
+            },
+            "stab": {
+              "where": "MENU → Aufnahme → Bildstabilisierung → SteadyShot: Ein/Aus. Hat das Objektiv einen SteadyShot-Schalter, gilt dieser.",
+              "part": "lens",
+              "source": "Sony Hilfe ILCE-6700 (Druckfassung), S. 327",
+              "confidence": "hoch"
+            }
+          },
+          "sensor": {
+            "format": "APS-C",
+            "size": "ca. 23,5 × 15,6 mm",
+            "crop": 1.5,
+            "source": "Technische Daten des Herstellers"
+          }
+        },
+        {
+          "id": "a7c",
+          "name": "Alpha 7C",
+          "source": "Sony Hilfe ILCE-7C: Manuelle Belichtung",
+          "body": {
+            "modeDial": "right",
+            "topLcd": false,
+            "evf": "left",
+            "front": null,
+            "rear": "thumb",
+            "ring": "Drehrad",
+            "ringCenter": "",
+            "topButtons": [],
+            "rearButtons": [
+              "MENU",
+              "Fn",
+              "▶",
+              "C3"
+            ],
+            "confidence": "mittel",
+            "note": "Sucher links außen, kein vorderes Rad."
+          },
+          "dials": {
+            "names": {
+              "rear": "Einstellrad",
+              "wheel": "Drehrad"
+            },
+            "aperturePriority": {
+              "aperture": "rear"
+            },
+            "shutterPriority": {
+              "shutter": "rear"
+            },
+            "manual": {
+              "shutter": "wheel",
+              "aperture": "rear"
+            },
+            "bulb": {
+              "aperture": "rear"
+            },
+            "confidence": "hoch",
+            "note": "Kein vorderes Rad: In M stellt das Drehrad hinten die Zeit, das Einstellrad oben die Blende."
+          },
+          "functions": {
+            "af": {
+              "where": "MENU → Kamera-Einstellungen 1 → Fokusmodus: AF-S (einmal), AF-A, AF-C (nachführend), DMF oder MF. Schneller über die Fn-Taste.",
+              "part": "button:Fn",
+              "source": "Hilfe ILCE-6400/7M3, Fokusmodus",
+              "confidence": "hoch"
+            },
+            "timer": {
+              "where": "Drehrad links drücken (Bildfolgemodus) → Selbstauslöser, mit links/rechts 2, 5 oder 10 s.",
+              "part": "controlWheel",
+              "source": "Hilfe ILCE-6400/7M3, Bildfolgemodus",
+              "confidence": "hoch"
+            },
+            "shake": {
+              "type": "efc",
+              "where": "MENU → Kamera-Einstellungen 2 → e-Front-Verschluss: Ein.",
+              "source": "Hilfe ILCE-6400/7M3, e-Front-Verschluss",
+              "confidence": "hoch"
+            },
+            "afmf": {
+              "where": "MENU → Kameraeinstlg. 1 → Fokusmodus → MF. Hat das Objektiv einen Schalter AF/MF, dort umschalten.",
+              "part": "lens",
+              "source": "Sony Hilfe ILCE-7C (Druckfassung), S. 85",
+              "confidence": "hoch"
+            },
+            "points": {
+              "where": "MENU → Kameraeinstlg. 1 → Fokusfeld: Größe wählen; bei Flexible Spot lässt sich der Rahmen verschieben.",
+              "source": "Sony Hilfe ILCE-7C (Druckfassung), S. 87",
+              "confidence": "hoch"
+            },
+            "metering": {
+              "where": "MENU → Kameraeinstlg. 1 → Messmodus.",
+              "source": "Sony Hilfe ILCE-7C (Druckfassung), S. 183",
+              "confidence": "hoch"
+            },
+            "drive": {
+              "where": "Einstellrad links drücken (Bildfolgemodus), mit links/rechts Einzelaufnahme oder Serienaufnahme wählen.",
+              "part": "controlWheel",
+              "source": "Sony Hilfe ILCE-7C (Druckfassung), S. 130",
+              "confidence": "hoch"
+            },
+            "quality": {
+              "where": "MENU → Kameraeinstlg. 1 → Dateiformat: RAW, RAW & JPEG oder JPEG.",
+              "source": "Sony Hilfe ILCE-7C (Druckfassung), S. 154",
+              "confidence": "hoch"
+            },
+            "iso": {
+              "where": "Einstellrad rechts drücken (ISO), Wert mit dem Einstellrad wählen.",
+              "part": "controlWheel",
+              "source": "Sony Hilfe ILCE-7C (Druckfassung), S. 194",
+              "confidence": "hoch"
+            },
+            "stab": {
+              "where": "MENU → Kameraeinstlg. 2 → SteadyShot: Ein/Aus. Hat das Objektiv einen SteadyShot-Schalter, gilt nur dieser.",
+              "part": "lens",
+              "source": "Sony Hilfe ILCE-7C (Druckfassung), S. 220",
+              "confidence": "hoch"
+            }
+          },
+          "sensor": {
+            "format": "Vollformat",
+            "size": "36 × 24 mm",
+            "crop": 1,
+            "source": "Technische Daten des Herstellers"
+          }
+        },
+        {
+          "id": "a7m3",
+          "name": "Alpha 7 III / 7R III",
+          "source": "Sony Hilfe ILCE-7M3: Manuelle Belichtung",
+          "body": {
+            "modeDial": "right",
+            "topLcd": false,
+            "evf": "center",
+            "front": "grip",
+            "rear": "thumb",
+            "ring": "Drehrad",
+            "ringCenter": "",
+            "evDial": true,
+            "topButtons": [
+              "C1",
+              "C2"
+            ],
+            "rearButtons": [
+              "AF-ON",
+              "Fn",
+              "▶",
+              "MENU"
+            ],
+            "confidence": "hoch"
+          },
+          "dials": {
+            "names": {
+              "front": "vorderes Einstellrad",
+              "rear": "hinteres Einstellrad",
+              "wheel": "Drehrad"
+            },
+            "aperturePriority": {
+              "aperture": "front"
+            },
+            "shutterPriority": {
+              "shutter": "rear"
+            },
+            "manual": {
+              "shutter": "rear",
+              "aperture": "front"
+            },
+            "bulb": {
+              "aperture": "front"
+            },
+            "confidence": "hoch",
+            "note": "In M: vorderes Einstellrad die Blende, hinteres Einstellrad die Zeit. In A und S geht jedes der beiden."
+          },
+          "functions": {
+            "af": {
+              "where": "MENU → Kamera-Einstellungen 1 → Fokusmodus: AF-S (einmal), AF-A, AF-C (nachführend), DMF oder MF. Schneller über die Fn-Taste.",
+              "part": "button:Fn",
+              "source": "Hilfe ILCE-6400/7M3, Fokusmodus",
+              "confidence": "hoch"
+            },
+            "timer": {
+              "where": "Drehrad links drücken (Bildfolgemodus) → Selbstauslöser, mit links/rechts 2, 5 oder 10 s.",
+              "part": "controlWheel",
+              "source": "Hilfe ILCE-6400/7M3, Bildfolgemodus",
+              "confidence": "hoch"
+            },
+            "shake": {
+              "type": "efc",
+              "where": "MENU → Kamera-Einstellungen 2 → e-Front-Verschluss: Ein.",
+              "source": "Hilfe ILCE-6400/7M3, e-Front-Verschluss",
+              "confidence": "hoch"
+            },
+            "afmf": {
+              "where": "MENU → Kameraeinstlg. 1 → Fokusmodus → MF. Hat das Objektiv einen Schalter AF/MF, dort umschalten.",
+              "part": "lens",
+              "source": "Sony Hilfe ILCE-7M3 (Druckfassung), S. 83",
+              "confidence": "hoch"
+            },
+            "points": {
+              "where": "Taste C2 oben drücken (ab Werk Fokusfeld) oder MENU → Kameraeinstlg. 1 → Fokusfeld; bei Flexible Spot lässt sich der Rahmen verschieben.",
+              "part": "button:C2",
+              "source": "Sony Hilfe ILCE-7M3 (Druckfassung), S. 85",
+              "confidence": "hoch"
+            },
+            "metering": {
+              "where": "MENU → Kameraeinstlg. 1 → Messmodus.",
+              "source": "Sony Hilfe ILCE-7M3 (Druckfassung), S. 177",
+              "confidence": "hoch"
+            },
+            "drive": {
+              "where": "Einstellrad links drücken (Bildfolgemodus), mit links/rechts Einzelaufnahme oder Serienaufnahme wählen.",
+              "part": "controlWheel",
+              "source": "Sony Hilfe ILCE-7M3 (Druckfassung), S. 125",
+              "confidence": "hoch"
+            },
+            "quality": {
+              "where": "MENU → Kameraeinstlg. 1 → Dateiformat: RAW, RAW & JPEG oder JPEG.",
+              "source": "Sony Hilfe ILCE-7M3 (Druckfassung), S. 151",
+              "confidence": "hoch"
+            },
+            "iso": {
+              "where": "Einstellrad rechts drücken (ISO), Wert mit dem Einstellrad oder vorderen Drehrad wählen.",
+              "part": "controlWheel",
+              "source": "Sony Hilfe ILCE-7M3 (Druckfassung), S. 189",
+              "confidence": "hoch"
+            },
+            "stab": {
+              "where": "MENU → Kameraeinstlg. 2 → SteadyShot: Ein/Aus. Hat das Objektiv einen SteadyShot-Schalter, gilt nur dieser.",
+              "part": "lens",
+              "source": "Sony Hilfe ILCE-7M3 (Druckfassung), S. 213",
+              "confidence": "hoch"
+            }
+          },
+          "sensor": {
+            "format": "Vollformat",
+            "size": "36 × 24 mm",
+            "crop": 1,
+            "source": "Technische Daten des Herstellers"
+          }
+        },
+        {
+          "id": "a7m4",
+          "name": "Alpha 7 IV",
+          "source": "Sony Hilfe ILCE-7M4: Manuelle Belichtung",
+          "body": {
+            "modeDial": "right",
+            "topLcd": false,
+            "evf": "center",
+            "front": "grip",
+            "rear": "thumb",
+            "ring": "Drehrad",
+            "ringCenter": "",
+            "topButtons": [
+              "C1",
+              "C2"
+            ],
+            "rearButtons": [
+              "AF-ON",
+              "Fn",
+              "▶",
+              "MENU"
+            ],
+            "confidence": "hoch",
+            "note": "Statt des Korrekturrads sitzt rechts außen das unbeschriftete hintere Rad R. Unter dem Modusrad: Foto/Film/S&Q."
+          },
+          "dials": {
+            "names": {
+              "front": "vorderes Einstellrad",
+              "rear": "hinteres Einstellrad L",
+              "wheel": "Drehrad"
+            },
+            "aperturePriority": {
+              "aperture": "front"
+            },
+            "shutterPriority": {
+              "shutter": "rear"
+            },
+            "manual": {
+              "shutter": "rear",
+              "aperture": "front"
+            },
+            "bulb": {
+              "aperture": "front"
+            },
+            "confidence": "hoch",
+            "note": "In M: vorderes Einstellrad die Blende, hinteres Einstellrad die Zeit. In A und S geht jedes der beiden."
+          },
+          "functions": {
+            "af": {
+              "where": "MENU → Fokus → AF/MF → Fokusmodus: AF-S, AF-A, AF-C, DMF oder MF. Schneller über die Fn-Taste.",
+              "part": "button:Fn",
+              "source": "Hilfe ILCE-7M4",
+              "confidence": "mittel"
+            },
+            "timer": {
+              "where": "Drehrad links drücken (Bildfolgemodus) → Selbstauslöser, mit links/rechts 2, 5 oder 10 s.",
+              "part": "controlWheel",
+              "source": "Hilfe ILCE-7M4, Bildfolgemodus",
+              "confidence": "hoch"
+            },
+            "shake": {
+              "type": "efc",
+              "where": "MENU → Aufnahme → Verschluss/Lautlos → e-Front-Verschluss: Ein.",
+              "source": "Hilfe ILCE-7M4, e-Front-Verschluss",
+              "confidence": "hoch"
+            },
+            "afmf": {
+              "where": "MENU → Fokus → AF/MF → Fokusmodus → Manuellfokus. Hat das Objektiv einen Schalter AF/MF, dort umschalten.",
+              "part": "lens",
+              "source": "Sony Hilfe ILCE-7M4 (Druckfassung), S. 138",
+              "confidence": "hoch"
+            },
+            "points": {
+              "where": "Taste C2 oben drücken (ab Werk Fokusfeld) oder MENU → Fokus → Fokusfeld; bei Spot lässt sich der Rahmen verschieben.",
+              "part": "button:C2",
+              "source": "Sony Hilfe ILCE-7M4 (Druckfassung), S. 140–141",
+              "confidence": "hoch"
+            },
+            "metering": {
+              "where": "MENU → Belichtung/Farbe → Messung → Messmodus.",
+              "source": "Sony Hilfe ILCE-7M4 (Druckfassung), S. 202",
+              "confidence": "hoch"
+            },
+            "drive": {
+              "where": "Einstellrad links drücken (Bildfolgemodus), mit links/rechts Einzelaufnahme oder Serienaufnahme wählen.",
+              "part": "controlWheel",
+              "source": "Sony Hilfe ILCE-7M4 (Druckfassung), S. 230",
+              "confidence": "hoch"
+            },
+            "quality": {
+              "where": "MENU → Aufnahme → Bildqualität → Bildqualität-Einstlg. → Dateiformat: RAW, RAW & JPEG, JPEG.",
+              "source": "Sony Hilfe ILCE-7M4 (Druckfassung), S. 251",
+              "confidence": "hoch"
+            },
+            "iso": {
+              "where": "Einstellrad rechts drücken (ISO), Wert mit dem Einstellrad oder vorderen Drehrad wählen.",
+              "part": "controlWheel",
+              "source": "Sony Hilfe ILCE-7M4 (Druckfassung), S. 209",
+              "confidence": "hoch"
+            },
+            "stab": {
+              "where": "MENU → Aufnahme → Bildstabilisierung → SteadyShot: Ein/Aus. Auf dem Stativ empfiehlt Sony Aus.",
+              "part": "lens",
+              "source": "Sony Hilfe ILCE-7M4 (Druckfassung), S. 316",
+              "confidence": "hoch"
+            }
+          },
+          "sensor": {
+            "format": "Vollformat",
+            "size": "36 × 24 mm",
+            "crop": 1,
+            "source": "Technische Daten des Herstellers"
+          }
+        },
+        {
+          "id": "a7r5",
+          "name": "Alpha 7R V",
+          "source": "Sony Hilfe ILCE-7RM5 (Druckfassung), S. 41–44 (Rückseite, Oberseite), 126–130 (A, S, M, BULB)",
+          "body": {
+            "modeDial": "right",
+            "topLcd": false,
+            "evf": "center",
+            "front": "grip",
+            "rear": "thumb",
+            "ring": "Einstellrad",
+            "ringCenter": "",
+            "topButtons": [
+              "C1",
+              "C2"
+            ],
+            "rearButtons": [
+              "AF-ON",
+              "AEL",
+              "Fn",
+              "▶"
+            ],
+            "confidence": "hoch",
+            "note": "Rechts oben zwei hintere Drehräder L und R, unter dem Moduswahlknopf das Drehrad Standbild/Film/S&Q. Hinten außerdem MENU und C3 links neben dem Sucher, C4 und der Multiselektor."
+          },
+          "dials": {
+            "names": {
+              "front": "vorderes Drehrad",
+              "rear": "hinteres Drehrad L",
+              "wheel": "Einstellrad"
+            },
+            "aperturePriority": {
+              "aperture": "front"
+            },
+            "shutterPriority": {
+              "shutter": "rear"
+            },
+            "manual": {
+              "shutter": "rear",
+              "aperture": "front"
+            },
+            "bulb": {
+              "aperture": "front"
+            },
+            "confidence": "hoch",
+            "note": "In M: vorderes Drehrad die Blende, hinteres Drehrad L die Zeit. In A und S geht jedes der beiden. BULB: in M das hintere Drehrad L im Uhrzeigersinn bis BULB drehen."
+          },
+          "limits": {
+            "maxShutter": 30,
+            "isoMin": 100,
+            "isoMax": 32000,
+            "bulb": "BULB"
+          },
+          "functions": {
+            "afmf": {
+              "where": "MENU → Fokus → AF/MF → Fokusmodus → Manuellfokus. Hat das Objektiv einen AF/MF-Schalter, gilt dieser.",
+              "part": "lens",
+              "source": "Sony Hilfe ILCE-7RM5 (Druckfassung), S. 144, 178",
+              "confidence": "hoch"
+            },
+            "af": {
+              "where": "MENU → Fokus → AF/MF → Fokusmodus: Einzelbild-AF für ruhende Motive, Nachführ-AF für Bewegung, Autom. AF wechselt selbst.",
+              "source": "Sony Hilfe ILCE-7RM5 (Druckfassung), S. 136",
+              "confidence": "hoch"
+            },
+            "points": {
+              "where": "MENU → Fokus → Fokusfeld → Fokusfeld: Breit, Feld, Spot und weitere. Bei Spot lässt sich der Rahmen verschieben.",
+              "source": "Sony Hilfe ILCE-7RM5 (Druckfassung), S. 138",
+              "confidence": "hoch"
+            },
+            "metering": {
+              "where": "MENU → Belichtung/Farbe → Messung → Messmodus: Multi, Mitte, Spot und weitere.",
+              "source": "Sony Hilfe ILCE-7RM5 (Druckfassung), S. 204",
+              "confidence": "hoch"
+            },
+            "drive": {
+              "where": "Einstellrad links drücken (Bildfolgemodus), mit links/rechts Einzelaufnahme oder Serienaufnahme wählen.",
+              "part": "controlWheel",
+              "source": "Sony Hilfe ILCE-7RM5 (Druckfassung), S. 232",
+              "confidence": "hoch"
+            },
+            "timer": {
+              "where": "Einstellrad links drücken (Bildfolgemodus) → Selbstausl(Einz), mit links/rechts 2, 5 oder 10 s.",
+              "part": "controlWheel",
+              "source": "Sony Hilfe ILCE-7RM5 (Druckfassung), S. 236",
+              "confidence": "hoch"
+            },
+            "quality": {
+              "where": "MENU → Aufnahme → Bildquali./Aufn. → Bildqualität-Einstlg. → Dateiformat: RAW, RAW & JPEG/HEIF oder JPEG/HEIF.",
+              "source": "Sony Hilfe ILCE-7RM5 (Druckfassung), S. 254",
+              "confidence": "hoch"
+            },
+            "iso": {
+              "where": "Einstellrad auf der Seite ISO drücken, Wert mit dem vorderen Drehrad oder dem Einstellrad wählen (1/3 Stufe), mit den hinteren Drehrädern in ganzen Stufen.",
+              "part": "controlWheel",
+              "source": "Sony Hilfe ILCE-7RM5 (Druckfassung), S. 211",
+              "confidence": "hoch"
+            },
+            "stab": {
+              "where": "MENU → Aufnahme → Bildstabilisierung → SteadyShot: Ein/Aus. Die Kamera stabilisiert im Gehäuse; auf dem Stativ empfiehlt Sony Aus.",
+              "source": "Sony Hilfe ILCE-7RM5 (Druckfassung), S. 320",
+              "confidence": "hoch"
+            },
+            "shake": {
+              "type": "efc",
+              "where": "MENU → Aufnahme → Verschl./Lautlos → Elekt. 1.Verschl.vorh.: Ein. Alternativ Verschlusstyp ElektronVerschl. (ohne BULB).",
+              "source": "Sony Hilfe ILCE-7RM5 (Druckfassung), S. 292–293",
+              "confidence": "hoch"
+            }
+          },
+          "sensor": {
+            "format": "Vollformat",
+            "size": "35,7 × 23,8 mm",
+            "crop": 1,
+            "source": "Sony Hilfe ILCE-7RM5 (Druckfassung), S. 586 (Technische Daten)"
+          }
+        }
+      ]
+    },
+    {
+      "id": "fujifilm",
+      "name": "Fujifilm",
+      "modes": {
+        "program": "Zeitenrad A + Blendenring A",
+        "aperturePriority": "Blendenring auf Wert, Zeitenrad A",
+        "shutterPriority": "Zeitenrad auf Wert, Blendenring A",
+        "manual": "beide auf Wert",
+        "bulb": "Zeitenrad B oder T"
+      },
+      "notes": {
+        "program": "Kein PASM-Rad: Jedes Rad hat eine Stellung A für Automatik. Was auf A steht, wählt die Kamera.",
+        "bulb": "T = Time: Zeit am hinteren Rad bis 15 min (manche Modelle 60 min) einstellen. B = Bulb: gedrückt halten. Einzelne Modelle (X-S-Reihe, X-T200) haben doch ein PASM-Rad."
+      },
+      "longExposure": "Zeitenrad auf T, am Einstellrad die Zeit wählen, z. B. 60 s. Blendenring auf einen festen Wert. Kein Fernauslöser nötig, Selbstauslöser 2 s nutzen.",
+      "layout": "dials",
+      "limits": {
+        "maxShutter": 900,
+        "isoMin": 160,
+        "isoMax": 12800,
+        "bulb": "T oder B"
+      },
+      "body": {
+        "ref": "X-T5",
+        "isoDial": true,
+        "evf": "center",
+        "front": "grip",
+        "rear": "thumb",
+        "evDial": true,
+        "joystick": true,
+        "rearButtons": [
+          "AF-ON",
+          "Q",
+          "▶"
+        ],
+        "confidence": "mittel",
+        "note": "X-T30 und X-S-Reihe haben kein ISO-Rad; X-S hat ein Modusrad."
+      },
+      "sensor": {
+        "format": "APS-C",
+        "size": "ca. 23,5 × 15,6 mm",
+        "crop": 1.5
+      }
+    },
+    {
+      "id": "pentax",
+      "name": "Pentax / Ricoh",
+      "modes": {
+        "program": "P",
+        "aperturePriority": "Av",
+        "shutterPriority": "Tv",
+        "manual": "M",
+        "bulb": "B"
+      },
+      "notes": {
+        "program": "Zusätzlich Sv (ISO-Vorwahl) und TAv (Zeit und Blende vorgeben, Kamera wählt ISO).",
+        "bulb": "B eigene Stellung auf dem Rad; Timed Exposure im Menü."
+      },
+      "longExposure": "M bis 30 s, darüber B. TAv ist praktisch, wenn die ISO nachgeben soll.",
+      "layout": "pasm",
+      "dials": {
+        "names": {
+          "front": "vorderes E-Rad",
+          "rear": "hinteres E-Rad"
+        },
+        "aperturePriority": {
+          "aperture": "rear"
+        },
+        "shutterPriority": {
+          "shutter": "front"
+        },
+        "manual": {
+          "shutter": "front",
+          "aperture": "rear"
+        },
+        "bulb": {
+          "aperture": "rear"
+        },
+        "confidence": "mittel",
+        "note": "Vorderes E-Rad für die Zeit, hinteres für die Blende."
+      },
+      "limits": {
+        "maxShutter": 30,
+        "isoMin": 100,
+        "isoMax": 25600,
+        "bulb": "B"
+      },
+      "body": {
+        "ref": "K-3 III, K-1",
+        "modeDial": "left",
+        "topLcd": true,
+        "evf": "center",
+        "front": "grip",
+        "rear": "thumb",
+        "pad": true,
+        "topButtons": [
+          "ISO",
+          "±"
+        ],
+        "rearButtons": [
+          "AF",
+          "INFO",
+          "▶"
+        ],
+        "confidence": "mittel",
+        "note": "Die K-70 hat das Modusrad rechts und kein Schulterdisplay."
+      }
+    },
+    {
+      "id": "olympus",
+      "name": "Olympus / OM System",
+      "modes": {
+        "program": "P",
+        "aperturePriority": "A",
+        "shutterPriority": "S",
+        "manual": "M",
+        "bulb": "B (Live Bulb, Live Time, Live Composite)"
+      },
+      "notes": {
+        "bulb": "Live Composite macht genau das, was diese App im Modus Aufhellen tut: Nur hellere Pixel kommen dazu. Live Time zeigt das Bild während der Belichtung wachsen, wie der Modus Integrieren."
+      },
+      "longExposure": "Modus B, dann Live Time für Dämmerung oder Live Composite für Lichtspuren. Basiszeit 1 bis 4 s einstellen, dann so lange laufen lassen wie gewünscht.",
+      "layout": "pasm",
+      "dials": {
+        "names": {
+          "front": "vorderes Einstellrad",
+          "rear": "hinteres Einstellrad"
+        },
+        "aperturePriority": {
+          "aperture": "rear"
+        },
+        "shutterPriority": {
+          "shutter": "rear"
+        },
+        "manual": {
+          "shutter": "rear",
+          "aperture": "front"
+        },
+        "bulb": {
+          "aperture": "front"
+        },
+        "confidence": "niedrig",
+        "note": "Bitte am Gerät prüfen: In A und S stellt das vordere Rad oft die Belichtungskorrektur."
+      },
+      "limits": {
+        "maxShutter": 60,
+        "isoMin": 200,
+        "isoMax": 12800,
+        "bulb": "B (Live Time, Live Composite)"
+      },
+      "body": {
+        "ref": "OM-D E-M10 IV",
+        "modeDial": "right",
+        "topLcd": false,
+        "evf": "center",
+        "front": "collar",
+        "rear": "thumbTop",
+        "pad": true,
+        "topButtons": [],
+        "rearButtons": [
+          "Fn",
+          "INFO",
+          "▶"
+        ],
+        "confidence": "niedrig",
+        "note": "Allgemeine Bauform. Wähl dein Modell, dann stimmen Räder und Tasten."
+      },
+      "models": [
+        {
+          "id": "em10m4",
+          "name": "OM-D E-M10 Mark IV",
+          "source": "E-M10 Mark IV Bedienungsanleitung (DE), S. 11–12, 56–60",
+          "body": {
+            "modeDial": "right",
+            "topLcd": false,
+            "evf": "center",
+            "front": "collar",
+            "rear": "thumbTop",
+            "pad": true,
+            "topButtons": [],
+            "rearButtons": [
+              "AEL/AFL",
+              "INFO",
+              "▶",
+              "MENU"
+            ],
+            "confidence": "hoch"
+          },
+          "dials": {
+            "names": {
+              "front": "vorderes Einstellrad",
+              "rear": "hinteres Einstellrad"
+            },
+            "aperturePriority": {
+              "aperture": "rear"
+            },
+            "shutterPriority": {
+              "shutter": "rear"
+            },
+            "manual": {
+              "shutter": "rear",
+              "aperture": "front"
+            },
+            "bulb": {
+              "aperture": "front"
+            },
+            "confidence": "hoch",
+            "note": "In A und S stellt das hintere Einstellrad den Wert, das vordere die Belichtungskorrektur. In M: vorderes die Blende, hinteres die Zeit."
+          },
+          "limits": {
+            "maxShutter": 60
+          },
+          "functions": {
+            "af": {
+              "where": "OK-Taste drücken (Live-Steuerung) → AF-Modus: S-AF (einmal), C-AF (nachführend) oder MF.",
+              "part": "pad",
+              "source": "E-M10 Mark IV Bedienungsanleitung S. 80, 85",
+              "confidence": "hoch"
+            },
+            "timer": {
+              "where": "OK-Taste drücken (Live-Steuerung) → Serienaufnahme/Selbstauslöser: 12 s, 2 s oder eigene Zeit.",
+              "part": "pad",
+              "source": "Bedienungsanleitung S. 77–78, 80",
+              "confidence": "hoch"
+            }
+          },
+          "sensor": {
+            "format": "Micro Four Thirds",
+            "size": "17,3 × 13 mm",
+            "crop": 2,
+            "source": "Technische Daten des Herstellers"
+          }
+        },
+        {
+          "id": "em5m3",
+          "name": "OM-D E-M5 Mark III / OM-5",
+          "source": "E-M5 Mark III Bedienungsanleitung (DE), S. 14–15, 39–43",
+          "body": {
+            "modeDial": "left",
+            "topLcd": false,
+            "evf": "center",
+            "front": "collar",
+            "rear": "thumbTop",
+            "pad": true,
+            "topButtons": [
+              "±",
+              "●"
+            ],
+            "rearButtons": [
+              "AEL/AFL",
+              "INFO",
+              "▶",
+              "MENU"
+            ],
+            "confidence": "hoch",
+            "note": "OM-5 nach Bauähnlichkeit."
+          },
+          "dials": {
+            "names": {
+              "front": "vorderes Einstellrad",
+              "rear": "hinteres Einstellrad"
+            },
+            "aperturePriority": {
+              "aperture": "rear"
+            },
+            "shutterPriority": {
+              "shutter": "rear"
+            },
+            "manual": {
+              "shutter": "rear",
+              "aperture": "front"
+            },
+            "bulb": {
+              "aperture": "front"
+            },
+            "confidence": "hoch",
+            "note": "In A und S stellt das hintere Einstellrad den Wert, das vordere die Belichtungskorrektur. In M: vorderes die Blende, hinteres die Zeit."
+          },
+          "limits": {
+            "maxShutter": 60
+          },
+          "functions": {
+            "af": {
+              "where": "OK-Taste drücken (Live-Steuerung) → AF-Modus: S-AF (einmal), C-AF (nachführend) oder MF.",
+              "part": "pad",
+              "source": "E-M10 Mark IV Bedienungsanleitung S. 80, 85",
+              "confidence": "mittel"
+            },
+            "timer": {
+              "where": "Taste □◷ oben (Serienaufnahme/Selbstauslöser) drücken, dann 12 s, 2 s oder eigene Zeit wählen.",
+              "source": "E-M5 Mark III Bedienungsanleitung S. 14",
+              "confidence": "mittel"
+            }
+          },
+          "sensor": {
+            "format": "Micro Four Thirds",
+            "size": "17,3 × 13 mm",
+            "crop": 2,
+            "source": "Technische Daten des Herstellers"
+          }
+        },
+        {
+          "id": "om1",
+          "name": "OM-1 / E-M1 Mark III",
+          "source": "OM-1 Bedienungsanleitung (DE), S. 17, 48–52",
+          "body": {
+            "modeDial": "right",
+            "topLcd": false,
+            "evf": "center",
+            "front": "grip",
+            "rear": "thumb",
+            "pad": true,
+            "topButtons": [
+              "±",
+              "●"
+            ],
+            "rearButtons": [
+              "AEL",
+              "INFO",
+              "▶",
+              "MENU"
+            ],
+            "confidence": "mittel",
+            "note": "Vorderes Einstellrad senkrecht vorn am Griff unter dem Auslöser. Ein/Aus links oben. E-M1 Mark III nach Bauähnlichkeit."
+          },
+          "dials": {
+            "names": {
+              "front": "vorderes Einstellrad",
+              "rear": "hinteres Einstellrad"
+            },
+            "aperturePriority": {
+              "aperture": "rear"
+            },
+            "shutterPriority": {
+              "shutter": "rear"
+            },
+            "manual": {
+              "shutter": "rear",
+              "aperture": "front"
+            },
+            "bulb": {
+              "aperture": "front"
+            },
+            "confidence": "mittel",
+            "note": "In A und S stellt das hintere Einstellrad den Wert, das vordere die Belichtungskorrektur. In M: vorderes die Blende, hinteres die Zeit."
+          },
+          "limits": {
+            "maxShutter": 60
+          },
+          "functions": {
+            "af": {
+              "where": "OK-Taste drücken (Live-Steuerung) → AF-Modus: S-AF (einmal), C-AF (nachführend) oder MF.",
+              "part": "pad",
+              "source": "E-M10 Mark IV Bedienungsanleitung S. 80, 85",
+              "confidence": "mittel"
+            },
+            "timer": {
+              "where": "Taste □◷ oben links (Serienaufnahme/Selbstauslöser/Blitz) drücken, dann Selbstauslöser wählen.",
+              "source": "OM-1 Bedienungsanleitung S. 17",
+              "confidence": "mittel"
+            }
+          },
+          "sensor": {
+            "format": "Micro Four Thirds",
+            "size": "17,3 × 13 mm",
+            "crop": 2,
+            "source": "Technische Daten des Herstellers"
+          }
+        }
+      ],
+      "sensor": {
+        "format": "Micro Four Thirds",
+        "size": "17,3 × 13 mm",
+        "crop": 2
+      }
+    },
+    {
+      "id": "panasonic",
+      "name": "Panasonic Lumix",
+      "modes": {
+        "program": "P",
+        "aperturePriority": "A",
+        "shutterPriority": "S",
+        "manual": "M",
+        "bulb": "B in M"
+      },
+      "notes": {
+        "bulb": "In M hinter der längsten Zeit (60 s bei vielen Modellen) kommt B. Live-View-Composite bei neueren Modellen im Menü."
+      },
+      "longExposure": "M bis 60 s direkt. Darüber B mit Fernauslöser oder Bulb-Timer im Menü.",
+      "layout": "pasm",
+      "dials": {
+        "names": {
+          "front": "vorderes Einstellrad",
+          "rear": "hinteres Einstellrad"
+        },
+        "aperturePriority": {
+          "aperture": "rear"
+        },
+        "shutterPriority": {
+          "shutter": "rear"
+        },
+        "manual": {
+          "shutter": "rear",
+          "aperture": "front"
+        },
+        "bulb": {
+          "aperture": "front"
+        },
+        "confidence": "niedrig",
+        "note": "Bitte am Gerät prüfen: Die Belegung unterscheidet sich zwischen den Lumix-Reihen."
+      },
+      "limits": {
+        "maxShutter": 60,
+        "isoMin": 100,
+        "isoMax": 12800,
+        "bulb": "B"
+      },
+      "body": {
+        "ref": "Lumix G80/G90",
+        "modeDial": "right",
+        "topLcd": false,
+        "evf": "center",
+        "front": "collar",
+        "rear": "thumb",
+        "pad": true,
+        "topButtons": [
+          "ISO",
+          "±"
+        ],
+        "rearButtons": [
+          "Q",
+          "AF-ON",
+          "▶"
+        ],
+        "confidence": "niedrig",
+        "note": "G9 und S5 haben das Modusrad links. Bitte am Gerät prüfen."
+      }
+    },
+    {
+      "id": "leica",
+      "name": "Leica",
+      "modes": {
+        "program": "Zeitenrad A + Blendenring A",
+        "aperturePriority": "Blendenring auf Wert, Zeitenrad A",
+        "shutterPriority": "Zeitenrad auf Wert, Blendenring A",
+        "manual": "beide auf Wert",
+        "bulb": "B auf dem Zeitenrad"
+      },
+      "notes": {
+        "program": "Wie bei Fujifilm: A auf einem Rad heißt, die Kamera wählt diesen Wert.",
+        "bulb": "M-Modelle: B oder in A bis mehrere Minuten; Q-Modelle: Zeiten bis 30 s direkt, darüber B/T im Menü."
+      },
+      "longExposure": "Zeitenrad auf B, Blendenring fest. Fernauslöser oder T-Funktion nutzen.",
+      "layout": "dials",
+      "limits": {
+        "maxShutter": 60,
+        "isoMin": 100,
+        "isoMax": 12500,
+        "bulb": "B oder T"
+      },
+      "body": {
+        "ref": "M10, M11",
+        "isoDial": true,
+        "evf": "left",
+        "front": null,
+        "rear": "thumb",
+        "leftButtons": [
+          "LV",
+          "▶",
+          "MENU"
+        ],
+        "confidence": "mittel",
+        "note": "Leica Q hat ein anderes Gehäuse: Sucher links, kein ISO-Rad."
+      },
+      "sensor": {
+        "format": "Vollformat",
+        "size": "36 × 24 mm",
+        "crop": 1
+      }
+    },
+    {
+      "id": "iphone",
+      "name": "iPhone (Kamera-App)",
+      "modes": {
+        "program": "Standard: alles automatisch",
+        "aperturePriority": "feste Blende, nichts zu wählen",
+        "shutterPriority": "nicht vorhanden",
+        "manual": "nicht vorhanden (nur Belichtungskorrektur über das Sonnensymbol)",
+        "bulb": "nicht vorhanden; Nachtmodus wählt bis 30 s selbst"
+      },
+      "notes": {
+        "manual": "Manuelle Zeit und ISO nur in Drittanbieter-Apps. Diese App stapelt stattdessen Einzelbilder."
+      },
+      "longExposure": "Modul Aufnahme dieser App nutzen: Mitteln, Aufhellen oder Integrieren. Alternativ Nachtmodus mit Stativ (bis 30 s, automatisch).",
+      "layout": "phone",
+      "limits": {
+        "maxShutter": 1,
+        "isoMin": 32,
+        "isoMax": 3200,
+        "bulb": null
+      }
+    },
+    {
+      "id": "android",
+      "name": "Android (Pro-Modus)",
+      "modes": {
+        "program": "Foto: alles automatisch",
+        "aperturePriority": "feste Blende, nichts zu wählen",
+        "shutterPriority": "Pro-Modus: S oder Verschlusszeit wählen",
+        "manual": "Pro-Modus: Zeit, ISO, Weißabgleich, Fokus",
+        "bulb": "je nach Hersteller bis 30 s, selten länger"
+      },
+      "notes": {
+        "manual": "Samsung „Pro“, Xiaomi „Pro“, Pixel hat keinen Pro-Modus, dafür Nachtsicht und Astrofotografie (automatisch bis 4 min)."
+      },
+      "longExposure": "Pro-Modus mit Stativ, Zeit auf 10 bis 30 s, ISO niedrig. Oder Modul Aufnahme dieser App.",
+      "layout": "phone",
+      "limits": {
+        "maxShutter": 30,
+        "isoMin": 50,
+        "isoMax": 3200,
+        "bulb": null
+      }
+    }
+  ],
+  "layouts": {
+    "pasm": "Modusrad und Einstellräder, Werte im Display",
+    "dials": "Zeitenrad und Blendenring mit A-Stellungen, kein Modusrad",
+    "phone": "Bildschirm statt Räder, feste Blende",
+    "pinhole": "Klappe statt Verschluss, feste Lochblende"
+  },
+  "lensDefault": {
+    "apMin": 2.8,
+    "apMax": 22,
+    "note": "Standardobjektiv f/2,8 bis f/22; für eigene Objektive in den Einstellungen anpassen."
+  }
+}

@@ -1,0 +1,45 @@
+{
+  "name": "focus",
+  "short_name": "focus",
+  "description": "Begleit-App zum Fotokurs: Licht, Blende, Camera Obscura. Langzeitbelichtung am Handy, Rechner, Timer, Lernmodule.",
+  "lang": "de",
+  "dir": "ltr",
+  "id": "./",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#0b0d12",
+  "theme_color": "#0b0d12",
+  "categories": [
+    "photo",
+    "education",
+    "utilities"
+  ],
+  "icons": [
+    {
+      "src": "assets/icons/focus-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "assets/icons/focus-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "assets/icons/focus-maskable-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "maskable"
+    },
+    {
+      "src": "assets/icons/focus-maskable-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
+  ]
+}

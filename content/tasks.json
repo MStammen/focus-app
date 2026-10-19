@@ -1,0 +1,52 @@
+{
+  "schema": 1,
+  "tasks": [
+    {
+      "id": "nd1000",
+      "title": "ND1000 vor dem Objektiv",
+      "question": "Gemessen: 1/125 s. Du setzt einen ND1000 davor. Wie lange musst du belichten? Antwort in Sekunden.",
+      "type": "number", "answer": 8, "tolerance": 0.5, "unit": "s",
+      "solution": "ND1000 lässt ein Tausendstel des Lichts durch, also braucht die Belichtung das Tausendfache der Zeit: 1/125 s × 1000 = 8 s. In Stufen: log₂(1000) = 9,97, knapp 10 Stufen. Mit den nominellen 10 Stufen wären es 8,2 s. Der Unterschied spielt in der Praxis keine Rolle.",
+      "calc": "calc/nd"
+    },
+    {
+      "id": "pinhole",
+      "title": "Blende der Lochkamera",
+      "question": "Dein Loch hat 0,4 mm Durchmesser, die Bildweite ist 120 mm. Welche Blendenzahl hat die Kamera?",
+      "type": "number", "answer": 300, "tolerance": 5, "unit": "",
+      "solution": "Blendenzahl = Bildweite ÷ Durchmesser = 120 mm ÷ 0,4 mm = f/300. Zum Vergleich: Das Optimum nach Rayleigh läge bei 1,9 · √(0,00055 · 120) ≈ 0,49 mm, also f/245. Dein Loch ist etwas zu klein, die Beugung macht das Bild leicht weicher.",
+      "calc": "calc/pinhole"
+    },
+    {
+      "id": "hp5",
+      "title": "HP5 Plus bei 30 Sekunden",
+      "question": "Du belichtest Ilford HP5 Plus und misst 30 s. Wie lange musst du wegen des Schwarzschild-Effekts wirklich belichten? Antwort in Sekunden.",
+      "type": "number", "answer": 86, "tolerance": 6, "unit": "s",
+      "solution": "Ilford gibt für HP5 Plus die Formel korrigierte Zeit = gemessene Zeit hoch 1,31. 30 hoch 1,31 ≈ 86 s, also knapp anderthalb Minuten. Das sind +1,5 Stufen Zuschlag.",
+      "calc": "calc/film"
+    },
+    {
+      "id": "equiv",
+      "title": "Handy-Stapel in Vollformat übersetzt",
+      "question": "Dein Handy stapelt 10 s lang im Modus Integrieren, feste Blende f/1,8, ISO 100. Wie lange müsste eine Vollformatkamera bei f/8 und ISO 100 belichten, um dieselbe Lichtmenge zu sammeln? Antwort in Sekunden.",
+      "type": "number", "answer": 198, "tolerance": 12, "unit": "s",
+      "solution": "Von f/1,8 auf f/8 sind es 2 · log₂(8 ÷ 1,8) ≈ 4,3 Stufen weniger Licht. Jede Stufe verdoppelt die Zeit: 10 s × 2^4,3 ≈ 10 s × 19,75 ≈ 198 s, gut drei Minuten. Mit nominellen Blendenstufen gerechnet (f/2 → f/8 sind 4 Stufen) kommt man auf 160 s. Beide Antworten zeigen das Wesentliche: Die kleine Handyblende sammelt viel mehr Licht pro Sekunde.",
+      "calc": "calc/exposure"
+    },
+    {
+      "id": "dashed",
+      "title": "Warum ist die Lichtspur gestrichelt?",
+      "question": "Im Modus Aufhellen zieht ein vorbeifahrendes Auto eine gestrichelte Lichtspur. Woran liegt das?",
+      "type": "choice",
+      "choices": [
+        "Das Auto hat geblinkt.",
+        "Zwischen den Einzelbildern liegt eine Auslesepause, in der das Handy kein Licht sammelt.",
+        "Der ND-Filter war zu stark.",
+        "Die Belichtungskorrektur stand auf minus."
+      ],
+      "answer": 1,
+      "solution": "Das Handy macht etwa dreißig Einzelbilder pro Sekunde, aber nicht lückenlos. Nach jedem Bild liest es den Sensor aus; in dieser Pause fehlt ein Stück der Spur. Ein Film oder ein Sensor mit offenem Verschluss sammelt lückenlos und zeichnet eine durchgezogene Linie.",
+      "calc": "capture"
+    }
+  ]
+}

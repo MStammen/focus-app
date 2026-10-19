@@ -1,0 +1,15 @@
+# Nie auf GitHub
+# CA- und Server-Schlüssel des Test-Servers (damit ließe sich dem iPhone jede Seite unterschieben)
+tools/certs/
+# Herstelleranleitungen: Urheberrecht der Hersteller, nur lokal (Liste in handbuecher/LIESMICH.md bleibt)
+handbuecher/**/*.pdf
+# Wird bei jedem Hochladen neu gebaut
+dist/
+dist.zip
+
+# System
+.DS_Store
+node_modules/
+
+# Persönliche Claude-Einstellungen dieses Macs
+.claude/settings.local.json

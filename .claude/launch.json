@@ -1,0 +1,34 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "focus-lab",
+      "runtimeExecutable": "node",
+      "runtimeArgs": [
+        "tools/serve.mjs",
+        "8787"
+      ],
+      "port": 8787
+    },
+    {
+      "name": "focus-lab-lan",
+      "runtimeExecutable": "node",
+      "runtimeArgs": [
+        "tools/serve.mjs",
+        "8787",
+        "--lan"
+      ],
+      "port": 8787
+    },
+    {
+      "name": "focus-dist",
+      "runtimeExecutable": "node",
+      "runtimeArgs": [
+        "tools/serve.mjs",
+        "8790",
+        "--dist"
+      ],
+      "port": 8790
+    }
+  ]
+}

@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="de" data-theme="dark">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>focus</title>
+  <meta name="description" content="Begleit-App zum Fotokurs: Licht, Blende, Camera Obscura. Langzeitbelichtung am Handy, Rechner, Timer, Lernmodule.">
+  <meta name="theme-color" content="#0b0d12">
+  <meta name="color-scheme" content="dark">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="focus">
+  <meta name="format-detection" content="telephone=no">
+  <link rel="manifest" href="./manifest.webmanifest">
+  <link rel="icon" href="./assets/icons/focus-32.png" sizes="32x32" type="image/png">
+  <link rel="icon" href="./assets/icons/focus-192.png" sizes="192x192" type="image/png">
+  <link rel="apple-touch-icon" href="./assets/icons/focus-touch-180.png">
+  <link rel="preload" href="./fonts/WorkSans-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="./css/base.css">
+  <link rel="stylesheet" href="./css/dark.css">
+  <link rel="stylesheet" href="./css/redlight.css">
+  <script>
+    // Theme so früh wie möglich setzen, damit nichts hell aufblitzt.
+    try {
+      var s = JSON.parse(localStorage.getItem('focuslab.settings') || '{}');
+      if (s.theme === 'redlight') document.documentElement.dataset.theme = 'redlight';
+    } catch (e) {}
+  </script>
+</head>
+<body>
+  <a class="skip-link" href="#view" data-i18n="shell.skipToContent">Zum Inhalt springen</a>
+
+  <header class="app-header" role="banner">
+    <a class="brand" href="#/capture" aria-label="focus photography">
+      <img class="brand-wordmark" src="./assets/wordmark.svg" alt="" height="40">
+      <span class="brand-sub" aria-hidden="true" data-i18n="app.tagline">photography</span>
+    </a>
+    <div class="header-actions">
+      <button type="button" class="icon-button" id="redlight-toggle" aria-pressed="false" data-i18n-aria-label="shell.redlight" aria-label="Rotlichtmodus">
+        <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3a7 7 0 0 0-4 12.74V18a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1v-2.26A7 7 0 0 0 12 3zm-2 18h4v-1h-4z"/></svg>
+      </button>
+      <a class="icon-button" href="#/settings" id="settings-link" data-i18n-aria-label="nav.settings" aria-label="Einstellungen">
+        <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M19.14 12.94a7.07 7.07 0 0 0 0-1.88l2.03-1.58a.5.5 0 0 0 .12-.64l-1.92-3.32a.5.5 0 0 0-.6-.22l-2.39.96a7.03 7.03 0 0 0-1.63-.94l-.36-2.54a.5.5 0 0 0-.5-.42h-3.84a.5.5 0 0 0-.5.42l-.36 2.54c-.59.24-1.13.56-1.63.94l-2.39-.96a.5.5 0 0 0-.6.22L2.71 8.84a.5.5 0 0 0 .12.64l2.03 1.58a7.07 7.07 0 0 0 0 1.88l-2.03 1.58a.5.5 0 0 0-.12.64l1.92 3.32c.13.22.39.31.6.22l2.39-.96c.5.38 1.04.7 1.63.94l.36 2.54c.05.24.26.42.5.42h3.84c.24 0 .45-.18.5-.42l.36-2.54c.59-.24 1.13-.56 1.63-.94l2.39.96c.22.09.47 0 .6-.22l1.92-3.32a.5.5 0 0 0-.12-.64zM12 15.5A3.5 3.5 0 1 1 12 8.5a3.5 3.5 0 0 1 0 7z"/></svg>
+      </a>
+    </div>
+  </header>
+
+  <main id="view" class="view" tabindex="-1" aria-live="polite">
+    <noscript><p class="notice">Diese App braucht JavaScript.</p></noscript>
+  </main>
+
+  <nav class="tab-bar" aria-label="Hauptnavigation">
+    <a class="tab" href="#/capture" data-route="capture">
+      <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 3 7.17 5H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2h-3.17L15 3H9zm3 15a5 5 0 1 1 0-10 5 5 0 0 1 0 10zm0-8a3 3 0 1 0 0 6 3 3 0 0 0 0-6z"/></svg>
+      <span class="tab-label" data-i18n="nav.captureTab">Langzeit</span>
+    </a>
+    <a class="tab" href="#/camera" data-route="camera">
+      <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M4 8h3.2l1.6-3h6.4l1.6 3H20a1.5 1.5 0 0 1 1.5 1.5v9A1.5 1.5 0 0 1 20 20H4a1.5 1.5 0 0 1-1.5-1.5v-9A1.5 1.5 0 0 1 4 8zm1.5 2.5v7h10v-7h-10zm12 1v1.8h2v-1.8h-2zm0 3.4v1.8h2v-1.8h-2z"/></svg>
+      <span class="tab-label" data-i18n="nav.camera">Kamera</span>
+    </a>
+    <a class="tab" href="#/calc" data-route="calc">
+      <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 2h12a2 2 0 0 1 2 2v16a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2zm1 3v4h10V5H7zm0 6v2h2v-2H7zm4 0v2h2v-2h-2zm4 0v2h2v-2h-2zm-8 4v2h2v-2H7zm4 0v2h2v-2h-2zm4 0v2h2v-2h-2z"/></svg>
+      <span class="tab-label" data-i18n="nav.calc">Rechner</span>
+    </a>
+    <a class="tab" href="#/timer" data-route="timer">
+      <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M15 1H9v2h6V1zm-4 13h2V8h-2v6zm8.03-6.61 1.42-1.42a10.4 10.4 0 0 0-1.41-1.41l-1.42 1.42A8.96 8.96 0 0 0 12 4a9 9 0 1 0 7.03 3.39zM12 20a7 7 0 1 1 0-14 7 7 0 0 1 0 14z"/></svg>
+      <span class="tab-label" data-i18n="nav.timer">Timer</span>
+    </a>
+    <a class="tab" href="#/learn" data-route="learn">
+      <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M18 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2zM6 4h5v8l-2.5-1.5L6 12V4z"/></svg>
+      <span class="tab-label" data-i18n="nav.learn">Kurs</span>
+    </a>
+    <a class="tab" href="#/log" data-route="log">
+      <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 3h13l3 3v15H4V3zm3 4v2h10V7H7zm0 4v2h10v-2H7zm0 4v2h7v-2H7z"/></svg>
+      <span class="tab-label" data-i18n="nav.log">Logbuch</span>
+    </a>
+  </nav>
+
+  <div id="toast" class="toast" role="status" hidden></div>
+
+  <script type="module" src="./js/app.js"></script>
+</body>
+</html>

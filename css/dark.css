@@ -1,0 +1,23 @@
+/* Dunkles Design (Standard). Nur Farb-Tokens, kein Layout.
+   Werte aus dem Design-System „focus“ (tokens.json, Thema dark). */
+:root, html[data-theme="dark"] {
+  color-scheme: dark;
+  --bg: #0b0d12;
+  --bg-elev: #141821;
+  --bg-active: #1f2432;
+  --bg-input: #0b0d12;
+  --fg: #eef0f5;
+  --fg-muted: #a3aabb;
+  --border: #2a3040;
+  --accent: #2e9e3f;
+  --accent-soft: #2e9e3f29;
+  --accent-dark: #1f7a2e;  /* Linien und Text auf hellem Grund */
+  --accent-light: #d6efd9; /* Flächen hinter dunklem Text */
+  --on-accent: #071209;
+  --danger: #ff7a70;
+  --success: #6fd3a0;
+  --info: #6fb3ff;
+  --overlay: #000000a6;
+  --viewfinder: #000000;
+  --shadow-toast: 0 8px 28px #000000a6;
+}

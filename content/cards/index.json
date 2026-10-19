@@ -1,0 +1,67 @@
+{
+  "cards": [
+    {
+      "id": "stops",
+      "file": "01-stufe.md",
+      "graphic": "stops",
+      "calc": "calc/exposure",
+      "calcLabel": "Belichtungsrechner"
+    },
+    {
+      "id": "fratio",
+      "file": "02-blendenzahl.md",
+      "graphic": "fratio",
+      "calc": "calc/pinhole",
+      "calcLabel": "Lochkamera-Rechner"
+    },
+    {
+      "id": "dof",
+      "file": "03-schaerfentiefe.md",
+      "graphic": "dof",
+      "calc": "learn/sim",
+      "calcLabel": "Simulator"
+    },
+    {
+      "id": "pinhole",
+      "file": "04-lochkamera.md",
+      "graphic": "pinhole",
+      "calc": "calc/pinhole",
+      "calcLabel": "Lochkamera-Rechner"
+    },
+    {
+      "id": "longexposure",
+      "file": "05-langzeitbelichtung.md",
+      "graphic": "longexposure",
+      "calc": "capture",
+      "calcLabel": "Langzeitaufnahme"
+    },
+    {
+      "id": "nd",
+      "file": "06-nd-filter.md",
+      "graphic": "nd",
+      "calc": "calc/nd",
+      "calcLabel": "ND-Rechner"
+    },
+    {
+      "id": "schwarzschild",
+      "file": "07-schwarzschild.md",
+      "graphic": "schwarzschild",
+      "calc": "calc/film",
+      "calcLabel": "Film-Rechner"
+    },
+    {
+      "id": "compare",
+      "file": "08-handy-kamera-film.md",
+      "graphic": "compare",
+      "calc": "learn/compare",
+      "calcLabel": "Vergleichsgalerie"
+    },
+    {
+      "id": "modedial",
+      "file": "09-modusrad.md",
+      "graphic": "modedial",
+      "calc": "camera",
+      "calcLabel": "Deine Kamera"
+    }
+  ]
+}

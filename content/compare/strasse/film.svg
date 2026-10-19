@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" width="800" height="600">
+  <defs><radialGradient id="g"><stop offset="0" stop-color="#ffe6a0" stop-opacity="0.6"/><stop offset="1" stop-color="#ffe6a0" stop-opacity="0"/></radialGradient></defs>
+  <rect width="800" height="600" fill="#0b0e14"/>
+  <rect y="330" width="800" height="270" fill="#1c222c"/>
+  <g fill="#2b3442"><rect x="10" y="200" width="120" height="400"/>
+<rect x="150" y="225" width="120" height="400"/>
+<rect x="290" y="250" width="120" height="400"/>
+<rect x="430" y="200" width="120" height="400"/>
+<rect x="570" y="225" width="120" height="400"/>
+<rect x="710" y="250" width="120" height="400"/></g>
+  <circle cx="620" cy="180" r="160" fill="url(#g)"/>
+  <circle cx="620" cy="180" r="14" fill="#fff4cc"/>
+  <path d="M40 400 L760 400" stroke="#ffd080" stroke-width="8" stroke-linecap="round" opacity="0.85"/><rect width="800" height="600" fill="#fff" opacity="0.04"/>
+  <text x="20" y="40" font-family="Helvetica, Arial, sans-serif" font-size="28" fill="#9a9aa6">Film · Platzhalter</text>
+</svg>

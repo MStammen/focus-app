@@ -1,0 +1,11 @@
+{
+  "id": "strasse",
+  "title": "Straße bei Nacht (Platzhalter)",
+  "description": "Laterne, vorbeifahrende Autos, Passanten. Dieselbe Szene mit drei Werkzeugen. Die Bilder sind Platzhalter; echte Aufnahmen kommen vom Kursleiter.",
+  "images": [
+    { "id": "phone", "file": "phone.svg", "label": "Handy-Stapel", "data": "Aufhellen, 20 s, 480 Einzelbilder, f/1,8, ISO 400", "notes": "Lichtspur als Perlenkette, Laterne hart ausgebrannt, kein Blendenstern." },
+    { "id": "digital", "file": "digital.svg", "label": "Digitalkamera", "data": "20 s, f/8, ISO 100, Stativ", "notes": "Durchgezogene Lichtspur, Blendenstern an der Laterne, feines Rauschen in den Schatten." },
+    { "id": "film", "file": "film.svg", "label": "Film", "data": "HP5 Plus, 60 s (30 s gemessen, Schwarzschild), f/8", "notes": "Weicher Hof um die Laterne, sichtbares Korn, Schatten laufen zu." }
+  ],
+  "differences": ["Perlenkette gegen Linie", "Clipping gegen Hof", "feste Blende gegen Blendenstern", "Rauschen gegen Korn"]
+}

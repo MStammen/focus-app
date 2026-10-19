@@ -1,0 +1,586 @@
+{
+  "schema": 1,
+  "kind": "focuslab-films",
+  "updated": "2026-10-13",
+  "supportTimes": [
+    1,
+    2,
+    4,
+    8,
+    15,
+    30,
+    60,
+    120,
+    240,
+    480
+  ],
+  "description": "Schwarzschild-Korrektur: Stützpunkte gemessene Sekunden → korrigierte Sekunden. null = keine Herstellerdaten (Lücke). Quellen je Film, Stand siehe source.date.",
+  "films": [
+    {
+      "id": "ilford-hp5-plus",
+      "name": "Ilford HP5 Plus",
+      "maker": "Ilford",
+      "iso": 400,
+      "type": "bw",
+      "points": {
+        "1": 1,
+        "2": 2.47942,
+        "4": 6.1475,
+        "8": 15.2422,
+        "15": 34.728,
+        "30": 86.1051,
+        "60": 213.49,
+        "120": 529.331,
+        "240": 1312.43,
+        "480": 3254.06
+      },
+      "model": {
+        "kind": "power",
+        "p": 1.31
+      },
+      "source": {
+        "title": "HARMAN technology Ltd., Technical Information: Film Reciprocity Failure Compensation",
+        "url": "https://www.ilfordphoto.com/wp/wp-content/uploads/2024/05/Reciprocity-Failure-Compensation-v2.pdf",
+        "date": "2023-12",
+        "retrieved": "2026-10-13"
+      },
+      "note": "Herstellerformel: korrigierte Zeit = gemessene Zeit hoch 1.31. Bis 1 s keine Korrektur. Stützpunkte daraus berechnet."
+    },
+    {
+      "id": "ilford-fp4-plus",
+      "name": "Ilford FP4 Plus",
+      "maker": "Ilford",
+      "iso": 125,
+      "type": "bw",
+      "points": {
+        "1": 1,
+        "2": 2.39496,
+        "4": 5.73582,
+        "8": 13.737,
+        "15": 30.3302,
+        "30": 72.6395,
+        "60": 173.968,
+        "120": 416.647,
+        "240": 997.852,
+        "480": 2389.81
+      },
+      "model": {
+        "kind": "power",
+        "p": 1.26
+      },
+      "source": {
+        "title": "HARMAN technology Ltd., Technical Information: Film Reciprocity Failure Compensation",
+        "url": "https://www.ilfordphoto.com/wp/wp-content/uploads/2024/05/Reciprocity-Failure-Compensation-v2.pdf",
+        "date": "2023-12",
+        "retrieved": "2026-10-13"
+      },
+      "note": "Herstellerformel: korrigierte Zeit = gemessene Zeit hoch 1.26. Bis 1 s keine Korrektur. Stützpunkte daraus berechnet."
+    },
+    {
+      "id": "ilford-delta-100",
+      "name": "Ilford Delta 100 Professional",
+      "maker": "Ilford",
+      "iso": 100,
+      "type": "bw",
+      "points": {
+        "1": 1,
+        "2": 2.39496,
+        "4": 5.73582,
+        "8": 13.737,
+        "15": 30.3302,
+        "30": 72.6395,
+        "60": 173.968,
+        "120": 416.647,
+        "240": 997.852,
+        "480": 2389.81
+      },
+      "model": {
+        "kind": "power",
+        "p": 1.26
+      },
+      "source": {
+        "title": "HARMAN technology Ltd., Technical Information: Film Reciprocity Failure Compensation",
+        "url": "https://www.ilfordphoto.com/wp/wp-content/uploads/2024/05/Reciprocity-Failure-Compensation-v2.pdf",
+        "date": "2023-12",
+        "retrieved": "2026-10-13"
+      },
+      "note": "Herstellerformel: korrigierte Zeit = gemessene Zeit hoch 1.26. Bis 1 s keine Korrektur. Stützpunkte daraus berechnet."
+    },
+    {
+      "id": "ilford-delta-400",
+      "name": "Ilford Delta 400 Professional",
+      "maker": "Ilford",
+      "iso": 400,
+      "type": "bw",
+      "points": {
+        "1": 1,
+        "2": 2.65737,
+        "4": 7.06162,
+        "8": 18.7654,
+        "15": 45.5291,
+        "30": 120.988,
+        "60": 321.509,
+        "120": 854.369,
+        "240": 2270.38,
+        "480": 6033.23
+      },
+      "model": {
+        "kind": "power",
+        "p": 1.41
+      },
+      "source": {
+        "title": "HARMAN technology Ltd., Technical Information: Film Reciprocity Failure Compensation",
+        "url": "https://www.ilfordphoto.com/wp/wp-content/uploads/2024/05/Reciprocity-Failure-Compensation-v2.pdf",
+        "date": "2023-12",
+        "retrieved": "2026-10-13"
+      },
+      "note": "Herstellerformel: korrigierte Zeit = gemessene Zeit hoch 1.41. Bis 1 s keine Korrektur. Stützpunkte daraus berechnet."
+    },
+    {
+      "id": "ilford-pan-f-plus",
+      "name": "Ilford Pan F Plus",
+      "maker": "Ilford",
+      "iso": 50,
+      "type": "bw",
+      "points": {
+        "1": 1,
+        "2": 2.51403,
+        "4": 6.32033,
+        "8": 15.8895,
+        "15": 36.6608,
+        "30": 92.1661,
+        "60": 231.708,
+        "120": 582.52,
+        "240": 1464.47,
+        "480": 3681.72
+      },
+      "model": {
+        "kind": "power",
+        "p": 1.33
+      },
+      "source": {
+        "title": "HARMAN technology Ltd., Technical Information: Film Reciprocity Failure Compensation",
+        "url": "https://www.ilfordphoto.com/wp/wp-content/uploads/2024/05/Reciprocity-Failure-Compensation-v2.pdf",
+        "date": "2023-12",
+        "retrieved": "2026-10-13"
+      },
+      "note": "Herstellerformel: korrigierte Zeit = gemessene Zeit hoch 1.33. Bis 1 s keine Korrektur. Stützpunkte daraus berechnet."
+    },
+    {
+      "id": "kodak-tri-x-400",
+      "name": "Kodak Tri-X 400",
+      "maker": "Kodak",
+      "iso": 400,
+      "type": "bw",
+      "points": {
+        "1": 2,
+        "2": 5.2705,
+        "4": 13.8891,
+        "8": 36.6012,
+        "15": 87.501,
+        "30": 227.771,
+        "60": 592.902,
+        "120": null,
+        "240": null,
+        "480": null
+      },
+      "model": {
+        "kind": "table",
+        "table": [
+          [
+            1,
+            2
+          ],
+          [
+            10,
+            50
+          ],
+          [
+            100,
+            1200
+          ]
+        ]
+      },
+      "source": {
+        "title": "Kodak Alaris, Technical Data F-4017 (Tri-X 320 and 400)",
+        "url": "https://kodakprofessional.com/sites/default/files/wysiwyg/film/f4017_trix_320400.pdf",
+        "date": "2021-10",
+        "retrieved": "2026-10-13"
+      },
+      "note": "Herstellertabelle: 1 s → 2 s (+1 Stufe), 10 s → 50 s (+2), 100 s → 1200 s (+3); dazu Entwicklung um 10/20/30 % kürzen. Zwischenwerte log-log interpoliert, über 100 s keine Herstellerdaten."
+    },
+    {
+      "id": "kodak-t-max-100",
+      "name": "Kodak T-Max 100",
+      "maker": "Kodak",
+      "iso": 100,
+      "type": "bw",
+      "points": {
+        "1": 1.25992,
+        "2": 2.65568,
+        "4": 5.59768,
+        "8": 11.7989,
+        "15": 23.6692,
+        "30": 51.6206,
+        "60": 112.581,
+        "120": null,
+        "240": null,
+        "480": null
+      },
+      "model": {
+        "kind": "table",
+        "table": [
+          [
+            1,
+            1.2599210498948732
+          ],
+          [
+            10,
+            15
+          ],
+          [
+            100,
+            200
+          ]
+        ]
+      },
+      "source": {
+        "title": "Kodak Alaris, Technical Data F-4016 (T-Max 100)",
+        "url": "https://mail.kennethleegallery.com/pdf/TMax100.pdf",
+        "date": "2016-02",
+        "retrieved": "2026-10-13"
+      },
+      "note": "Herstellertabelle: 1 s → +⅓ Stufe, 10 s → 15 s (+½), 100 s → 200 s (+1). Keine Entwicklungsanpassung. Über 100 s keine Herstellerdaten."
+    },
+    {
+      "id": "kodak-t-max-400",
+      "name": "Kodak T-Max 400",
+      "maker": "Kodak",
+      "iso": 400,
+      "type": "bw",
+      "points": {
+        "1": 1,
+        "2": 2.14406,
+        "4": 4.59698,
+        "8": 9.85619,
+        "15": 22.0182,
+        "30": 57.1786,
+        "60": 148.486,
+        "120": null,
+        "240": null,
+        "480": null
+      },
+      "model": {
+        "kind": "table",
+        "table": [
+          [
+            1,
+            1
+          ],
+          [
+            10,
+            12.599210498948732
+          ],
+          [
+            100,
+            300
+          ]
+        ]
+      },
+      "source": {
+        "title": "Kodak, Technical Data F-4043 (T-Max 400, Emulsion ab 2007)",
+        "url": "https://www.freestylephoto.com/pdf/product_pdfs/kodak/Kodak_Tmax400.pdf",
+        "date": "2007-10",
+        "retrieved": "2026-10-13"
+      },
+      "note": "Herstellertabelle: 1 s keine Korrektur, 10 s → +⅓ Stufe, 100 s → 300 s (+1½). Keine Entwicklungsanpassung. Über 100 s keine Herstellerdaten."
+    },
+    {
+      "id": "kodak-portra-160",
+      "name": "Kodak Portra 160",
+      "maker": "Kodak",
+      "iso": 160,
+      "type": "color",
+      "points": {
+        "1": 1,
+        "2": null,
+        "4": null,
+        "8": null,
+        "15": null,
+        "30": null,
+        "60": null,
+        "120": null,
+        "240": null,
+        "480": null
+      },
+      "model": {
+        "kind": "table",
+        "table": [
+          [
+            1,
+            1
+          ]
+        ]
+      },
+      "source": {
+        "title": "Kodak Alaris, Technical Data E-4051",
+        "url": "https://www.kodakprofessional.com/sites/default/files/2025-07/e4051.pdf",
+        "date": "2025-01",
+        "retrieved": "2026-10-13"
+      },
+      "note": "Hersteller: bis 1 s keine Korrektur, für längere Zeiten eigene Tests. Keine Herstellerdaten über 1 s – Lücke, eigene Werte eintragen. Farbfilm: bei langen Zeiten Farbverschiebung möglich."
+    },
+    {
+      "id": "kodak-portra-400",
+      "name": "Kodak Portra 400",
+      "maker": "Kodak",
+      "iso": 400,
+      "type": "color",
+      "points": {
+        "1": 1,
+        "2": null,
+        "4": null,
+        "8": null,
+        "15": null,
+        "30": null,
+        "60": null,
+        "120": null,
+        "240": null,
+        "480": null
+      },
+      "model": {
+        "kind": "table",
+        "table": [
+          [
+            1,
+            1
+          ]
+        ]
+      },
+      "source": {
+        "title": "Kodak Alaris, Technical Data E-4050",
+        "url": "https://www.kodakprofessional.com/sites/default/files/2025-07/e4050.pdf",
+        "date": "2025-01",
+        "retrieved": "2026-10-13"
+      },
+      "note": "Hersteller: bis 1 s keine Korrektur, für längere Zeiten eigene Tests. Keine Herstellerdaten über 1 s – Lücke, eigene Werte eintragen. Farbfilm: bei langen Zeiten Farbverschiebung möglich."
+    },
+    {
+      "id": "kodak-ektar-100",
+      "name": "Kodak Ektar 100",
+      "maker": "Kodak",
+      "iso": 100,
+      "type": "color",
+      "points": {
+        "1": 1,
+        "2": null,
+        "4": null,
+        "8": null,
+        "15": null,
+        "30": null,
+        "60": null,
+        "120": null,
+        "240": null,
+        "480": null
+      },
+      "model": {
+        "kind": "table",
+        "table": [
+          [
+            1,
+            1
+          ]
+        ]
+      },
+      "source": {
+        "title": "Kodak Alaris, Technical Data E-4046",
+        "url": "https://www.kodakprofessional.com/sites/default/files/2025-07/e4046.pdf",
+        "date": "2025-01",
+        "retrieved": "2026-10-13"
+      },
+      "note": "Hersteller: bis 1 s keine Korrektur, für längere Zeiten eigene Tests. Keine Herstellerdaten über 1 s – Lücke, eigene Werte eintragen. Farbfilm: bei langen Zeiten Farbverschiebung möglich."
+    },
+    {
+      "id": "fomapan-100",
+      "name": "Fomapan 100 Classic",
+      "maker": "Foma",
+      "iso": 100,
+      "type": "bw",
+      "points": {
+        "1": 2,
+        "2": 6.07153,
+        "4": 18.4317,
+        "8": 55.9544,
+        "15": 135.578,
+        "30": 334.071,
+        "60": 823.167,
+        "120": null,
+        "240": null,
+        "480": null
+      },
+      "model": {
+        "kind": "table",
+        "table": [
+          [
+            0.5,
+            0.5
+          ],
+          [
+            1,
+            2
+          ],
+          [
+            10,
+            80
+          ],
+          [
+            100,
+            1600
+          ]
+        ]
+      },
+      "source": {
+        "title": "Foma Bohemia, Datenblatt Fomapan 100 Classic (Schwarzschild effect)",
+        "url": "https://www.foma.cz/en/",
+        "date": "2010",
+        "retrieved": "2026-10-13"
+      },
+      "note": "Herstellertabelle: Verlängerungsfaktor bei 1, 10 und 100 s. Über 100 s keine Herstellerdaten. Anwender berichten, dass die Tabelle eher zu viel Korrektur gibt."
+    },
+    {
+      "id": "fomapan-200",
+      "name": "Fomapan 200 Creative",
+      "maker": "Foma",
+      "iso": 200,
+      "type": "bw",
+      "points": {
+        "1": 3,
+        "2": 8.35178,
+        "4": 23.2507,
+        "8": 64.7284,
+        "15": 152.526,
+        "30": 375.83,
+        "60": 926.063,
+        "120": null,
+        "240": null,
+        "480": null
+      },
+      "model": {
+        "kind": "table",
+        "table": [
+          [
+            0.5,
+            0.5
+          ],
+          [
+            1,
+            3
+          ],
+          [
+            10,
+            90
+          ],
+          [
+            100,
+            1800
+          ]
+        ]
+      },
+      "source": {
+        "title": "Foma Bohemia, Datenblatt Fomapan 200 Creative (Schwarzschild effect)",
+        "url": "https://www.foma.cz/en/",
+        "date": "2008",
+        "retrieved": "2026-10-13"
+      },
+      "note": "Herstellertabelle: Verlängerungsfaktor bei 1, 10 und 100 s. Über 100 s keine Herstellerdaten. Anwender berichten, dass die Tabelle eher zu viel Korrektur gibt."
+    },
+    {
+      "id": "fomapan-400",
+      "name": "Fomapan 400 Action",
+      "maker": "Foma",
+      "iso": 400,
+      "type": "bw",
+      "points": {
+        "1": 1.5,
+        "2": 4.55365,
+        "4": 13.8238,
+        "8": 41.9658,
+        "15": 94.6767,
+        "30": 206.483,
+        "60": 450.323,
+        "120": null,
+        "240": null,
+        "480": null
+      },
+      "model": {
+        "kind": "table",
+        "table": [
+          [
+            0.5,
+            0.5
+          ],
+          [
+            1,
+            1.5
+          ],
+          [
+            10,
+            60
+          ],
+          [
+            100,
+            800
+          ]
+        ]
+      },
+      "source": {
+        "title": "Foma Bohemia, Datenblatt Fomapan 400 Action (Schwarzschild effect)",
+        "url": "https://www.foma.cz/en/",
+        "date": "2010",
+        "retrieved": "2026-10-13"
+      },
+      "note": "Herstellertabelle: Verlängerungsfaktor bei 1, 10 und 100 s. Über 100 s keine Herstellerdaten. Anwender berichten, dass die Tabelle eher zu viel Korrektur gibt."
+    },
+    {
+      "id": "fuji-acros-ii",
+      "name": "Fujifilm Neopan 100 Acros II",
+      "maker": "Fujifilm",
+      "iso": 100,
+      "type": "bw",
+      "points": {
+        "1": 1,
+        "2": 2,
+        "4": 4,
+        "8": 8,
+        "15": 15,
+        "30": 30,
+        "60": 60,
+        "120": 169.706,
+        "240": 339.411,
+        "480": 678.823
+      },
+      "model": {
+        "kind": "steps",
+        "steps": [
+          [
+            0,
+            120,
+            0
+          ],
+          [
+            120,
+            1000,
+            0.5
+          ]
+        ]
+      },
+      "source": {
+        "title": "Fujifilm, Datenblatt NEOPAN 100 ACROS II (135)",
+        "url": "https://www.freestylephoto.com/static/pdf/product_pdf/fujifilm/NEOPAN_100_ACROSII_(135)_data_sheet.pdf",
+        "date": "undatiert",
+        "retrieved": "2026-10-13"
+      },
+      "note": "Hersteller: unter 120 s keine Korrektur, 120 bis 1000 s +½ Stufe. Praktisch kein Schwarzschild-Effekt – gutes Lehrbeispiel. Über 1000 s keine Herstellerdaten."
+    }
+  ]
+}
