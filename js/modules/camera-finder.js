@@ -166,13 +166,13 @@ export function partFinder(ctx, { dials, onSelect }) {
     if (text.parentNode !== card) card.append(text); // vor dem Leeren aus der Schlagwort-Zeile holen
     fnChips.innerHTML = '';
     const phone = brand?.layout === 'phone' || brand?.layout === 'pinhole';
-    wrap.hidden = phone; // samt Überschrift
+    wrap.toggleAttribute('data-off', phone); // Handy: keine Bedienteile, Umschalter blendet „Was ist wo“ aus
     if (!phone) for (const fn of functionList()) {
       fnChips.appendChild(el('button', { type: 'button', class: 'chip quick fn-chip', dataset: { part: fn.id }, 'aria-pressed': 'false', onClick: () => select(fn.id) }, [el('span', { text: fn.label }), fnIcon(fn.icon)]));
     }
     clear();
   }
 
-  const wrap = el('details', { class: 'panel cam-acc', dataset: { acc: 'finder' } }, [el('summary', { text: t('camera.finder.title') }), el('div', { class: 'panel-body' }, [card])]);
+  const wrap = el('div', { class: 'card cam-pane', dataset: { acc: 'finder' }, role: 'region', 'aria-label': t('camera.finder.title') }, [card]);
   return { el: wrap, refresh, select, clear };
 }

@@ -1,6 +1,6 @@
 // Kamera · Hauptansicht (Aufbau nach der Leinwand „focus · Kamera“): Marke, Kamera, Modi, Regler,
 // „Wo finde ich was?“, einklappbar „Mehr zu …“. Die Anleitung steckt im Info-Knopf am Titel (camera.js).
-import { el } from '../lib/ui.js';
+import { el, segmented } from '../lib/ui.js';
 import { virtualCamera } from './camera-virtual.js';
 import { partFinder, partLabel, shortPart } from './camera-finder.js';
 import { cameraLimits, withModel } from '../lib/camera-profile.js';
@@ -25,7 +25,7 @@ export async function init(root, ctx, { modes, devices }) {
   const moreSummary = el('summary');
   const cam = el('div');
   root.appendChild(cam);
-  let lastMode = null, lastBrand = null, finder = null, tapped = null;
+  let lastMode = null, lastBrand = null, finder = null, tapped = null, paneBar = null;
   // Angetipptes Teil: Name als Schild an der Grafik, kurze Erklärung in der Zeile unter der Kamera
   const partLine = el('p', { class: 'cam-part-line small', hidden: true, 'aria-live': 'polite' });
   const explain = (part) => {
@@ -72,7 +72,7 @@ export async function init(root, ctx, { modes, devices }) {
     onPart: (id) => showPart(id),
     onChange(state) {
       if (state.mode === lastMode && state.brand === lastBrand) return;
-      if (state.brand !== lastBrand) { tapped = null; partLine.hidden = true; if (finder) finder.refresh(state.brand); }
+      if (state.brand !== lastBrand) { tapped = null; partLine.hidden = true; if (finder) finder.refresh(state.brand); syncPanes(); }
       else if (tapped) { const part = vc.dials.parts().find((p) => p.id === tapped); if (part) explain(part); } // Modus gewechselt: Erklärung passt sich an
       lastMode = state.mode; lastBrand = state.brand;
       const c = modes.concepts.find((x) => x.id === state.mode);
@@ -100,21 +100,36 @@ export async function init(root, ctx, { modes, devices }) {
   finder = partFinder(ctx, { dials: vc.dials, onSelect: () => { tapped = null; partLine.hidden = true; } });
   finder.refresh(vc.state.brand);
   finderSlot.appendChild(finder.el);
-  root.append(
-    el('details', { class: 'panel cam-acc', dataset: { acc: 'more' } }, [moreSummary, el('div', { class: 'panel-body' }, [info, dialNote, tip, layoutNote, el('p', { class: 'muted small', style: 'margin-bottom:0', text: t('learn.camera.disclaimer') })])]),
-  );
-  // Bereiche unter der Kamera: immer nur einer offen, damit der geöffnete direkt unter dem Kamerabild steht
-  root.addEventListener('toggle', (e) => {
-    const d = e.target;
-    if (!d.matches?.('details.cam-acc')) return;
-    if (d.open) {
-      for (const o of root.querySelectorAll('details.cam-acc[open]')) if (o !== d) o.open = false;
-      ctx.setSetting('cameraSection', d.dataset.acc);
-      requestAnimationFrame(() => d.querySelector('summary').scrollIntoView({ block: 'nearest', behavior: 'smooth' }));
-    } else if (ctx.getSetting('cameraSection', 'settings') === d.dataset.acc) ctx.setSetting('cameraSection', '');
-    // „Wo finde ich was?“ offen: Kamera bleibt oben stehen (CSS .cam-sticky), damit Markierung und Text zugleich sichtbar sind
-    root.classList.toggle('cam-sticky', !!root.querySelector('details.cam-acc[data-acc="finder"][open]'));
-  }, true); // toggle steigt nicht auf, daher in der Einfangphase
+  // „Mehr zu …“ bleibt aufklappbar; offen/zu merkt sich die App
+  const more = el('details', { class: 'panel' }, [moreSummary, el('div', { class: 'panel-body' }, [info, dialNote, tip, layoutNote, el('p', { class: 'muted small', style: 'margin-bottom:0', text: t('learn.camera.disclaimer') })])]);
+  more.open = !!ctx.getSetting('cameraMoreOpen', false);
+  more.addEventListener('toggle', () => ctx.setSetting('cameraMoreOpen', more.open));
+  root.append(more);
+
+  // Umschalter direkt unter der Kamera: Regler · Was ist wo · ND-Filter. Gezeigt wird nur der gewählte Bereich.
+  const PANES = ['settings', 'finder', 'nd'];
+  const panes = () => [...cam.querySelectorAll('.cam-pane')];
+  paneBar = segmented({
+    ariaLabel: t('camera.pane.label'),
+    items: PANES.map((id) => ({ id, label: t(`camera.pane.${id}`) })),
+    onSelect: (id) => showPane(id),
+  });
+  paneBar.classList.add('cam-pane-bar');
+  cam.querySelector('.camera-card').after(paneBar);
+  function available(id) { return !panes().find((p) => p.dataset.acc === id)?.hasAttribute('data-off'); }
+  function showPane(id) {
+    if (!PANES.includes(id) || !available(id)) id = 'settings';
+    for (const p of panes()) p.hidden = p.dataset.acc !== id;
+    for (const b of paneBar.children) b.setAttribute('aria-current', String(b.textContent === t(`camera.pane.${id}`)));
+    ctx.setSetting('cameraSection', id);
+    // „Was ist wo“: Kamera bleibt oben stehen (CSS .cam-sticky), damit Markierung und Text zugleich sichtbar sind
+    root.classList.toggle('cam-sticky', id === 'finder');
+  }
+  function syncPanes() {
+    if (!paneBar) return;
+    PANES.forEach((id, i) => { paneBar.children[i].hidden = !available(id); });
+    showPane(ctx.getSetting('cameraSection', 'settings'));
+  }
   // Schlagwort angetippt (und geöffnet): direkt unter die stehende Kamera rücken, die Erklärung steht darunter
   finderSlot.addEventListener('click', (e) => {
     const chip = e.target.closest?.('.fn-chip');
@@ -126,8 +141,6 @@ export async function init(root, ctx, { modes, devices }) {
       if (Math.abs(dy) > 2) window.scrollBy(0, dy);
     });
   });
-  const openKey = ctx.getSetting('cameraSection', 'settings');
-  const first = openKey && root.querySelector(`details.cam-acc[data-acc="${openKey}"]`);
-  if (first && !first.hidden) first.open = true;
+  syncPanes();
   return () => {};
 }

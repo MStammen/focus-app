@@ -792,3 +792,6 @@ body.locked .tab-bar, body.locked #settings-link { display: none; }
 .cam-sticky .camera-card .cam-seen { display: none; }
 /* Luft unten, damit auch die letzten Schlagworte bis unter die Kamera hochrollen können */
 .cam-sticky { padding-bottom: 50vh; padding-bottom: 50svh; }
+/* Umschalter unter der Kamera: Regler · Was ist wo · ND-Filter */
+.cam-pane-bar { margin: 12px 0 8px; }
+.cam-pane-bar .segment { flex: 1 1 0; min-height: var(--touch); }

@@ -207,8 +207,8 @@ export function virtualCamera(root, ctx, { modes, devices = [], light = 'dusk', 
   }
 
   buildSliders();
-  // Aufklappbarer Bereich unter der Kamera (camera-view.js sorgt dafür, dass immer nur einer offen ist)
-  const acc = (key, title, kids) => el('details', { class: 'panel cam-acc', dataset: { acc: key } }, [el('summary', { text: title }), el('div', { class: 'panel-body' }, kids)]);
+  // Bereich unter der Kamera; camera-view.js zeigt per Umschalter immer genau einen (Regler · Was ist wo · ND-Filter)
+  const acc = (key, title, kids) => el('div', { class: 'card cam-pane', dataset: { acc: key }, role: 'region', 'aria-label': title }, kids);
   root.append(
     el('div', { class: 'fields' }, [el('label', { class: 'field' }, [el('span', { class: 'field-label', text: t('settings.cameraBrand') }), brandSel]), modelField]),
     sensorLine,

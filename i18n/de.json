@@ -752,6 +752,12 @@
       "dof_deep": "von vorn bis hinten scharf",
       "star": "Laterne mit Blendenstern",
       "noise": "Rauschen sichtbar"
+    },
+    "pane": {
+      "label": "Bereich unter der Kamera",
+      "settings": "Regler",
+      "finder": "Was ist wo",
+      "nd": "ND-Filter"
     }
   },
   "access": {
@@ -766,7 +772,7 @@
   },
   "help": {
     "capture": "Handy aufs Stativ stellen oder fest auflegen, dann „Kamera einschalten“. | Zeit wählen und auslösen: Die App stapelt viele Einzelbilder zu einem Langzeitbild. | Unter „Einstellungen“ die Art wählen: Mitteln für glattes Wasser, Aufhellen für Lichtspuren, Integrieren wie Film. | Ergebnis speichern oder ins Logbuch übernehmen. Alles bleibt auf deinem Handy.",
-    "camera": "Marke und Modell wählen. Du siehst die Kamera von hinten oben. | Das kleine Rad oben drehen: Daneben steht, wer Zeit und Blende wählt. | Ein Teil der Kamera antippen: Es wird grün, darunter steht kurz, wofür es da ist. | Unter der Kamera klappen Kameraeinstellungen, „Wo finde ich was?“, ND-Filter und „Mehr zu …“ auf, immer einer zur Zeit. „Wo finde ich was?“ zeigt AF-Modus, Selbstauslöser und Spiegelvorauslösung an deinem Modell. | Mit den Reglern Blende, Zeit, ISO und ND ändern und im Monitor sehen, was passiert. Unter dem Bild steht kurz, was zu sehen ist (z. B. Leuchtspur, Auto eingefroren).",
+    "camera": "Marke und Modell wählen. Du siehst die Kamera von hinten oben. | Das kleine Rad oben drehen: Daneben steht, wer Zeit und Blende wählt. | Ein Teil der Kamera antippen: Es wird grün, darunter steht kurz, wofür es da ist. | Unter der Kamera mit dem Umschalter wählen: Regler, Was ist wo oder ND-Filter. „Wo finde ich was?“ zeigt AF-Modus, Selbstauslöser und Spiegelvorauslösung an deinem Modell. | Mit den Reglern Blende, Zeit, ISO und ND ändern und im Monitor sehen, was passiert. Unter dem Bild steht kurz, was zu sehen ist (z. B. Leuchtspur, Auto eingefroren).",
     "calc": "Belichtung: Ausgangsmessung eintragen oder unter „Licht schätzen“ die Situation wählen (z. B. Sonne, Dämmerung, Straße bei Nacht), Modus wählen und beim Ziel einen Wert ändern. Der Modus bzw. das offene Schloss legt fest, welcher Wert nachgibt. | ND: gewünschte Zeit wählen, die App schlägt passende Filter vor. | Lochkamera: Lochgröße und Abstand ergeben Blende, Bildwinkel und Belichtungszeit. | Film: lange Zeiten mit Schwarzschild-Korrektur für deinen Film. | Ergebnisse gehen mit einem Tipp an den Timer oder auf die Kamera.",
     "timer": "Zeit wählen und „Start“ tippen. Ton und Vibration melden das Ende. | Intervall: mehrere Belichtungen nacheinander mit Pause dazwischen. | Handy nicht sperren: Der Timer läuft nur bei eingeschaltetem Display. | Danach die Belichtung mit „Ins Logbuch“ festhalten. | Im Dunkeln den Rotlichtmodus (Glühbirne oben) einschalten.",
     "learn": "Hier entstehen Lernkarten, Übungen und Aufgaben zum Fotokurs. | Die Inhalte werden gerade vorbereitet und erscheinen nach und nach.",

@@ -634,3 +634,7 @@ Nach Vorschlägen aus einer Code-Durchsicht (Claude im Browser):
 
 ## 1.49.1 – Reiter Kamera und Langzeit getauscht (2026-10-19)
 - Tableiste: Kamera · Langzeit · Rechner · Timer · Kurs · Logbuch. Die App startet jetzt auf Kamera (erster Reiter, `DEFAULT_ROUTE`), auch nach dem Öffnen per QR-Code.
+
+## 1.50.0 – Kamera: Umschalter Regler · Was ist wo · ND-Filter (2026-10-19)
+- Direkt unter dem Kamerabild ein Umschalter mit drei Teilen statt der aufklappbaren Bereiche. Gezeigt wird nur der gewählte Bereich (`.cam-pane`), gemerkt in `cameraSection`. Beim Handy gibt es „Was ist wo“ nicht.
+- „Was ist wo“ behält die stehende Kamera aus 1.49.0. „Mehr zu …“ bleibt darunter aufklappbar (`cameraMoreOpen`). Schaltflächen 48 px hoch. „i“-Text angepasst.
