@@ -5,7 +5,7 @@ import { loadLanguage, t, applyTranslations } from './lib/i18n.js';
 import { getSetting, setSetting, onSettingChange } from './lib/storage.js';
 import { checkAccess, renderLock, tryCode } from './lib/access.js';
 
-export const APP_VERSION = '1.48.0';
+export const APP_VERSION = '1.49.0';
 
 const ROUTES = {
   capture:  { module: './modules/capture.js',  title: 'nav.capture' },

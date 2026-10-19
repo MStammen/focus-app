@@ -112,7 +112,20 @@ export async function init(root, ctx, { modes, devices }) {
       ctx.setSetting('cameraSection', d.dataset.acc);
       requestAnimationFrame(() => d.querySelector('summary').scrollIntoView({ block: 'nearest', behavior: 'smooth' }));
     } else if (ctx.getSetting('cameraSection', 'settings') === d.dataset.acc) ctx.setSetting('cameraSection', '');
+    // „Wo finde ich was?“ offen: Kamera bleibt oben stehen (CSS .cam-sticky), damit Markierung und Text zugleich sichtbar sind
+    root.classList.toggle('cam-sticky', !!root.querySelector('details.cam-acc[data-acc="finder"][open]'));
   }, true); // toggle steigt nicht auf, daher in der Einfangphase
+  // Schlagwort angetippt (und geöffnet): direkt unter die stehende Kamera rücken, die Erklärung steht darunter
+  finderSlot.addEventListener('click', (e) => {
+    const chip = e.target.closest?.('.fn-chip');
+    if (!chip || chip.getAttribute('aria-pressed') !== 'true' || !root.classList.contains('cam-sticky')) return;
+    requestAnimationFrame(() => {
+      // Ziel: unter der Kamera an ihrer oben stehenden Stelle (sticky top + Höhe), nicht an der momentanen
+      const card = root.querySelector('.camera-card');
+      const dy = chip.getBoundingClientRect().top - (parseFloat(getComputedStyle(card).top) + card.offsetHeight + 8);
+      if (Math.abs(dy) > 2) window.scrollBy(0, dy);
+    });
+  });
   const openKey = ctx.getSetting('cameraSection', 'settings');
   const first = openKey && root.querySelector(`details.cam-acc[data-acc="${openKey}"]`);
   if (first && !first.hidden) first.open = true;

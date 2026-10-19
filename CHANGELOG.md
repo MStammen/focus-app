@@ -627,3 +627,7 @@ Nach Vorschlägen aus einer Code-Durchsicht (Claude im Browser):
 ## 1.48.0 – Neue Akzentfarbe (2026-10-19)
 - Akzent `#2E9E3F` (RGB 46/158/63, nah an Pantone 355 C) statt `#2bb24c`, in App (`css/dark.css`) und Website (`site/site.css`). Neue Tokens `--accent-dark` `#1F7A2E` (Linien/Text auf Hell) und `--accent-light` `#D6EFD9` (Flächen hinter dunklem Text), vorerst ohne Verwendung im dunklen Design.
 - Kontrast: Grün auf Seitengrund 5,6:1, auf Karten 5,1:1, dunkler Text auf grünen Knöpfen 5,5:1, Weiß auf Dunkelgrün 5,4:1, Dunkelgrün auf Hellgrün 4,4:1 (nur für größere Schrift). Rotlicht unverändert. Direktzugangs-PDF auf dem Schreibtisch mit neuem Grün neu erzeugt.
+
+## 1.49.0 – „Wo finde ich was?“: Kamera bleibt sichtbar (2026-10-19)
+- Solange „Wo finde ich was?“ offen ist, bleibt die Kamera-Karte oben stehen (sticky unter der Kopfzeile, Grafik auf höchstens 30 % der Bildschirmhöhe, „Im Bild“-Zeile ausgeblendet). Schlagworte und Erklärungen laufen darunter durch.
+- Tippt man ein Schlagwort an, rückt es direkt unter die stehende Kamera; markiertes Teil und Erklärtext sind zugleich zu sehen. Unten etwas Luft (50 % Bildschirmhöhe), damit auch die letzten Schlagworte hochrollen können.

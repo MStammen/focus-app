@@ -2,7 +2,7 @@
 
 Begleit-App zum Fotokurs (PWA, Vanilla JS, kein Build). Auftrag: `SPEC.md` (Abschnitt 13 = spätere Ergänzungen). Stand und Verlauf: `CHANGELOG.md`. Bedienung, Inhalte pflegen: `README.md`.
 
-## Stand (2026-10-19, Version 1.48.0)
+## Stand (2026-10-19, Version 1.49.0)
 - Alle Schritte aus SPEC 10 umgesetzt, dazu: Hauptreiter „Kamera“ ohne Unterreiter (virtuelle Kamera, „Wo finde ich was?“, Zusatztexte einklappbar; Langzeit-Assistent und Übungen vom Nutzer gestrichen), Design-System übernommen.
 - Online: https://focus-fotografie.de (Website mit Code, Platzhalter noch auszufüllen) und https://focus-fotografie.de/app/ (App mit Kurs-Code). HTTPS (Let's Encrypt) und http→https-Weiterleitung aktiv.
 - Offen: Website-Inhalte und Impressum/Datenschutz, Gerätetests (SPEC 11), echte Vergleichsbilder, Radbelegung Olympus/Panasonic prüfen.

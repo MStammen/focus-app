@@ -785,3 +785,10 @@ body.locked .tab-bar, body.locked #settings-link { display: none; }
 .fn-chip { gap: 8px; }
 .fn-icon { display: inline-flex; width: 18px; height: 18px; }
 .fn-icon svg { width: 100%; height: 100%; }
+
+/* Kamera · „Wo finde ich was?“ offen: Kamera bleibt kleiner oben stehen, Schlagworte und Erklärung laufen darunter durch */
+.cam-sticky .camera-card { position: sticky; top: calc(var(--header-h) + env(safe-area-inset-top, 0px)); z-index: 4; padding: 6px var(--gap); box-shadow: 0 8px 10px -4px var(--bg); }
+.cam-sticky .camera-card .camera-svg { width: auto; max-width: 100%; max-height: 30vh; max-height: 30svh; }
+.cam-sticky .camera-card .cam-seen { display: none; }
+/* Luft unten, damit auch die letzten Schlagworte bis unter die Kamera hochrollen können */
+.cam-sticky { padding-bottom: 50vh; padding-bottom: 50svh; }
