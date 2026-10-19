@@ -631,3 +631,6 @@ Nach Vorschlägen aus einer Code-Durchsicht (Claude im Browser):
 ## 1.49.0 – „Wo finde ich was?“: Kamera bleibt sichtbar (2026-10-19)
 - Solange „Wo finde ich was?“ offen ist, bleibt die Kamera-Karte oben stehen (sticky unter der Kopfzeile, Grafik auf höchstens 30 % der Bildschirmhöhe, „Im Bild“-Zeile ausgeblendet). Schlagworte und Erklärungen laufen darunter durch.
 - Tippt man ein Schlagwort an, rückt es direkt unter die stehende Kamera; markiertes Teil und Erklärtext sind zugleich zu sehen. Unten etwas Luft (50 % Bildschirmhöhe), damit auch die letzten Schlagworte hochrollen können.
+
+## 1.49.1 – Reiter Kamera und Langzeit getauscht (2026-10-19)
+- Tableiste: Kamera · Langzeit · Rechner · Timer · Kurs · Logbuch. Die App startet jetzt auf Kamera (erster Reiter, `DEFAULT_ROUTE`), auch nach dem Öffnen per QR-Code.

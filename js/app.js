@@ -5,7 +5,7 @@ import { loadLanguage, t, applyTranslations } from './lib/i18n.js';
 import { getSetting, setSetting, onSettingChange } from './lib/storage.js';
 import { checkAccess, renderLock, tryCode } from './lib/access.js';
 
-export const APP_VERSION = '1.49.0';
+export const APP_VERSION = '1.49.1';
 
 const ROUTES = {
   capture:  { module: './modules/capture.js',  title: 'nav.capture' },
@@ -16,7 +16,7 @@ const ROUTES = {
   log:      { module: './modules/log.js',      title: 'nav.log' },
   settings: { module: './modules/settings.js', title: 'nav.settings' },
 };
-const DEFAULT_ROUTE = 'capture';
+const DEFAULT_ROUTE = 'camera'; // erster Reiter links
 
 const THEME_COLORS = { dark: '#0b0d12', redlight: '#000000' };
 
@@ -214,7 +214,7 @@ async function start() {
   // den Server, und wird sofort aus der Adresse entfernt (nicht im Verlauf, nicht beim Teilen des Links).
   const key = location.hash.match(/^#k=([A-Za-z0-9]{4,40})/);
   if (key) {
-    history.replaceState(null, '', `${location.pathname}${location.search}#/capture`);
+    history.replaceState(null, '', `${location.pathname}${location.search}#/camera`);
     await tryCode(key[1]);
   }
   // Zugang nur für Seminarteilnehmer: erst Kurs-Code, dann die App (js/lib/access.js)
