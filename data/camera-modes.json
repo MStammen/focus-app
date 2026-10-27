@@ -3643,6 +3643,51 @@
         "isoMin": 32,
         "isoMax": 3200,
         "bulb": null
+      },
+      "functions": {
+        "lock": {
+          "where": "Auf die Stelle tippen, die scharf werden soll. Den Finger auf dem Fokusfeld halten, bis „AE/AF-Sperre“ erscheint: Schärfe und Helligkeit bleiben dann fest. Antippen hebt die Sperre auf.",
+          "part": "phoneScreen",
+          "source": "Apple iPhone-Handbuch (iOS 18): Kamerawerkzeuge verwenden",
+          "confidence": "hoch"
+        },
+        "exposure": {
+          "where": "Nach dem Antippen das Sonnensymbol neben dem Fokusfeld nach oben oder unten ziehen. Für mehrere Fotos: oben die Kamera-Optionen öffnen, auf „Belichtung“ tippen und den Regler verschieben (ab iPhone 11).",
+          "part": "phoneScreen",
+          "source": "Apple iPhone-Handbuch (iOS 18): Kamerawerkzeuge verwenden",
+          "confidence": "hoch"
+        },
+        "timer": {
+          "where": "Oben die Kamera-Optionen öffnen, auf den Timer tippen und 3 s oder 10 s wählen, dann auslösen.",
+          "source": "Apple iPhone-Handbuch (iOS 18): Kamerawerkzeuge verwenden",
+          "confidence": "hoch"
+        },
+        "burst": {
+          "where": "Den Auslöser nach links ziehen und halten, loslassen beendet die Serie. Oder unter Einstellungen → Kamera „‚Lauter‘ für Serie verwenden“ einschalten und die Lauter-Taste halten.",
+          "part": "phoneRelease",
+          "source": "Apple iPhone-Handbuch (iOS 18): Fotos mit dem Serienbildmodus aufnehmen",
+          "confidence": "hoch"
+        },
+        "night": {
+          "where": "Schaltet sich bei wenig Licht selbst ein, oben erscheint das Nachtmodus-Symbol. Über die Kamera-Optionen → Nachtmodus den Regler auf „Max“ schieben: längste Belichtung. Handy still halten oder Stativ (ab iPhone 11).",
+          "source": "Apple iPhone-Handbuch (iOS 18): Fotos im Nachtmodus aufnehmen",
+          "confidence": "hoch"
+        },
+        "live": {
+          "where": "Live Photo oben einschalten (Kreis-Symbol). Später in der App Fotos das Live Photo öffnen, oben links auf „Live“ tippen und „Langzeitbelichtung“ wählen.",
+          "source": "Apple iPhone-Handbuch (iOS 18): Live Photos aufnehmen; Live Photos bearbeiten",
+          "confidence": "hoch"
+        },
+        "raw": {
+          "where": "Nur Pro-Modelle: Einstellungen → Kamera → Formate → „Apple ProRAW“ einschalten, dann oben in der Kamera auf „RAW“ tippen. Mit ProRAW gibt es kein Live Photo.",
+          "source": "Apple iPhone-Handbuch (iOS 18): Apple ProRAW-Fotos aufnehmen",
+          "confidence": "hoch"
+        },
+        "grid": {
+          "where": "Einstellungen → Kamera → „Raster“ und „Wasserwaage“ einschalten.",
+          "source": "Apple iPhone-Handbuch (iOS 18): Kamerawerkzeuge verwenden",
+          "confidence": "hoch"
+        }
       }
     },
     {
@@ -3665,6 +3710,44 @@
         "isoMin": 50,
         "isoMax": 3200,
         "bulb": null
+      },
+      "functions": {
+        "pro": {
+          "where": "Kamera-App → in der Modusleiste über dem Auslöser MEHR → PRO. Dort Belichtungszeit, ISO, Weißabgleich, Fokus und Belichtungskorrektur selbst einstellen.",
+          "source": "Samsung Support (DE): Kamera-Modi verwenden – Galaxy-Handys; bei anderen Herstellern ähnlich, Namen können abweichen",
+          "confidence": "mittel"
+        },
+        "timer": {
+          "where": "Über dem Vorschaubild auf das Timer-Symbol tippen und die Zeit für den Selbstauslöser wählen.",
+          "source": "Samsung Support (DE): Kamera-Modi verwenden – Galaxy-Handys; bei anderen Herstellern ähnlich, Namen können abweichen",
+          "confidence": "mittel"
+        },
+        "burst": {
+          "where": "Zahnrad → Auslöser → „Auslöser getippt halten“ auf Serienbilder stellen, dann den Auslöser gedrückt halten.",
+          "part": "phoneRelease",
+          "source": "Samsung Support (DE): Einstellungen der Galaxy Kamera – Galaxy-Handys; bei anderen Herstellern ähnlich, Namen können abweichen",
+          "confidence": "mittel"
+        },
+        "night": {
+          "where": "Bei wenig Licht erscheint im Foto-Modus eine Mondsichel, antippen schaltet die Nachtaufnahme ein. Oder MEHR → NACHT und unten rechts die Zeit auf „Max.“ stellen; Handy ruhig halten.",
+          "source": "Samsung Support (DE): Kamera-Modi verwenden – Galaxy-Handys; bei anderen Herstellern ähnlich, Namen können abweichen",
+          "confidence": "mittel"
+        },
+        "raw": {
+          "where": "Zahnrad → Speicheroptionen → „RAW-Kopien (Pro)“ einschalten: Im Pro-Modus wird zusätzlich eine RAW-Datei (DNG) gespeichert.",
+          "source": "Samsung Support (DE): Einstellungen der Galaxy Kamera – Galaxy-Handys; bei anderen Herstellern ähnlich, Namen können abweichen",
+          "confidence": "mittel"
+        },
+        "grid": {
+          "where": "Zahnrad in der Kamera-App → „Raster“ einschalten.",
+          "source": "Samsung Support (DE): Tipps und Tricks für optimale Fotos – Galaxy-Handys; bei anderen Herstellern ähnlich, Namen können abweichen",
+          "confidence": "mittel"
+        },
+        "volume": {
+          "where": "Zahnrad → Auslöser → Drücken der Lautstärketasten → „Bild aufnehmen“. Dann löst die Lautstärketaste aus, ohne den Bildschirm zu berühren.",
+          "source": "Samsung Support (DE): Einstellungen der Galaxy Kamera – Galaxy-Handys; bei anderen Herstellern ähnlich, Namen können abweichen",
+          "confidence": "mittel"
+        }
       }
     }
   ],

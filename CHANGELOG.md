@@ -638,3 +638,8 @@ Nach Vorschlägen aus einer Code-Durchsicht (Claude im Browser):
 ## 1.50.0 – Kamera: Umschalter Regler · Was ist wo · ND-Filter (2026-10-19)
 - Direkt unter dem Kamerabild ein Umschalter mit drei Teilen statt der aufklappbaren Bereiche. Gezeigt wird nur der gewählte Bereich (`.cam-pane`), gemerkt in `cameraSection`. Beim Handy gibt es „Was ist wo“ nicht.
 - „Was ist wo“ behält die stehende Kamera aus 1.49.0. „Mehr zu …“ bleibt darunter aufklappbar (`cameraMoreOpen`). Schaltflächen 48 px hoch. „i“-Text angepasst.
+
+## 1.51.0 – Handy: „Was ist wo“ mit den Einstellungen der Kamera-App (2026-10-27)
+- iPhone (Apple iPhone-Handbuch, iOS 18): Fokus & Belichtung festhalten (AE/AF-Sperre), Helligkeit, Selbstauslöser, Serienbilder, Nachtmodus („Max“), Live Photo mit Langzeit-Effekt, ProRAW, Raster & Wasserwaage.
+- Android (Samsung Support DE, Galaxy; Hinweis, dass andere Hersteller ähnlich sind, daher `confidence: mittel`): Pro-Modus, Selbstauslöser, Serienbilder, Nachtmodus, RAW-Kopien, Raster, Lautstärketaste als Auslöser. Google Pixel nicht aufgenommen (keine offizielle Anleitungsseite gefunden).
+- Daten in `brands[].functions` der Handy-Marken, Schlagworte und Erklärungen in `camera.phoneFunc`, eigene Symbole (Schloss, Sonne, PRO, Mond, Live, Raster, Lautsprecher). Teile: Bildschirm bzw. Auslöser werden markiert. Neuer Test. „i“-Text ergänzt.

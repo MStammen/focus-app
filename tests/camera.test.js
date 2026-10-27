@@ -137,3 +137,18 @@ test('jedes Modell hat ein Sensorformat mit Formatfaktor', () => {
     assert.ok([1, 1.5, 1.6, 2].includes(m.sensor.crop), `${b.id}/${m.id}: unerwarteter Formatfaktor ${m.sensor.crop}`);
   }
 });
+
+test('Handys: Schlagworte der Kamera-App mit Quelle, Text und gültigem Teil', () => {
+  const d = read('data/camera-modes.json');
+  const de = read('i18n/de.json');
+  for (const id of ['iphone', 'android']) {
+    const f = d.brands.find((b) => b.id === id).functions;
+    assert.ok(f && Object.keys(f).length >= 5, `${id}: Schlagworte`);
+    for (const [k, v] of Object.entries(f)) {
+      assert.ok(v.where && v.source, `${id}/${k}: Text und Quelle`);
+      assert.ok(['hoch', 'mittel', 'niedrig'].includes(v.confidence), `${id}/${k}: confidence`);
+      assert.ok(de.camera.phoneFunc[k] && de.camera.phoneFunc[`${k}What`], `${id}/${k}: Bezeichnung und Erklärung`);
+      if (v.part) assert.ok(['phoneScreen', 'phoneRelease'].includes(v.part), `${id}/${k}: Teil ${v.part}`);
+    }
+  }
+});

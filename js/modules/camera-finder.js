@@ -15,6 +15,13 @@ const FN_ICONS = {
   af: '<path d="M3 7V3h4M13 3h4v4M17 13v4h-4M7 17H3v-4"/><circle cx="10" cy="10" r="1.4" fill="currentColor" stroke="none"/>',
   timer: '<circle cx="10" cy="11" r="6"/><path d="M10 11V7.5M10 11l2.4 1.6M8.5 3h3"/>',
   mirror: '<path d="M3 15L13 7"/><path d="M15 13V3M12.5 5.5L15 3l2.5 2.5"/>',
+  lock: '<rect x="4.5" y="9" width="11" height="8.5" rx="1.5"/><path d="M7 9V6.5a3 3 0 0 1 6 0V9"/>',
+  exposure: '<circle cx="10" cy="10" r="3.2"/><path d="M10 2.5v2M10 15.5v2M2.5 10h2M15.5 10h2M4.7 4.7l1.4 1.4M13.9 13.9l1.4 1.4M4.7 15.3l1.4-1.4M13.9 6.1l1.4-1.4"/>',
+  pro: '<rect x="1.5" y="5" width="17" height="10" rx="2"/><text x="10" y="12.4" font-size="6" text-anchor="middle" fill="currentColor" stroke="none" font-family="inherit">PRO</text>',
+  night: '<path d="M14.5 13.5A6 6 0 0 1 8 3.6a6.5 6.5 0 1 0 6.5 9.9z"/>',
+  live: '<circle cx="10" cy="10" r="2.2"/><circle cx="10" cy="10" r="5"/><circle cx="10" cy="10" r="8" stroke-dasharray="1.6 2"/>',
+  grid: '<rect x="2.5" y="2.5" width="15" height="15" rx="1.5"/><path d="M7.5 2.5v15M12.5 2.5v15M2.5 7.5h15M2.5 12.5h15"/>',
+  volume: '<path d="M3 8h3l4-3.5v11L6 12H3z"/><path d="M13 7.5a3.5 3.5 0 0 1 0 5M15 5.5a6 6 0 0 1 0 9"/>',
   efc: '<rect x="3" y="3" width="14" height="14" rx="1.5"/><path d="M3 8h14M3 12h6"/><text x="13.2" y="15.6" font-size="6" text-anchor="middle" fill="currentColor" stroke="none" font-family="inherit">e</text>',
 };
 function fnIcon(key) {
@@ -110,8 +117,19 @@ export function partFinder(ctx, { dials, onSelect }) {
     { key: 'stab', icon: 'stab', parts: ['lens'] },
     { key: 'shake', icon: null, parts: [] },
   ];
+  // Handys: eigene Schlagworte für die wenigen Einstellungen der Kamera-App (data/camera-modes.json → brands[].functions)
+  const PHONE_FUNCS = [
+    { key: 'lock', icon: 'lock' }, { key: 'exposure', icon: 'exposure' }, { key: 'pro', icon: 'pro' },
+    { key: 'timer', icon: 'timer' }, { key: 'burst', icon: 'drive' }, { key: 'night', icon: 'night' },
+    { key: 'live', icon: 'live' }, { key: 'raw', icon: 'quality' }, { key: 'grid', icon: 'grid' }, { key: 'volume', icon: 'volume' },
+  ];
+  const isPhone = () => brand?.layout === 'phone';
   /** Funktionen mit den Daten des gewählten Modells (falls erfasst). */
   function functionList() {
+    if (isPhone()) {
+      const fns = brand?.functions || {};
+      return PHONE_FUNCS.filter((fx) => fns[fx.key]).map((fx) => ({ id: `fn:${fx.key}`, key: fx.key, icon: fx.icon, parts: [], label: t(`camera.phoneFunc.${fx.key}`), what: t(`camera.phoneFunc.${fx.key}What`), whereGeneric: null, data: fns[fx.key] }));
+    }
     const fns = brand?.model?.functions || {};
     const mirror = fns.shake?.type === 'mirror';
     return FUNCS.map((fx) => {
@@ -141,7 +159,7 @@ export function partFinder(ctx, { dials, onSelect }) {
         : fn.whereGeneric ? fn.whereGeneric + (part ? ` ${t('camera.finder.marked', { name: partLabel(t, part) })}` : '')
           : brand?.model ? t('camera.func.notCaptured') : t('camera.func.generic');
       text.append(
-        el('strong', { text: brand?.model ? `${fn.label} · ${brand.model.name}` : fn.label }),
+        el('strong', { text: brand?.model ? `${fn.label} · ${brand.model.name}` : isPhone() ? `${fn.label} · ${brand.name}` : fn.label }),
         el('p', { class: 'finder-where', style: 'margin:4px 0 0', text: where }),
         el('p', { style: 'margin:6px 0 0', text: fn.what }),
         el('p', { class: 'muted', style: 'margin:6px 0 0', text: fn.data ? [t('camera.finder.source', { source: fn.data.source }), fn.data.confidence !== 'hoch' ? t('camera.dialsCheck') : ''].filter(Boolean).join(' ') : t('camera.finder.generalNote') }),
@@ -165,7 +183,7 @@ export function partFinder(ctx, { dials, onSelect }) {
     brand = b; current = null;
     if (text.parentNode !== card) card.append(text); // vor dem Leeren aus der Schlagwort-Zeile holen
     fnChips.innerHTML = '';
-    const phone = brand?.layout === 'phone' || brand?.layout === 'pinhole';
+    const phone = brand?.layout === 'pinhole' || (brand?.layout === 'phone' && !brand?.functions); // Handy nur, wenn Schlagworte erfasst sind
     wrap.toggleAttribute('data-off', phone); // Handy: keine Bedienteile, Umschalter blendet „Was ist wo“ aus
     if (!phone) for (const fn of functionList()) {
       fnChips.appendChild(el('button', { type: 'button', class: 'chip quick fn-chip', dataset: { part: fn.id }, 'aria-pressed': 'false', onClick: () => select(fn.id) }, [el('span', { text: fn.label }), fnIcon(fn.icon)]));
