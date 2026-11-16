@@ -43,6 +43,7 @@
     "title": "Rechner",
     "tabs": {
       "exposure": "Belichtung",
+      "dof": "Schärfentiefe",
       "nd": "ND",
       "pinhole": "Lochkamera",
       "film": "Film"
@@ -222,6 +223,29 @@
       "hint": "Seitenlicht 1 Stufe dunkler, Gegenlicht 2 Stufen. Richtwerte nach der ANSI-Belichtungstabelle, eine Probeaufnahme lohnt sich.",
       "long": "Das ist lang: Mit f/2,8 und ISO 1600 wären es etwa {time}.",
       "range": " (Tabelle: Lichtwert {range})"
+    },
+    "dof": {
+      "focal": "Brennweite",
+      "distance": "Entfernung",
+      "format": "Sensor",
+      "formats": {
+        "ff": "Vollformat",
+        "apsc": "APS-C (Nikon, Sony, Fujifilm)",
+        "apscCanon": "APS-C (Canon)",
+        "mft": "Micro Four Thirds"
+      },
+      "total": "Schärfentiefe",
+      "range": "scharf von {near} bis {far}",
+      "near": "Nahpunkt",
+      "far": "Fernpunkt",
+      "infinity": "unendlich",
+      "hyperfocal": "Hyperfokale Distanz",
+      "hyperfocalHint": "Darauf scharfstellen: alles ab {half} bis unendlich ist scharf. Gut für Landschaft.",
+      "toHyperfocal": "Auf hyperfokale Distanz stellen",
+      "coc": "Gerechnet mit Zerstreuungskreis {coc} mm (üblicher Wert für dieses Format).",
+      "equivalent": "Bildausschnitt wie {mm} mm an Vollformat.",
+      "invalid": "Bitte Brennweite und Entfernung eingeben. Die Entfernung muss größer sein als die Brennweite.",
+      "scaleLabel": "Scharfer Bereich von {near} bis {far}"
     }
   },
   "timer": {
@@ -795,7 +819,7 @@
   "help": {
     "capture": "Handy aufs Stativ stellen oder fest auflegen, dann „Kamera einschalten“. | Zeit wählen und auslösen: Die App stapelt viele Einzelbilder zu einem Langzeitbild. | Unter „Einstellungen“ die Art wählen: Mitteln für glattes Wasser, Aufhellen für Lichtspuren, Integrieren wie Film. | Ergebnis speichern oder ins Logbuch übernehmen. Alles bleibt auf deinem Handy.",
     "camera": "Marke und Modell wählen. Du siehst die Kamera von hinten oben. | Das kleine Rad oben drehen: Daneben steht, wer Zeit und Blende wählt. | Ein Teil der Kamera antippen: Es wird grün, darunter steht kurz, wofür es da ist. | Unter der Kamera mit dem Umschalter wählen: Regler, Was ist wo oder ND-Filter. Beim Handy zeigt „Was ist wo“ die Einstellungen der Kamera-App (Fokus festhalten, Helligkeit, Nachtmodus, RAW …). „Wo finde ich was?“ zeigt AF-Modus, Selbstauslöser und Spiegelvorauslösung an deinem Modell. | Mit den Reglern Blende, Zeit, ISO und ND ändern und im Monitor sehen, was passiert. Unter dem Bild steht kurz, was zu sehen ist (z. B. Leuchtspur, Auto eingefroren).",
-    "calc": "Belichtung: Ausgangsmessung eintragen oder unter „Licht schätzen“ die Situation wählen (z. B. Sonne, Dämmerung, Straße bei Nacht), Modus wählen und beim Ziel einen Wert ändern. Der Modus bzw. das offene Schloss legt fest, welcher Wert nachgibt. | ND: gewünschte Zeit wählen, die App schlägt passende Filter vor. | Lochkamera: Lochgröße und Abstand ergeben Blende, Bildwinkel und Belichtungszeit. | Film: lange Zeiten mit Schwarzschild-Korrektur für deinen Film. | Ergebnisse gehen mit einem Tipp an den Timer oder auf die Kamera.",
+    "calc": "Belichtung: Ausgangsmessung eintragen oder unter „Licht schätzen“ die Situation wählen (z. B. Sonne, Dämmerung, Straße bei Nacht), Modus wählen und beim Ziel einen Wert ändern. Der Modus bzw. das offene Schloss legt fest, welcher Wert nachgibt. | Schärfentiefe: Brennweite, Blende, Entfernung und Sensor ergeben, von wo bis wo das Bild scharf ist, und die hyperfokale Distanz für Landschaften. | ND: gewünschte Zeit wählen, die App schlägt passende Filter vor. | Lochkamera: Lochgröße und Abstand ergeben Blende, Bildwinkel und Belichtungszeit. | Film: lange Zeiten mit Schwarzschild-Korrektur für deinen Film. | Ergebnisse gehen mit einem Tipp an den Timer oder auf die Kamera.",
     "timer": "Zeit wählen und „Start“ tippen. Ton und Vibration melden das Ende. | Intervall: mehrere Belichtungen nacheinander mit Pause dazwischen. | Handy nicht sperren: Der Timer läuft nur bei eingeschaltetem Display. | Danach die Belichtung mit „Ins Logbuch“ festhalten. | Im Dunkeln den Rotlichtmodus (Glühbirne oben) einschalten.",
     "learn": "Hier entstehen Lernkarten, Übungen und Aufgaben zum Fotokurs. | Die Inhalte werden gerade vorbereitet und erscheinen nach und nach.",
     "log": "Hier landen Aufnahmen aus Langzeit und Belichtungen aus dem Timer, mit Zeit, Blende, ISO und Notiz. | „Neuer Eintrag“ für Bilder mit deiner Kamera oder auf Film. | Export als CSV (Tabelle) oder JSON (mit Bildern); „Import JSON“ holt Einträge zurück. | Alles bleibt auf deinem Handy. Komplette Sicherung: Einstellungen → Alles exportieren."

@@ -643,3 +643,7 @@ Nach Vorschlägen aus einer Code-Durchsicht (Claude im Browser):
 - iPhone (Apple iPhone-Handbuch, iOS 18): Fokus & Belichtung festhalten (AE/AF-Sperre), Helligkeit, Selbstauslöser, Serienbilder, Nachtmodus („Max“), Live Photo mit Langzeit-Effekt, ProRAW, Raster & Wasserwaage.
 - Android (Samsung Support DE, Galaxy; Hinweis, dass andere Hersteller ähnlich sind, daher `confidence: mittel`): Pro-Modus, Selbstauslöser, Serienbilder, Nachtmodus, RAW-Kopien, Raster, Lautstärketaste als Auslöser. Google Pixel nicht aufgenommen (keine offizielle Anleitungsseite gefunden).
 - Daten in `brands[].functions` der Handy-Marken, Schlagworte und Erklärungen in `camera.phoneFunc`, eigene Symbole (Schloss, Sonne, PRO, Mond, Live, Raster, Lautsprecher). Teile: Bildschirm bzw. Auslöser werden markiert. Neuer Test. „i“-Text ergänzt.
+
+## 1.52.0 – Rechner: Schärfentiefe (2026-11-16)
+- Neue Seite „Schärfentiefe“ im Rechner (zweiter Reiter): Brennweite, Blende, Entfernung und Sensor (Vollformat, APS-C, APS-C Canon, Micro Four Thirds; vorgewählt nach der eigenen Kamera) ergeben Schärfentiefe, Nah- und Fernpunkt, hyperfokale Distanz mit Knopf „Auf hyperfokale Distanz stellen“ und eine Skala (0,5 m bis unendlich) mit dem scharfen Bereich.
+- Rechnung in `js/core/dof.js` (übliche Näherungsformeln, Zerstreuungskreis 0,03 mm für Vollformat, geteilt durch den Formatfaktor), Tests in `tests/dof.test.js`. „i“-Text des Rechners ergänzt.

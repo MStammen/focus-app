@@ -795,3 +795,10 @@ body.locked .tab-bar, body.locked #settings-link { display: none; }
 /* Umschalter unter der Kamera: Regler · Was ist wo · ND-Filter */
 .cam-pane-bar { margin: 12px 0 8px; }
 .cam-pane-bar .segment { flex: 1 1 0; min-height: var(--touch); }
+
+/* Rechner · Schärfentiefe: Skala mit scharfem Bereich */
+.dof-scale { width: 100%; height: auto; display: block; margin: 4px 0 10px; }
+.dof-axis, .dof-tick { stroke: var(--fg-muted); stroke-width: 1; }
+.dof-tick-text { fill: var(--fg-muted); font-size: 9px; }
+.dof-zone { fill: var(--accent-soft); stroke: var(--accent); stroke-width: 1.5; }
+.dof-focus { stroke: var(--fg); stroke-width: 2; stroke-linecap: round; }
