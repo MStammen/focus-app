@@ -5,6 +5,15 @@ export function loadCameraModes() {
   return modesPromise;
 }
 
+/** Formatfaktor des Sensors der eigenen Kamera (Einstellungen Marke/Modell), sonst null. */
+export async function ownSensorCrop(ctx) {
+  try {
+    const modes = await loadCameraModes();
+    const brand = withModel(modes.brands.find((b) => b.id === ctx.getSetting('cameraBrand', '')), ctx.getSetting('cameraModel', ''));
+    return brand?.sensor?.crop || null;
+  } catch { return null; }
+}
+
 /** Grenzen der Kamera: Markenwerte, überschrieben durch Einstellung „camLimits“. */
 export function cameraLimits(ctx, modes, brand) {
   const own = ctx.getSetting('camLimits', {}) || {};

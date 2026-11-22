@@ -647,3 +647,11 @@ Nach Vorschlägen aus einer Code-Durchsicht (Claude im Browser):
 ## 1.52.0 – Rechner: Schärfentiefe (2026-11-16)
 - Neue Seite „Schärfentiefe“ im Rechner (zweiter Reiter): Brennweite, Blende, Entfernung und Sensor (Vollformat, APS-C, APS-C Canon, Micro Four Thirds; vorgewählt nach der eigenen Kamera) ergeben Schärfentiefe, Nah- und Fernpunkt, hyperfokale Distanz mit Knopf „Auf hyperfokale Distanz stellen“ und eine Skala (0,5 m bis unendlich) mit dem scharfen Bereich.
 - Rechnung in `js/core/dof.js` (übliche Näherungsformeln, Zerstreuungskreis 0,03 mm für Vollformat, geteilt durch den Formatfaktor), Tests in `tests/dof.test.js`. „i“-Text des Rechners ergänzt.
+
+## 1.53.0 – Rechner: Sterne (2026-11-22)
+- Neue Seite „Sterne“ im Rechner (nach Schärfentiefe) mit vier Teilen:
+  - Sterne als Punkte: längste Zeit ohne Strichspuren nach NPF-Regel (vereinfachte Form nach F. Michaud, mit Blende und Auflösung → Pixelabstand) und 500er-Regel; Sensor nach der eigenen Kamera vorgewählt.
+  - Startwerte Milchstraße: längste Standardzeit unter der NPF-Grenze, ISO abgeleitet von f/2,8 · 20 s · ISO 3200; Tipps (Stativ, Fokus von Hand, Stabilisator aus …); Knöpfe in den Belichtungsrechner und den Timer.
+  - Sternspuren: Zeit je Bild, Pause, Gesamtdauer → Anzahl Bilder und Bogenlänge (15,04°/h), Hinweis aufs Stapeln.
+  - Mond: Phase heute mit kleiner Mondscheibe, nächste Neu- und Vollmonde, dunkle Nächte um den Neumond. Offline aus dem mittleren synodischen Monat, auf etwa einen Tag genau.
+- Rechnungen in `js/core/stars.js`, Tests in `tests/stars.test.js` (u. a. Mondtermine Januar 2024). Gemeinsamer Helfer `ownSensorCrop` in `camera-profile.js` (auch für Schärfentiefe). „i“-Text ergänzt.

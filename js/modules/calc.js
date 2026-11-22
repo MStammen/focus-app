@@ -1,7 +1,7 @@
-// Rechner: Umschalter oben, fünf Unterseiten als eigene Module (calc-*.js).
+// Rechner: Umschalter oben, sechs Unterseiten als eigene Module (calc-*.js).
 import { el, segmented, titleWithInfo } from '../lib/ui.js';
 
-const PAGES = ['exposure', 'dof', 'nd', 'pinhole', 'film'];
+const PAGES = ['exposure', 'dof', 'stars', 'nd', 'pinhole', 'film'];
 
 export async function init(root, ctx) {
   const { t, subpath } = ctx;

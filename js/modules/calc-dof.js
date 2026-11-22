@@ -3,7 +3,7 @@
 import { dof, DOF_FORMATS } from '../core/dof.js';
 import { el, numberField, seriesSelect, stepFromSetting, fmtNum, button, bigValue } from '../lib/ui.js';
 import { getSession, setSession } from '../lib/session.js';
-import { loadCameraModes, withModel } from '../lib/camera-profile.js';
+import { ownSensorCrop } from '../lib/camera-profile.js';
 
 const NS = 'http://www.w3.org/2000/svg';
 const svgEl = (tag, attrs = {}, kids = []) => { const n = document.createElementNS(NS, tag); for (const [k, v] of Object.entries(attrs)) n.setAttribute(k, v); for (const c of kids) n.append(c); return n; };
@@ -21,14 +21,8 @@ export async function init(root, ctx) {
 
   // Sensorformat: anfangs das der eigenen Kamera (Einstellungen Marke/Modell), sonst Vollformat
   if (!state.format) {
-    state.format = 'ff';
-    try {
-      const modes = await loadCameraModes();
-      const brand = withModel(modes.brands.find((b) => b.id === ctx.getSetting('cameraBrand', '')), ctx.getSetting('cameraModel', ''));
-      const crop = brand?.sensor?.crop;
-      const match = DOF_FORMATS.find((f) => f.crop === crop);
-      if (match) state.format = match.id;
-    } catch { /* ohne Kameradaten bleibt Vollformat */ }
+    const crop = await ownSensorCrop(ctx);
+    state.format = DOF_FORMATS.find((f) => f.crop === crop)?.id || 'ff';
   }
 
   const focal = numberField({ label: t('calc.dof.focal'), value: state.focal, unit: 'mm', min: 1, stepAttr: '1', inputmode: 'numeric', onChange: (v) => { state.focal = v; update(); } });
