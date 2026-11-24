@@ -1,6 +1,6 @@
 // Rechner 4.1 Belichtung: Ausgangsmessung → Zielwerte bei gleicher Belichtung.
 import { ev, shutterFor, apertureFor, isoFor, nearestStandard, stopsBetween } from '../core/exposure.js';
-import { el, seriesSelect, segmented, STEP_OPTIONS, stepFromSetting, fmtValue, fmtStops, fmtNum, button } from '../lib/ui.js';
+import { el, seriesSelect, stepFromSetting, fmtValue, fmtStops, fmtNum, button, moreBox } from '../lib/ui.js';
 import { getSession, setSession } from '../lib/session.js';
 import { cameraDials } from '../lib/camera-svg.js';
 import { cameraBridge } from '../lib/camera-bridge.js';
@@ -24,33 +24,14 @@ const LOCK_CLOSED = '<svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><p
 
 export async function init(root, ctx) {
   const { t } = ctx;
-  let step = stepFromSetting(ctx);
+  const step = stepFromSetting(ctx);
   const state = getSession('exposure', {
     src: { aperture: 8, shutter: 1 / 125, iso: 100 },
     dst: { aperture: 8, shutter: 1 / 125, iso: 100 },
     yield: 'shutter',
   });
 
-  // Stufenraster
-  function buildStepRow() {
-    const row = el('div', { class: 'row' }, [
-      el('span', { class: 'row-label', text: t('calc.stepGrid') }),
-      segmented({
-        small: true, ariaLabel: t('calc.stepGrid'),
-        active: ctx.getSetting('stepGrid', '1/3'),
-        items: STEP_OPTIONS.map((o) => ({ id: o.key, label: o.label })),
-        onSelect: (key) => {
-          ctx.setSetting('stepGrid', key);
-          step = STEP_OPTIONS.find((o) => o.key === key).value;
-          for (const k of KINDS) { src[k].setStep(step); dst[k].setStep(step); }
-          recompute();
-          row.replaceWith(buildStepRow());
-        },
-      }),
-    ]);
-    return row;
-  }
-  root.appendChild(buildStepRow());
+  // Stufenraster: nur noch in den Einstellungen (schlichter Einstieg)
 
   // Ausgangsmessung
   const src = {};
@@ -62,14 +43,16 @@ export async function init(root, ctx) {
   }
   srcCard.appendChild(srcFields);
   const evLine = el('p', { class: 'muted small', style: 'margin:10px 0 0' });
-  srcCard.appendChild(evLine);
   // Licht schätzen statt messen: Situation wählen → Zeit passend zu Blende und ISO der Ausgangsmessung
   const lightSel = el('select', { class: 'select', 'aria-label': t('calc.light.label') }, [
     el('option', { value: '', text: t('calc.light.none') }),
     ...LIGHT_GROUPS.map(([g, items]) => el('optgroup', { label: t(`calc.light.groups.${g}`) }, items.map(([id]) => el('option', { value: id, text: t(`calc.light.items.${id}`) })))),
   ]);
   const lightLine = el('p', { class: 'small', style: 'margin:6px 0 0' });
-  srcCard.append(el('label', { class: 'field', style: 'margin-top:12px' }, [el('span', { class: 'field-label', text: t('calc.light.label') }), lightSel]), lightLine);
+  // Licht schätzen und Lichtwert: zugeklappt, damit der Einstieg schlicht bleibt
+  const lightBox = moreBox(ctx, 'expLight', [el('label', { class: 'field' }, [el('span', { class: 'field-label', text: t('calc.light.choose') }), lightSel]), lightLine, evLine], { label: t('calc.light.label') });
+  if (state.light) lightBox.open = true;
+  srcCard.append(lightBox);
   function showLight() {
     const L = LIGHTS[state.light];
     lightSel.value = L ? state.light : '';
@@ -95,7 +78,7 @@ export async function init(root, ctx) {
   // Stilisierte Kamera ohne Marke: zeigt die Zielwerte. Antippen des Modusrads wechselt den Modus.
   // Der Rechner hängt bewusst nicht an Marke und Modell aus den Einstellungen.
   const dials = cameraDials({ ...state.dst, onModeSelect: (m) => { if (MODE_YIELD[m]) setYield(MODE_YIELD[m]); } });
-  root.appendChild(el('div', { class: 'card' }, [dials.el]));
+  const dialsCard = el('div', { class: 'card' }, [dials.el]);
 
   // Ziel
   const dst = {};
@@ -103,12 +86,11 @@ export async function init(root, ctx) {
   const locks = {};
   const dstCard = el('div', { class: 'card' }, [
     el('h2', { text: t('calc.exposure.target'), style: 'margin-top:0' }),
-    el('p', { class: 'muted small', text: t('calc.exposure.yieldHint') }),
   ]);
   // Modus direkt wählen: legt fest, welcher Wert nachgibt (wie das Schloss)
   const modeBar = el('div', { class: 'segmented small calc-modes', role: 'group', 'aria-label': t('calc.exposure.modeLabel') });
   const modeLine = el('p', { class: 'small mode-line' });
-  dstCard.append(el('span', { class: 'field-label', text: t('calc.exposure.modeLabel') }), modeBar, modeLine);
+  dstCard.append(el('span', { class: 'field-label', text: t('calc.exposure.modeLabel') }), modeBar);
   function updateModeLine() {
     const concept = YIELD_MODE[state.yield];
     // Umschalter mit neutralen Bezeichnungen (Kürzel der gängigen Marken in Klammern)
@@ -133,15 +115,16 @@ export async function init(root, ctx) {
     });
     dstCard.appendChild(el('div', { class: 'param-row' }, [dst[k].field, readouts[k], locks[k]]));
   }
-  root.appendChild(dstCard);
-
-  // Differenz
-  const diffCard = el('div', { class: 'card' }, [el('h2', { text: t('calc.exposure.diffTitle'), style: 'margin-top:0' })]);
+  // Schloss-Erklärung und Stufenvergleich: unter „Mehr dazu“
   const diffTable = el('table', { class: 'stops-table' });
-  diffCard.appendChild(diffTable);
   const roundingNote = el('p', { class: 'muted small', style: 'margin:8px 0 0', text: t('calc.exposure.roundingNote') });
-  diffCard.appendChild(roundingNote);
-  root.appendChild(diffCard);
+  dstCard.appendChild(moreBox(ctx, 'expDiff', [
+    modeLine,
+    el('p', { class: 'muted small', text: t('calc.exposure.yieldHint') }),
+    el('h3', { class: 'field-label', text: t('calc.exposure.diffTitle') }),
+    diffTable, roundingNote,
+  ]));
+  root.append(dstCard, dialsCard);
 
   const timerBtn = button(t('calc.exposure.timerButton'), { primary: true, block: true, onClick: () => ctx.navigate(`timer?seconds=${state.dst.shutter}`) });
   root.appendChild(timerBtn);

@@ -177,3 +177,28 @@ export function titleWithInfo(ctx, { title, key }) {
   btn.addEventListener('click', () => { const open = box.hidden; set(open); ctx.setSetting(`helpOpen.${key}`, open); });
   return { row: el('div', { class: 'title-row' }, [el('h1', { text: title }), btn]), box };
 }
+
+/**
+ * „Mehr dazu“: Erklärungen, Formeln, Quellen und Zweitwerte, anfangs zugeklappt (Einstieg bleibt schlicht).
+ * Offen/zu merkt sich die App unter moreOpen.<key>. label: eigener Text statt „Mehr dazu“.
+ */
+export function moreBox(ctx, key, children, { label } = {}) {
+  const body = el('div', { class: 'more-body' }, children);
+  const box = el('details', { class: 'more-box' }, [el('summary', { text: label || ctx.t('common.more') }), body]);
+  box.open = !!ctx.getSetting(`moreOpen.${key}`, false);
+  box.addEventListener('toggle', () => ctx.setSetting(`moreOpen.${key}`, box.open));
+  return box;
+}
+
+/**
+ * Zugeklappte Karte: Titel links, Kurzwert rechts (z. B. „Mond · 96 %“), Inhalt erst nach Antippen.
+ * → { el, body, setSummary(text) }. Offen/zu merkt sich die App unter foldOpen.<key>.
+ */
+export function foldCard(ctx, key, { title, summary = '' }) {
+  const value = el('span', { class: 'fold-value', text: summary });
+  const body = el('div', { class: 'fold-body' });
+  const card = el('details', { class: 'card fold-card' }, [el('summary', {}, [el('span', { class: 'fold-title', text: title }), value]), body]);
+  card.open = !!ctx.getSetting(`foldOpen.${key}`, false);
+  card.addEventListener('toggle', () => ctx.setSetting(`foldOpen.${key}`, card.open));
+  return { el: card, body, setSummary: (text) => { value.textContent = text; } };
+}

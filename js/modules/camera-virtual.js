@@ -47,9 +47,17 @@ export function virtualCamera(root, ctx, { modes, devices = [], light = 'dusk', 
     ctx.setSetting('cameraBrand', brandId); ctx.setSetting('cameraModel', modelId || '');
     limits = cameraLimits(ctx, modes, state.brand); dials.setBrand(state.brand); modeBar.setBrand(state.brand); showModeRow(); showSensor(); buildSliders(); draw();
   }
-  brandSel.addEventListener('change', () => { applyCamera(brandSel.value, ''); fillModels(); });
-  modelSel.addEventListener('change', () => applyCamera(state.brand.id, modelSel.value));
+  // Schlichter Einstieg: Marke und Modell als eine Zeile („Canon EOS R5 ▾“), Auswahl erst nach Antippen
+  const pickName = el('span', { class: 'cam-pick-name' });
+  const pickFields = el('div', { class: 'fields cam-pick-fields' });
+  const pickBtn = el('button', { type: 'button', class: 'cam-pick', 'aria-expanded': 'false', onClick: () => setPick(pickFields.hidden) }, [pickName, el('span', { class: 'cam-pick-change muted small', text: t('camera.change') })]);
+  function setPick(open) { pickFields.hidden = !open; pickBtn.setAttribute('aria-expanded', String(open)); }
+  function showPickName() { pickName.textContent = state.brand.model ? `${state.brand.name} ${state.brand.model.name}` : state.brand.name; }
+  brandSel.addEventListener('change', () => { applyCamera(brandSel.value, ''); fillModels(); showPickName(); });
+  modelSel.addEventListener('change', () => { applyCamera(state.brand.id, modelSel.value); showPickName(); });
   fillModels();
+  showPickName();
+  setPick(!ctx.getSetting('cameraBrand', '')); // noch keine Kamera gewählt: Auswahl gleich offen
   // Sensorformat des Modells (bzw. der Marke, wo eindeutig) als kleine Grafik wie beim Modusrad:
   // Umriss = Vollformat 36 × 24 mm, grün und mittig darin der Sensor der Kamera im echten Größenverhältnis.
   const NS = 'http://www.w3.org/2000/svg';
@@ -206,12 +214,13 @@ export function virtualCamera(root, ctx, { modes, devices = [], light = 'dusk', 
     onChange?.(state);
   }
 
+  pickFields.append(el('label', { class: 'field' }, [el('span', { class: 'field-label', text: t('settings.cameraBrand') }), brandSel]), modelField);
   buildSliders();
   // Bereich unter der Kamera; camera-view.js zeigt per Umschalter immer genau einen (Regler · Was ist wo · ND-Filter)
   const acc = (key, title, kids) => el('div', { class: 'card cam-pane', dataset: { acc: key }, role: 'region', 'aria-label': title }, kids);
   root.append(
-    el('div', { class: 'fields' }, [el('label', { class: 'field' }, [el('span', { class: 'field-label', text: t('settings.cameraBrand') }), brandSel]), modelField]),
-    sensorLine,
+    pickBtn,
+    pickFields,
     modeRow,
     el('div', { class: 'card camera-card' }, [dials.el, showReadout ? null : seenLine, graphicNote || null, showReadout ? readout : null]),
     acc('settings', t('camera.settingsTitle'), [lightBar, sliderBox, el('p', { class: 'muted small', style: 'margin:2px 0 0', text: t('camera.sliderHint') })]),
@@ -222,6 +231,7 @@ export function virtualCamera(root, ctx, { modes, devices = [], light = 'dusk', 
   return {
     state,
     dials,
+    sensor: sensorLine, // Sensor-Grafik: camera-view.js hängt sie in „Mehr zu …“
     limits: () => limits,
     setLight(id) { state.light = id; draw(); },
     redraw: draw,

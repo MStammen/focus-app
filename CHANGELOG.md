@@ -655,3 +655,15 @@ Nach Vorschlägen aus einer Code-Durchsicht (Claude im Browser):
   - Sternspuren: Zeit je Bild, Pause, Gesamtdauer → Anzahl Bilder und Bogenlänge (15,04°/h), Hinweis aufs Stapeln.
   - Mond: Phase heute mit kleiner Mondscheibe, nächste Neu- und Vollmonde, dunkle Nächte um den Neumond. Offline aus dem mittleren synodischen Monat, auf etwa einen Tag genau.
 - Rechnungen in `js/core/stars.js`, Tests in `tests/stars.test.js` (u. a. Mondtermine Januar 2024). Gemeinsamer Helfer `ownSensorCrop` in `camera-profile.js` (auch für Schärfentiefe). „i“-Text ergänzt.
+
+## 1.54.0 – Schlichter Einstieg (2026-11-24)
+- Grundregel: Jede Seite zeigt zuerst Eingaben und ein großes Ergebnis. Erklärungen, Formeln, Quellen, Tipps und Zweitwerte stehen unter „Mehr dazu“ (neuer Baustein `moreBox` in `ui.js`, anfangs zu, gemerkt unter `moreOpen.<key>`). Nebenbereiche als zugeklappte Karten mit Kurzwert rechts (`foldCard`, gemerkt unter `foldOpen.<key>`). Inhalte unverändert, nur anders verteilt.
+- Tableiste: „Kurs“ ist ausgeblendet, solange `COURSE_OPEN` false ist (5 Reiter).
+- Kamera: Marke und Modell als eine Zeile („Canon EOS R5 … ändern“), Auswahl nach Antippen; ohne gewählte Kamera gleich offen. Sensor-Grafik wandert in „Mehr zu …“.
+- Rechner Belichtung: Stufenraster nur noch in den Einstellungen; „Licht schätzen statt messen“ und Lichtwert zugeklappt (offen, wenn eine Situation gewählt ist). Moduserklärung, Schloss-Hinweis und Stufenvergleich unter „Mehr dazu“; Kamera-Grafik unter dem Ziel.
+- Schärfentiefe: Nah-/Fernpunkt-Zeilen entfallen (stehen unter der großen Zahl), Erklärung zur hyperfokalen Distanz und Zerstreuungskreis unter „Mehr dazu“.
+- Sterne: offen nur Brennweite, Blende und längste Zeit; Sensor, Auflösung und beide Regeln aufklappbar. Milchstraße, Sternspuren und Mond als zugeklappte Karten mit Kurzwert.
+- ND: nur der beste Vorschlag sichtbar, weitere unter „Weitere Vorschläge“; „Meine Filter“ zugeklappt mit Kurzliste (offen, solange keiner gewählt ist); eigene Sekunden unter „Andere Zeit eingeben“. Knopf „Aus dem Rechner: …“ passt jetzt in die Breite.
+- Lochkamera: Formeln unter „Mehr dazu“. Film: Herstellerformel und Quelle unter „Mehr dazu“.
+- Logbuch: oben nur „Neuer Eintrag“; Export, Import und Speicherangabe unter „Sichern und laden“ (Speicherwarnung bleibt sichtbar).
+- „i“-Texte von Kamera, Rechner und Logbuch angepasst.

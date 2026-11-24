@@ -3,7 +3,7 @@
 import { rule500, pixelPitch, ruleNpf, starIso, trailPlan, moonPhase, nextMoons } from '../core/stars.js';
 import { DOF_FORMATS } from '../core/dof.js';
 import { standardSeries, nearestStandard } from '../core/exposure.js';
-import { el, numberField, seriesSelect, stepFromSetting, fmtNum, fmtAperture, fmtShutter, button, bigValue } from '../lib/ui.js';
+import { el, numberField, seriesSelect, stepFromSetting, fmtNum, fmtAperture, fmtShutter, button, bigValue, moreBox, foldCard } from '../lib/ui.js';
 import { getSession, setSession } from '../lib/session.js';
 import { ownSensorCrop } from '../lib/camera-profile.js';
 
@@ -47,24 +47,32 @@ export async function init(root, ctx) {
   const formatSel = el('select', { class: 'select' }, DOF_FORMATS.map((f) => el('option', { value: f.id, text: t(`calc.dof.formats.${f.id}`), selected: f.id === state.format })));
   formatSel.addEventListener('change', () => { state.format = formatSel.value; update(); });
   const pointsOut = el('div');
+  const rulesOut = el('div');
   const startOut = el('div');
+  // Einstieg: Brennweite, Blende → längste Zeit. Sensor, Auflösung und die zwei Regeln unter „Mehr dazu“.
+  // Startwerte, Sternspuren und Mond als zugeklappte Karten mit Kurzwert.
+  const startFold = foldCard(ctx, 'starsStart', { title: t('calc.stars.startShort') });
+  startFold.body.appendChild(el('div', { class: 'stars-start' }, [startOut]));
   root.append(
     card(t('calc.stars.pointsTitle'), [
       el('div', { class: 'fields' }, [focal.field, aperture.field]),
-      el('div', { class: 'fields' }, [el('label', { class: 'field' }, [el('span', { class: 'field-label', text: t('calc.dof.format') }), formatSel]), mp.field]),
       pointsOut,
+      moreBox(ctx, 'stars', [
+        el('div', { class: 'fields' }, [el('label', { class: 'field' }, [el('span', { class: 'field-label', text: t('calc.dof.format') }), formatSel]), mp.field]),
+        rulesOut,
+      ], { label: t('calc.stars.more') }),
     ]),
-    card(t('calc.stars.startTitle'), [el('div', { class: 'stars-start' }, [startOut])]),
+    startFold.el,
   );
 
   function update() {
-    pointsOut.innerHTML = ''; startOut.innerHTML = '';
+    pointsOut.innerHTML = ''; rulesOut.innerHTML = ''; startOut.innerHTML = '';
     const crop = (DOF_FORMATS.find((f) => f.id === state.format) || DOF_FORMATS[0]).crop;
     if (!(state.focal > 0 && state.megapixels > 0)) { pointsOut.appendChild(el('p', { class: 'muted', text: t('calc.stars.invalid') })); save(); return; }
     const t500 = rule500(state.focal, crop);
     const tNpf = ruleNpf(state.focal, state.aperture, pixelPitch(state.megapixels, crop));
-    pointsOut.append(
-      bigValue({ label: t('calc.stars.maxTime'), value: secs(tNpf), sub: t('calc.stars.maxTimeSub') }),
+    pointsOut.append(bigValue({ label: t('calc.stars.maxTime'), value: secs(tNpf), sub: t('calc.stars.maxTimeSub') }));
+    rulesOut.append(
       row(t('calc.stars.npf'), secs(tNpf), t('calc.stars.npfHint')),
       row(t('calc.stars.rule500'), secs(t500), t('calc.stars.rule500Hint')),
     );
@@ -72,8 +80,10 @@ export async function init(root, ctx) {
     const series = standardSeries('shutter', 1 / 3).filter((s) => s <= tNpf);
     const shutter = series.length ? series[series.length - 1] : tNpf;
     const iso = Math.min(25600, Math.max(100, nearestStandard(starIso(state.aperture, shutter), 'iso', 1 / 3)));
+    const startText = `${fmtAperture(state.aperture)} · ${fmtShutter(shutter)} · ISO\u00a0${Math.round(iso)}`;
+    startFold.setSummary(startText);
     startOut.append(
-      bigValue({ label: t('calc.stars.startValues'), value: `${fmtAperture(state.aperture)} · ${fmtShutter(shutter)} · ISO\u00a0${Math.round(iso)}`, sub: t('calc.stars.startSub') }),
+      bigValue({ label: t('calc.stars.startValues'), value: startText, sub: t('calc.stars.startSub') }),
       el('p', { class: 'muted small', style: 'margin:6px 0 0', text: t('calc.stars.startTips') }),
       el('div', { class: 'btn-row' }, [
         button(t('calc.stars.toExposure'), { primary: true, onClick: () => {
@@ -92,10 +102,13 @@ export async function init(root, ctx) {
   const gap = numberField({ label: t('calc.stars.gap'), value: state.gap, unit: 's', min: 0, stepAttr: '1', inputmode: 'numeric', onChange: (v) => { state.gap = v; updateTrails(); } });
   const total = numberField({ label: t('calc.stars.total'), value: state.total, unit: 'min', min: 1, stepAttr: '5', inputmode: 'numeric', onChange: (v) => { state.total = v; updateTrails(); } });
   const trailsOut = el('div');
-  root.appendChild(card(t('calc.stars.trailsTitle'), [el('div', { class: 'fields' }, [frame.field, gap.field]), el('div', { class: 'fields' }, [total.field]), trailsOut]));
+  const trailsFold = foldCard(ctx, 'starsTrails', { title: t('calc.stars.trailsTitle') });
+  trailsFold.body.append(el('div', { class: 'fields' }, [frame.field, gap.field]), el('div', { class: 'fields' }, [total.field]), trailsOut);
+  root.appendChild(trailsFold.el);
   function updateTrails() {
     trailsOut.innerHTML = '';
     const p = trailPlan({ frameSeconds: state.frame, gapSeconds: state.gap ?? 0, totalMinutes: state.total });
+    trailsFold.setSummary(p ? t('calc.stars.framesShort', { n: p.frames }) : '–');
     if (!p) { trailsOut.appendChild(el('p', { class: 'muted', text: t('calc.stars.invalid') })); save(); return; }
     trailsOut.append(
       bigValue({ label: t('calc.stars.frames'), value: String(p.frames), sub: t('calc.stars.framesSub', { arc: fmtNum(p.arcDegrees, 0) }) }),
@@ -111,7 +124,8 @@ export async function init(root, ctx) {
   const fmtDate = (d) => d.toLocaleDateString('de-DE', { weekday: 'short', day: 'numeric', month: 'short' });
   const name = ph.illumination < 0.03 ? 'new' : ph.illumination > 0.97 ? 'full' : ph.waxing ? 'waxing' : 'waning';
   const dark = (d) => `${fmtDate(new Date(d.getTime() - 3 * 86400000))} – ${fmtDate(new Date(d.getTime() + 3 * 86400000))}`;
-  root.appendChild(card(t('calc.stars.moonTitle'), [
+  const moonFold = foldCard(ctx, 'starsMoon', { title: t('calc.stars.moonTitle'), summary: `${t(`calc.stars.moon.${name}`)} · ${fmtNum(ph.illumination * 100, 0)} %` });
+  moonFold.body.append(...[
     el('div', { class: 'moon-today' }, [moonIcon(ph), el('div', {}, [
       el('div', { class: 'big-value-label', text: t('calc.stars.moonToday') }),
       el('div', { class: 'moon-name', text: `${t(`calc.stars.moon.${name}`)} · ${fmtNum(ph.illumination * 100, 0)} %` }),
@@ -121,7 +135,8 @@ export async function init(root, ctx) {
     stack(t('calc.stars.nextFull'), fullMoons.map(fmtDate).join(' · ')),
     stack(t('calc.stars.darkNights'), dark(newMoons[0]), t('calc.stars.darkNightsHint')),
     el('p', { class: 'muted small', style: 'margin:8px 0 0', text: t('calc.stars.moonNote') }),
-  ]));
+  ]);
+  root.appendChild(moonFold.el);
 
   update();
   updateTrails();

@@ -1,5 +1,5 @@
 // Logbuch: Einträge aus Aufnahme, Timer und von Hand. Liste, Detail, Bearbeiten, Löschen, Export/Import.
-import { el, button, fmtShutter, fmtAperture, fmtNum, numberField, downloadText, titleWithInfo } from '../lib/ui.js';
+import { el, button, fmtShutter, fmtAperture, fmtNum, numberField, downloadText, titleWithInfo, moreBox } from '../lib/ui.js';
 import { cleanEntryNumbers, checkEntryInput } from '../core/entry.js';
 import { putEntry, getEntry, deleteEntry, allEntries, newId, storageEstimate } from '../lib/db.js';
 import { shareOrDownload, timestampName } from '../lib/image.js';
@@ -51,24 +51,32 @@ export async function init(root, ctx) {
   async function showList() {
     body.innerHTML = '';
     const entries = await allEntries();
-    const bar = el('div', { class: 'btn-row', style: 'margin:0 0 12px' }, [
+    // Einstieg: nur „Neuer Eintrag“ und die Liste. Export, Import und Speicher unter „Sichern und laden“.
+    body.appendChild(el('div', { class: 'btn-row', style: 'margin:0 0 12px' }, [
       button(t('log.new'), { primary: true, onClick: () => showForm(prefillFromQuery()) }),
-      button(t('log.exportJson'), { onClick: () => exportJson(entries) }),
-      button(t('log.exportCsv'), { onClick: () => exportCsv(entries) }),
-      importButton(),
-    ]);
-    body.appendChild(bar);
+    ]));
 
     const bytes = entries.reduce((s, e) => s + (e.image?.size || 0) + (e.thumb?.size || 0), 0);
     const est = await storageEstimate();
-    const storageLine = el('p', { class: `small ${bytes > WARN_BYTES ? 'notice' : 'muted'}`, text:
-      t('log.storage', { n: entries.length, size: fmtBytes(bytes) }) + (est?.quota ? ` · ${t('log.quota', { used: fmtBytes(est.usage || 0), quota: fmtBytes(est.quota) })}` : '') + (bytes > WARN_BYTES ? ` ${t('log.storageWarning')}` : '') });
-    body.appendChild(storageLine);
+    const full = bytes > WARN_BYTES;
+    const storageLine = el('p', { class: `small ${full ? 'notice' : 'muted'}`, text:
+      t('log.storage', { n: entries.length, size: fmtBytes(bytes) }) + (est?.quota ? ` · ${t('log.quota', { used: fmtBytes(est.usage || 0), quota: fmtBytes(est.quota) })}` : '') + (full ? ` ${t('log.storageWarning')}` : '') });
+    if (full) body.appendChild(storageLine); // Warnung bleibt sichtbar
 
-    if (entries.length === 0) { body.appendChild(el('div', { class: 'placeholder', text: t('log.empty') })); return; }
-    const list = el('div', { class: 'log-list' });
-    for (const e of entries) list.appendChild(listItem(e));
-    body.appendChild(list);
+    if (entries.length === 0) body.appendChild(el('div', { class: 'placeholder', text: t('log.empty') }));
+    else {
+      const list = el('div', { class: 'log-list' });
+      for (const e of entries) list.appendChild(listItem(e));
+      body.appendChild(list);
+    }
+    body.appendChild(moreBox(ctx, 'logBackup', [
+      el('div', { class: 'btn-row' }, [
+        button(t('log.exportJson'), { onClick: () => exportJson(entries) }),
+        button(t('log.exportCsv'), { onClick: () => exportCsv(entries) }),
+        importButton(),
+      ]),
+      full ? null : storageLine,
+    ], { label: t('log.backup') }));
   }
 
   function summaryLine(e) {

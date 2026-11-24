@@ -1,7 +1,7 @@
 // Rechner 4.4 Film / Schwarzschild: Filmwahl, gemessene Zeit → korrigierte Zeit, eigene Filme.
 import { SUPPORT_TIMES, correctedTime, availablePoints, validateFilm, exportFilms } from '../core/film.js';
 import { getAllFilms, getOverrides, setOverrides, saveCustomFilm, deleteCustomFilm, getCustomFilms, newCustomId } from '../lib/films-store.js';
-import { el, numberField, fmtShutter, fmtNum, fmtStops, button, bigValue, downloadText } from '../lib/ui.js';
+import { el, numberField, fmtShutter, fmtNum, fmtStops, button, bigValue, downloadText, moreBox } from '../lib/ui.js';
 import { getSession, setSession } from '../lib/session.js';
 import { cameraBridge } from '../lib/camera-bridge.js';
 
@@ -29,9 +29,10 @@ export async function init(root, ctx) {
   }
   fillSelect();
   select.addEventListener('change', () => { film = films.find((f) => f.id === select.value); state.filmId = film.id; rerender(); });
-  const infoLine = el('p', { class: 'muted small', style: 'margin:8px 0 0' });
-  const noteLine = el('p', { class: 'small', style: 'margin:6px 0 0' });
-  selectCard.append(el('label', { class: 'field' }, [el('span', { class: 'field-label', text: t('calc.film.film') }), select]), infoLine, noteLine);
+  const infoLine = el('p', { class: 'muted small' });
+  const noteLine = el('p', { class: 'small' });
+  // Quelle und Herstellerformel: unter „Mehr dazu“
+  selectCard.append(el('label', { class: 'field' }, [el('span', { class: 'field-label', text: t('calc.film.film') }), select]), moreBox(ctx, 'film', [noteLine, infoLine]));
   root.appendChild(selectCard);
 
   // Gemessene Zeit

@@ -812,3 +812,28 @@ body.locked .tab-bar, body.locked #settings-link { display: none; }
 .stars-start .big-value-number { font-size: 1.9rem; line-height: 1.25; }
 .moon-row { padding: 10px 0; border-top: 1px solid var(--border); }
 .moon-row-value { color: var(--fg); margin: 2px 0; }
+
+/* ---- Schlichter Einstieg: „Mehr dazu“ und zugeklappte Karten (ui.js moreBox / foldCard) ---- */
+details.more-box { margin: 10px 0 0; border-top: 1px solid var(--border); }
+details.more-box > summary { list-style: none; cursor: pointer; min-height: var(--touch); display: flex; align-items: center; justify-content: space-between; gap: 8px; color: var(--fg-muted); font-size: 0.95rem; }
+details.more-box > summary::-webkit-details-marker { display: none; }
+details.more-box > summary::after { content: ""; width: 8px; height: 8px; border-right: 1.5px solid currentColor; border-bottom: 1.5px solid currentColor; transform: rotate(45deg) translate(-2px, -2px); flex: none; margin-right: 6px; }
+details.more-box[open] > summary::after { transform: rotate(-135deg) translate(-2px, -2px); }
+details.more-box[open] > summary { color: var(--fg); }
+.more-body { padding: 0 0 4px; }
+.more-body > :first-child { margin-top: 0; }
+.more-body > :last-child { margin-bottom: 0; }
+details.fold-card { padding-top: 0; padding-bottom: 0; }
+details.fold-card > summary { list-style: none; cursor: pointer; min-height: 56px; display: flex; align-items: center; gap: 8px; }
+details.fold-card > summary::-webkit-details-marker { display: none; }
+details.fold-card > summary::after { content: ""; width: 8px; height: 8px; border-right: 1.5px solid var(--fg-muted); border-bottom: 1.5px solid var(--fg-muted); transform: rotate(45deg) translate(-2px, -2px); flex: none; margin-left: 4px; }
+details.fold-card[open] > summary::after { transform: rotate(-135deg) translate(-2px, -2px); }
+.fold-title { font-size: 1.1rem; flex: none; white-space: nowrap; }
+.fold-value { font-size: 0.9rem; flex: 1; min-width: 0; overflow: hidden; text-overflow: ellipsis; color: var(--accent); text-align: right; white-space: nowrap; font-variant-numeric: tabular-nums; }
+.fold-body { padding: 0 0 var(--gap); }
+.fold-body > :first-child { margin-top: 0; }
+.cam-pick { display: flex; align-items: baseline; gap: 10px; width: 100%; min-height: var(--touch); padding: 0; margin: 0 0 4px; border: 0; background: transparent; color: var(--fg); font: inherit; font-size: 1.15rem; text-align: left; cursor: pointer; }
+.cam-pick-name { min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.cam-pick-change { flex: none; text-decoration: underline; text-underline-offset: 3px; }
+.cam-pick[aria-expanded="true"] .cam-pick-change { color: var(--accent); }
+.panel-body > .sensor-row { margin-top: 0; }

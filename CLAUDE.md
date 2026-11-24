@@ -2,14 +2,15 @@
 
 Begleit-App zum Fotokurs (PWA, Vanilla JS, kein Build). Auftrag: `SPEC.md` (Abschnitt 13 = spätere Ergänzungen). Stand und Verlauf: `CHANGELOG.md`. Bedienung, Inhalte pflegen: `README.md`.
 
-## Stand (2026-11-22, Version 1.53.0)
+## Stand (2026-11-24, Version 1.54.0)
 - Alle Schritte aus SPEC 10 umgesetzt, dazu: Hauptreiter „Kamera“ ohne Unterreiter (virtuelle Kamera, „Wo finde ich was?“, Zusatztexte einklappbar; Langzeit-Assistent und Übungen vom Nutzer gestrichen), Design-System übernommen.
 - Online: https://focus-fotografie.de (Website mit Code, Platzhalter noch auszufüllen) und https://focus-fotografie.de/app/ (App mit Kurs-Code). HTTPS (Let's Encrypt) und http→https-Weiterleitung aktiv.
 - Offen: Website-Inhalte und Impressum/Datenschutz, Gerätetests (SPEC 11), echte Vergleichsbilder, Radbelegung Olympus/Panasonic prüfen.
 
 ## Regeln
 - Jeder Reiter hat „i“ mit Kurzinfos (`titleWithInfo` in `js/lib/ui.js`, Texte `help.<reiter>` in `i18n/de.json`). Bei neuen Funktionen die Punkte dort mitpflegen.
-- Reiter „Kurs“ ist gesperrt („coming soon“): `COURSE_OPEN` in `js/lib/features.js`. Freischalten nur auf Wunsch des Nutzers.
+- Reiter „Kurs“ ist gesperrt und in der Tableiste ausgeblendet: `COURSE_OPEN` in `js/lib/features.js`. Freischalten nur auf Wunsch des Nutzers.
+- Schlichter Einstieg (Wunsch 2026-11-24): zuerst nur Eingaben und Ergebnis; Erklärungen, Formeln, Quellen, Zweitwerte unter „Mehr dazu“ (`moreBox`) bzw. als zugeklappte Karte mit Kurzwert (`foldCard`, beide in `js/lib/ui.js`). Neue Funktionen genauso aufbauen.
 - Bei jeder Änderung an ausgelieferten Dateien: `VERSION` in `sw.js`, `APP_VERSION` in `js/app.js`, `version` in `package.json` hochzählen; neue Dateien in `PRECACHE` (`sw.js`) eintragen. Sonst sehen installierte Geräte die Änderung nicht.
 - Tests: `node --test tests/` (müssen grün sein). Syntax: `node --check`.
 - Texte nur in `i18n/de.json`. Farben nur über Tokens (`css/dark.css`, `css/redlight.css`). Schrift Work Sans selbst gehostet (`fonts/`).

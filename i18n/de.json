@@ -37,7 +37,8 @@
     "minutes": "min",
     "mm": "mm",
     "approx": "ca.",
-    "info": "Kurz erklärt ein- oder ausblenden"
+    "info": "Kurz erklärt ein- oder ausblenden",
+    "more": "Mehr dazu"
   },
   "calc": {
     "title": "Rechner",
@@ -79,7 +80,7 @@
     },
     "nd": {
       "base": "Ausgangszeit",
-      "fromExposure": "Aus Belichtungsrechner übernehmen",
+      "fromExposure": "Aus dem Rechner",
       "addFilter": "Filter hinzufügen",
       "add": "Hinzufügen",
       "filters": "Filter im Stapel",
@@ -105,7 +106,8 @@
       },
       "baseMeasured": "Gemessene Zeit ohne Filter",
       "target": "Gewünschte Belichtungszeit",
-      "targetSeconds": "Oder Sekunden eingeben",
+      "targetSeconds": "Sekunden",
+      "otherTime": "Andere Zeit eingeben",
       "own": "Meine Filter",
       "ownHint": "Tippe an, welche ND-Filter du hast. Die Zahl hinter dem Namen sind die Stufen.",
       "ownEmpty": "Keine Filter ausgewählt. Oben unter „Meine Filter“ antippen, welche du hast.",
@@ -114,6 +116,8 @@
       "neededLine": "von {base} auf {target}",
       "noFilter": "Dafür brauchst du keinen ND-Filter. Stell die Zeit direkt ein oder schließe die Blende etwas.",
       "suggestions": "Vorschläge",
+      "best": "Vorschlag",
+      "otherSuggestions": "Weitere Vorschläge ({n})",
       "resultTime": "Belichtungszeit damit: {time}",
       "fits": "passt",
       "longer": "{stops} Stufen länger als gewünscht. Für die Zielzeit die Blende um {stops} Stufen öffnen oder die ISO erhöhen.",
@@ -193,6 +197,7 @@
     },
     "light": {
       "label": "Licht schätzen statt messen",
+      "choose": "Situation",
       "none": "Selbst gemessen",
       "groups": {
         "day": "Tag",
@@ -269,6 +274,9 @@
       "gap": "Pause dazwischen",
       "total": "Gesamtdauer",
       "frames": "Anzahl Bilder",
+      "framesShort": "{n} Bilder",
+      "startShort": "Milchstraße",
+      "more": "Sensor, Auflösung, Regeln",
       "framesSub": "Die Sterne ziehen Kreisbögen von etwa {arc}° um den Polarstern.",
       "trailsTips": "Kamera auf Serienbild mit Fernauslöser oder Intervall-Timer, danach die Bilder stapeln (Aufhellen). Je kürzer die Pause, desto weniger Lücken in den Spuren.",
       "moonTitle": "Mond",
@@ -493,6 +501,7 @@
     "back": "Zurück zur Liste",
     "saveImage": "Bild speichern",
     "exportJson": "Export JSON",
+    "backup": "Sichern und laden",
     "exportCsv": "Export CSV",
     "importJson": "Import JSON",
     "empty": "Noch keine Einträge. Aufnahmen und Timer-Läufe landen hier, oder du legst von Hand einen Eintrag an.",
@@ -750,6 +759,7 @@
       "more": "Mehr zu {mode} bei {brand}"
     },
     "model": "Modell",
+    "change": "ändern",
     "modelGeneric": "Allgemein ({brand})",
     "func": {
       "title": "Funktionen",
@@ -860,10 +870,10 @@
   },
   "help": {
     "capture": "Handy aufs Stativ stellen oder fest auflegen, dann „Kamera einschalten“. | Zeit wählen und auslösen: Die App stapelt viele Einzelbilder zu einem Langzeitbild. | Unter „Einstellungen“ die Art wählen: Mitteln für glattes Wasser, Aufhellen für Lichtspuren, Integrieren wie Film. | Ergebnis speichern oder ins Logbuch übernehmen. Alles bleibt auf deinem Handy.",
-    "camera": "Marke und Modell wählen. Du siehst die Kamera von hinten oben. | Das kleine Rad oben drehen: Daneben steht, wer Zeit und Blende wählt. | Ein Teil der Kamera antippen: Es wird grün, darunter steht kurz, wofür es da ist. | Unter der Kamera mit dem Umschalter wählen: Regler, Was ist wo oder ND-Filter. Beim Handy zeigt „Was ist wo“ die Einstellungen der Kamera-App (Fokus festhalten, Helligkeit, Nachtmodus, RAW …). „Wo finde ich was?“ zeigt AF-Modus, Selbstauslöser und Spiegelvorauslösung an deinem Modell. | Mit den Reglern Blende, Zeit, ISO und ND ändern und im Monitor sehen, was passiert. Unter dem Bild steht kurz, was zu sehen ist (z. B. Leuchtspur, Auto eingefroren).",
-    "calc": "Belichtung: Ausgangsmessung eintragen oder unter „Licht schätzen“ die Situation wählen (z. B. Sonne, Dämmerung, Straße bei Nacht), Modus wählen und beim Ziel einen Wert ändern. Der Modus bzw. das offene Schloss legt fest, welcher Wert nachgibt. | Schärfentiefe: Brennweite, Blende, Entfernung und Sensor ergeben, von wo bis wo das Bild scharf ist, und die hyperfokale Distanz für Landschaften. | Sterne: längste Zeit, bevor Sterne zu Strichen werden, Startwerte für die Milchstraße, Planer für Sternspuren und die Mondphase. | ND: gewünschte Zeit wählen, die App schlägt passende Filter vor. | Lochkamera: Lochgröße und Abstand ergeben Blende, Bildwinkel und Belichtungszeit. | Film: lange Zeiten mit Schwarzschild-Korrektur für deinen Film. | Ergebnisse gehen mit einem Tipp an den Timer oder auf die Kamera.",
+    "camera": "Oben steht deine Kamera; mit „ändern“ Marke und Modell wählen. Du siehst die Kamera von hinten oben. | Das kleine Rad oben drehen: Daneben steht, wer Zeit und Blende wählt. | Ein Teil der Kamera antippen: Es wird grün, darunter steht kurz, wofür es da ist. | Unter der Kamera mit dem Umschalter wählen: Regler, Was ist wo oder ND-Filter. Beim Handy zeigt „Was ist wo“ die Einstellungen der Kamera-App (Fokus festhalten, Helligkeit, Nachtmodus, RAW …). „Wo finde ich was?“ zeigt AF-Modus, Selbstauslöser und Spiegelvorauslösung an deinem Modell. | Mit den Reglern Blende, Zeit, ISO und ND ändern und im Monitor sehen, was passiert. Unter dem Bild steht kurz, was zu sehen ist (z. B. Leuchtspur, Auto eingefroren). | Sensorgröße und Erklärungen zum Modus stehen unter „Mehr zu …“ ganz unten.",
+    "calc": "Belichtung: Ausgangsmessung eintragen oder aufklappen „Licht schätzen statt messen“ und die Situation wählen (z. B. Sonne, Dämmerung, Straße bei Nacht), Modus wählen und beim Ziel einen Wert ändern. Der Modus bzw. das offene Schloss legt fest, welcher Wert nachgibt. | Schärfentiefe: Brennweite, Blende, Entfernung und Sensor ergeben, von wo bis wo das Bild scharf ist, und die hyperfokale Distanz für Landschaften. | Sterne: längste Zeit, bevor Sterne zu Strichen werden. Startwerte für die Milchstraße, Planer für Sternspuren und Mondphase zum Aufklappen. | ND: gewünschte Zeit wählen, die App schlägt den besten Filter vor. Welche Filter du hast, unter „Meine Filter“. | Lochkamera: Lochgröße und Abstand ergeben Blende, Bildwinkel und Belichtungszeit. | Film: lange Zeiten mit Schwarzschild-Korrektur für deinen Film. | Ergebnisse gehen mit einem Tipp an den Timer oder auf die Kamera. | Erklärungen, Formeln und Quellen stehen jeweils unter „Mehr dazu“. Das Stufenraster (1, ½, ⅓) stellst du in den Einstellungen ein.",
     "timer": "Zeit wählen und „Start“ tippen. Ton und Vibration melden das Ende. | Intervall: mehrere Belichtungen nacheinander mit Pause dazwischen. | Handy nicht sperren: Der Timer läuft nur bei eingeschaltetem Display. | Danach die Belichtung mit „Ins Logbuch“ festhalten. | Im Dunkeln den Rotlichtmodus (Glühbirne oben) einschalten.",
     "learn": "Hier entstehen Lernkarten, Übungen und Aufgaben zum Fotokurs. | Die Inhalte werden gerade vorbereitet und erscheinen nach und nach.",
-    "log": "Hier landen Aufnahmen aus Langzeit und Belichtungen aus dem Timer, mit Zeit, Blende, ISO und Notiz. | „Neuer Eintrag“ für Bilder mit deiner Kamera oder auf Film. | Export als CSV (Tabelle) oder JSON (mit Bildern); „Import JSON“ holt Einträge zurück. | Alles bleibt auf deinem Handy. Komplette Sicherung: Einstellungen → Alles exportieren."
+    "log": "Hier landen Aufnahmen aus Langzeit und Belichtungen aus dem Timer, mit Zeit, Blende, ISO und Notiz. | „Neuer Eintrag“ für Bilder mit deiner Kamera oder auf Film. | Unter „Sichern und laden“: Export als CSV (Tabelle) oder JSON (mit Bildern); „Import JSON“ holt Einträge zurück. | Alles bleibt auf deinem Handy. Komplette Sicherung: Einstellungen → Alles exportieren."
   }
 }

@@ -4,8 +4,12 @@
 import { loadLanguage, t, applyTranslations } from './lib/i18n.js';
 import { getSetting, setSetting, onSettingChange } from './lib/storage.js';
 import { checkAccess, renderLock, tryCode } from './lib/access.js';
+import { COURSE_OPEN } from './lib/features.js';
 
-export const APP_VERSION = '1.53.0';
+// Reiter „Kurs“ erst zeigen, wenn er freigeschaltet ist (schlichte Leiste)
+if (!COURSE_OPEN) document.querySelector('.tab[data-route="learn"]')?.remove();
+
+export const APP_VERSION = '1.54.0';
 
 const ROUTES = {
   capture:  { module: './modules/capture.js',  title: 'nav.capture' },

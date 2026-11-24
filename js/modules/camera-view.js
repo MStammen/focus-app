@@ -101,7 +101,7 @@ export async function init(root, ctx, { modes, devices }) {
   finder.refresh(vc.state.brand);
   finderSlot.appendChild(finder.el);
   // „Mehr zu …“ bleibt aufklappbar; offen/zu merkt sich die App
-  const more = el('details', { class: 'panel' }, [moreSummary, el('div', { class: 'panel-body' }, [info, dialNote, tip, layoutNote, el('p', { class: 'muted small', style: 'margin-bottom:0', text: t('learn.camera.disclaimer') })])]);
+  const more = el('details', { class: 'panel' }, [moreSummary, el('div', { class: 'panel-body' }, [vc.sensor, info, dialNote, tip, layoutNote, el('p', { class: 'muted small', style: 'margin-bottom:0', text: t('learn.camera.disclaimer') })])]);
   more.open = !!ctx.getSetting('cameraMoreOpen', false);
   more.addEventListener('toggle', () => ctx.setSetting('cameraMoreOpen', more.open));
   root.append(more);

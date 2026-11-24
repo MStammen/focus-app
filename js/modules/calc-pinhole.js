@@ -1,6 +1,6 @@
 // Rechner 4.3 Lochkamera: Loch messen, Loch bauen, Belichtung übertragen.
 import { fNumber, optimalDiameter, rateDiameter, angleOfView, transferExposure, FORMATS } from '../core/pinhole.js';
-import { el, segmented, numberField, seriesSelect, stepFromSetting, fmtNum, fmtAperture, fmtShutter, fmtStops, button, bigValue } from '../lib/ui.js';
+import { el, segmented, numberField, seriesSelect, stepFromSetting, fmtNum, fmtAperture, fmtShutter, fmtStops, button, bigValue, moreBox } from '../lib/ui.js';
 import { getSession, setSession } from '../lib/session.js';
 import { cameraBridge } from '../lib/camera-bridge.js';
 
@@ -15,6 +15,12 @@ export async function init(root, ctx) {
     build: { focal: 50, format: '135', canWidth: 100 },
     transfer: { aperture: 8, shutter: 1 / 125, iso: 100, pinholeAperture: null, filmIso: 100 },
   });
+
+  // Formeln unter „Mehr dazu“
+  const formulas = () => moreBox(ctx, 'pinhole', [
+    el('p', { class: 'muted small', text: `${t('calc.pinhole.fnumber')}: ${t('calc.pinhole.fnumberFormula')}` }),
+    el('p', { class: 'muted small', text: `${t('calc.pinhole.optimum')}: ${t('calc.pinhole.optimumFormula')}` }),
+  ]);
 
   const body = el('div');
   root.appendChild(segmented({
@@ -49,9 +55,9 @@ export async function init(root, ctx) {
       if (!(s.diameter > 0 && s.focal > 0)) { out.appendChild(el('p', { class: 'muted', text: t('calc.pinhole.invalid') })); return; }
       const n = fNumber(s.diameter, s.focal);
       const rating = rateDiameter(s.diameter, s.focal);
-      out.appendChild(bigValue({ label: t('calc.pinhole.fnumber'), value: fmtAperture(n), sub: t('calc.pinhole.fnumberFormula') }));
+      out.appendChild(bigValue({ label: t('calc.pinhole.fnumber'), value: fmtAperture(n) }));
       out.appendChild(el('div', { class: 'row' }, [
-        el('span', { class: 'row-label' }, [el('span', { text: t('calc.pinhole.optimum') }), el('span', { class: 'row-hint', text: t('calc.pinhole.optimumFormula') })]),
+        el('span', { class: 'row-label', text: t('calc.pinhole.optimum') }),
         el('strong', { text: `${fmtNum(rating.optimum, 2)} mm` }),
       ]));
       out.appendChild(el('div', { class: 'row' }, [
@@ -63,6 +69,7 @@ export async function init(root, ctx) {
       out.appendChild(el('div', { class: 'btn-row' }, [
         button(t('calc.pinhole.transfer'), { primary: true, onClick: () => { state.transfer.pinholeAperture = n; state.transfer.fromHave = true; state.mode = 'transfer'; setSession('pinhole', state); root.replaceChild(render(), body0()); root.querySelector('.segmented .segment[aria-current]')?.removeAttribute('aria-current'); root.querySelectorAll('.segmented .segment')[2]?.setAttribute('aria-current', 'true'); } }),
       ]));
+      out.appendChild(formulas());
       setSession('pinhole', state);
       setSession('pinholeAperture', n);
     }
@@ -93,13 +100,14 @@ export async function init(root, ctx) {
       const w = fm.id === 'can' ? s.canWidth : fm.width;
       const h = fm.id === 'can' ? null : fm.height;
       const a = angleOfView(s.focal, w, h);
-      out.appendChild(bigValue({ label: t('calc.pinhole.optimum'), value: `${fmtNum(dOpt, 2)} mm`, sub: t('calc.pinhole.optimumFormula') }));
+      out.appendChild(bigValue({ label: t('calc.pinhole.optimum'), value: `${fmtNum(dOpt, 2)} mm` }));
       out.appendChild(el('div', { class: 'row' }, [el('span', { class: 'row-label', text: t('calc.pinhole.fnumber') }), el('strong', { text: fmtAperture(n) })]));
       const parts = [];
       if (a.horizontal) parts.push(`${fmtNum(a.horizontal, 0)}° ${t('calc.pinhole.angleH')}`);
       if (a.vertical) parts.push(`${fmtNum(a.vertical, 0)}° ${t('calc.pinhole.angleV')}`);
       if (a.diagonal) parts.push(`${fmtNum(a.diagonal, 0)}° ${t('calc.pinhole.angleD')}`);
       out.appendChild(el('div', { class: 'row' }, [el('span', { class: 'row-label', text: t('calc.pinhole.angle') }), el('strong', { text: parts.join(' · ') || '–' })]));
+      out.appendChild(formulas());
       setSession('pinhole', state);
       setSession('pinholeAperture', n);
     }

@@ -1,7 +1,7 @@
 // Rechner: Schärfentiefe. Brennweite, Blende, Entfernung und Sensorformat → Nah- und Fernpunkt,
 // Schärfentiefe und hyperfokale Distanz, dazu eine Skala mit dem scharfen Bereich. Rechnung in core/dof.js.
 import { dof, DOF_FORMATS } from '../core/dof.js';
-import { el, numberField, seriesSelect, stepFromSetting, fmtNum, button, bigValue } from '../lib/ui.js';
+import { el, numberField, seriesSelect, stepFromSetting, fmtNum, button, bigValue, moreBox } from '../lib/ui.js';
 import { getSession, setSession } from '../lib/session.js';
 import { ownSensorCrop } from '../lib/camera-profile.js';
 
@@ -61,6 +61,8 @@ export async function init(root, ctx) {
     return svg;
   }
 
+  const moreText = el('div');
+  const more = moreBox(ctx, 'dof', [moreText]);
   function update() {
     out.innerHTML = '';
     const fm = DOF_FORMATS.find((f) => f.id === state.format) || DOF_FORMATS[0];
@@ -69,11 +71,13 @@ export async function init(root, ctx) {
     out.append(
       bigValue({ label: t('calc.dof.total'), value: fmtDist(r.total), sub: t('calc.dof.range', { near: fmtDist(r.near), far: fmtDist(r.far) }) }),
       scale(r),
-      row(t('calc.dof.near'), fmtDist(r.near)),
-      row(t('calc.dof.far'), fmtDist(r.far)),
-      row(t('calc.dof.hyperfocal'), fmtDist(r.hyperfocal), t('calc.dof.hyperfocalHint', { half: fmtDist(r.hyperfocal / 2) })),
+      row(t('calc.dof.hyperfocal'), fmtDist(r.hyperfocal)),
       el('div', { class: 'btn-row' }, [button(t('calc.dof.toHyperfocal'), { onClick: () => { state.distance = Math.round(r.hyperfocal * 10) / 10; distance.setValue(state.distance); update(); } })]),
-      el('p', { class: 'muted small', style: 'margin:8px 0 0', text: [
+      more,
+    );
+    moreText.replaceChildren(
+      el('p', { class: 'small', text: `${t('calc.dof.hyperfocal')}: ${t('calc.dof.hyperfocalHint', { half: fmtDist(r.hyperfocal / 2) })}` }),
+      el('p', { class: 'muted small', text: [
         t('calc.dof.coc', { coc: fmtNum(r.coc, 3) }),
         fm.crop !== 1 && state.focal > 0 ? t('calc.dof.equivalent', { mm: fmtNum(state.focal * fm.crop, 0) }) : '',
       ].filter(Boolean).join(' ') }),

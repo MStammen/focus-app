@@ -2,7 +2,7 @@
 //   Filter → Zeit: Ausgangszeit + Filterstapel → neue Zeit.
 //   Zeit → Filter: Ausgangszeit + gewünschte Zeit → passende Filter aus „Meine Filter“ (suggestNdFilters).
 import { ndStops, shutterWithNd, nearestStandard, ND_FILTERS, suggestNdFilters } from '../core/exposure.js';
-import { el, seriesSelect, numberField, stepFromSetting, fmtShutter, fmtNum, button, chip, bigValue, segmented } from '../lib/ui.js';
+import { el, seriesSelect, numberField, stepFromSetting, fmtShutter, fmtNum, button, chip, bigValue, segmented, moreBox, foldCard } from '../lib/ui.js';
 import { getSession, setSession } from '../lib/session.js';
 import { cameraBridge } from '../lib/camera-bridge.js';
 
@@ -47,7 +47,7 @@ export async function init(page, ctx) {
   const lastShutter = getSession('lastShutter', null);
   if (lastShutter) {
     baseCard.appendChild(el('div', { class: 'btn-row' }, [
-      button(`${t('calc.nd.fromExposure')} (${fmtShutter(lastShutter)})`, { onClick: () => { state.base = lastShutter; base.setValue(lastShutter); recompute(); } }),
+      button(`${t('calc.nd.fromExposure')}: ${fmtShutter(lastShutter)}`, { onClick: () => { state.base = lastShutter; base.setValue(lastShutter); recompute(); } }),
     ]));
   }
   root.appendChild(baseCard);
@@ -142,7 +142,7 @@ export async function init(page, ctx) {
   const tBaseCard = el('div', { class: 'card' });
   const tBase = seriesSelect({ kind: 'shutter', step, value: state.base, label: t('calc.nd.baseMeasured'), onChange: (v) => { state.base = v; base.setValue(v); recomputeTarget(); recompute(); } });
   tBaseCard.appendChild(tBase.field);
-  if (lastShutter) tBaseCard.appendChild(el('div', { class: 'btn-row' }, [button(`${t('calc.nd.fromExposure')} (${fmtShutter(lastShutter)})`, { onClick: () => { state.base = lastShutter; tBase.setValue(lastShutter); base.setValue(lastShutter); recomputeTarget(); recompute(); } })]));
+  if (lastShutter) tBaseCard.appendChild(el('div', { class: 'btn-row' }, [button(`${t('calc.nd.fromExposure')}: ${fmtShutter(lastShutter)}`, { onClick: () => { state.base = lastShutter; tBase.setValue(lastShutter); base.setValue(lastShutter); recomputeTarget(); recompute(); } })]));
   targetView.appendChild(tBaseCard);
 
   const goalCard = el('div', { class: 'card' }, [el('h2', { text: t('calc.nd.target'), style: 'margin-top:0' })]);
@@ -151,15 +151,19 @@ export async function init(page, ctx) {
   const markGoal = () => goalChips.querySelectorAll('.chip').forEach((c) => c.setAttribute('aria-pressed', String(Number(c.dataset.s) === state.target)));
   for (const s of TARGETS) goalChips.appendChild(el('button', { type: 'button', class: 'chip quick', dataset: { s: String(s) }, text: fmtShutter(s), onClick: () => { state.target = s; goalInput.input.value = String(s); markGoal(); recomputeTarget(); } }));
   goalInput.input.addEventListener('input', () => { const v = goalInput.getValue(); if (v > 0) { state.target = v; markGoal(); recomputeTarget(); } });
-  goalCard.append(goalChips, goalInput.field);
+  const otherBox = moreBox(ctx, 'ndOtherTime', [goalInput.field], { label: t('calc.nd.otherTime') });
+  if (!TARGETS.includes(state.target)) otherBox.open = true;
+  goalCard.append(goalChips, otherBox);
   targetView.appendChild(goalCard);
 
   // Meine Filter: welche ND-Filter man besitzt (Einstellung, gilt für alle Vorschläge)
-  const ownCard = el('div', { class: 'card' }, [el('h2', { text: t('calc.nd.own'), style: 'margin-top:0' })]);
+  // Zugeklappt mit Kurzliste („ND8, ND64, ND1000“); offen, solange noch kein Filter gewählt ist
+  const ownFold = foldCard(ctx, 'ndOwn', { title: t('calc.nd.own') });
   const ownChips = el('div', { class: 'chips' });
   const ownNames = () => ctx.getSetting('ndOwn', OWN_DEFAULT);
   const drawOwn = () => {
     ownChips.innerHTML = '';
+    ownFold.setSummary(ownNames().join(', ') || '–');
     for (const f of ND_FILTERS) {
       const on = ownNames().includes(f.name);
       ownChips.appendChild(el('button', { type: 'button', class: 'chip quick', 'aria-pressed': String(on), text: `${f.name} · ${fmtNum(ndStops(f), 0)}`, onClick: () => {
@@ -171,13 +175,14 @@ export async function init(page, ctx) {
     }
   };
   drawOwn();
-  ownCard.append(ownChips, el('p', { class: 'muted small', style: 'margin:6px 0 0', text: t('calc.nd.ownHint') }));
-  targetView.appendChild(ownCard);
+  if (!ownNames().length) ownFold.el.open = true;
+  ownFold.body.append(ownChips, el('p', { class: 'muted small', style: 'margin:6px 0 0', text: t('calc.nd.ownHint') }));
 
   const sugCard = el('div', { class: 'card' });
   const tBridge = cameraBridge(ctx);
   targetView.appendChild(sugCard);
   targetView.appendChild(tBridge.el);
+  targetView.appendChild(ownFold.el);
 
   function recomputeTarget() {
     if (!(state.base > 0) || !(state.target > 0)) return;
@@ -188,6 +193,7 @@ export async function init(page, ctx) {
     if (needed <= 0.3) { sugCard.appendChild(el('p', { class: 'small', text: t('calc.nd.noFilter') })); tBridge.update({ seconds: state.base }); setSession('nd', state); return; }
     if (!own.length) { sugCard.appendChild(el('p', { class: 'notice small', text: t('calc.nd.ownEmpty') })); setSession('nd', state); return; }
     const list = el('div', { class: 'nd-suggest' });
+    const others = el('div', { class: 'nd-suggest' });
     suggestNdFilters(needed, own).forEach((s, i) => {
       const time = state.base * Math.pow(2, s.stops);
       const diff = s.error;
@@ -201,11 +207,12 @@ export async function init(page, ctx) {
           button(t('calc.nd.toStack'), { onClick: () => { state.filters = s.filters.map((f) => ({ kind: 'factor', value: f.factor, name: f.name })); state.dir = 'stack'; recompute(); showDir(); } }),
         ]),
       ]);
-      list.appendChild(row);
+      (i === 0 ? list : others).appendChild(row); // bester Vorschlag sichtbar, weitere unter „Mehr dazu“
       if (i === 0) tBridge.update({ seconds: time });
     });
-    sugCard.appendChild(el('h2', { text: t('calc.nd.suggestions'), style: 'margin:12px 0 8px' }));
+    sugCard.appendChild(el('h2', { text: t('calc.nd.best'), style: 'margin:12px 0 8px' }));
     sugCard.appendChild(list);
+    if (others.children.length) sugCard.appendChild(moreBox(ctx, 'ndOthers', [others], { label: t('calc.nd.otherSuggestions', { n: others.children.length }) }));
     setSession('nd', state);
   }
 
