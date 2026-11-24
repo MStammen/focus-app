@@ -667,3 +667,6 @@ Nach Vorschlägen aus einer Code-Durchsicht (Claude im Browser):
 - Lochkamera: Formeln unter „Mehr dazu“. Film: Herstellerformel und Quelle unter „Mehr dazu“.
 - Logbuch: oben nur „Neuer Eintrag“; Export, Import und Speicherangabe unter „Sichern und laden“ (Speicherwarnung bleibt sichtbar).
 - „i“-Texte von Kamera, Rechner und Logbuch angepasst.
+
+## 1.54.1 – Kamera: kleiner Sensor unter dem Modusrad (2026-11-24)
+- Unter dem Modusrad ein kleiner Sensor (Umriss Vollformat, grün der eigene Sensor) mit Formatname. Antippen klappt darunter die große Grafik mit Maßen und Erklärung auf, nochmal antippen schließt sie. In „Mehr zu …“ steht der Sensor nicht mehr.

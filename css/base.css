@@ -837,3 +837,10 @@ details.fold-card[open] > summary::after { transform: rotate(-135deg) translate(
 .cam-pick-change { flex: none; text-decoration: underline; text-underline-offset: 3px; }
 .cam-pick[aria-expanded="true"] .cam-pick-change { color: var(--accent); }
 .panel-body > .sensor-row { margin-top: 0; }
+/* Kleiner Sensor unter dem Modusrad; Antippen zeigt die Grafik mit Maßen darunter */
+.mode-row-left { display: grid; justify-items: center; gap: 4px; min-width: 0; }
+.sensor-mini { display: flex; align-items: center; justify-content: center; gap: 8px; min-height: var(--touch); padding: 4px 8px; border: 0; border-radius: var(--radius); background: transparent; color: var(--fg-muted); font: inherit; font-size: 0.8rem; cursor: pointer; }
+.sensor-mini .sensor-fig { width: 40px; flex: none; }
+.sensor-mini[aria-expanded="true"] { color: var(--accent); background: var(--bg); }
+.sensor-mini:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+.sensor-row { margin: 0 0 10px; }

@@ -73,13 +73,24 @@ export function virtualCamera(root, ctx, { modes, devices = [], light = 'dusk', 
   const sensorTitle = el('p', { class: 'mode-row-title field-label', text: t('camera.sensorTitle') });
   const sensorName = el('p', { class: 'mode-row-name' });
   const sensorText = el('p', { class: 'mode-row-text small' });
-  const sensorLine = el('div', { class: 'mode-row sensor-row' }, [el('div', { class: 'sensor-fig-wrap' }, [sensorFig]), el('div', { class: 'mode-row-info' }, [sensorTitle, sensorName, sensorText])]);
+  const sensorLine = el('div', { class: 'mode-row sensor-row', id: 'sensor-detail' }, [el('div', { class: 'sensor-fig-wrap' }, [sensorFig]), el('div', { class: 'mode-row-info' }, [sensorTitle, sensorName, sensorText])]);
+  // Klein unter dem Modusrad: nur Umriss, Sensor und Formatname. Antippen klappt die Grafik mit Maßen auf (sensorLine).
+  const miniFig = svgN('svg', { class: 'sensor-fig', viewBox: '0 0 40 28', 'aria-hidden': 'true' });
+  const miniCam = svgN('rect', { class: 'sensor-cam', rx: 0.8 });
+  miniFig.append(svgN('rect', { class: 'sensor-ff', x: 2, y: 2, width: 36, height: 24, rx: 1 }), miniCam);
+  const miniName = el('span', { class: 'sensor-mini-name' });
+  let sensorOpen = false;
+  const sensorBtn = el('button', { type: 'button', class: 'sensor-mini', 'aria-expanded': 'false', 'aria-controls': 'sensor-detail', onClick: () => { sensorOpen = !sensorOpen; showSensor(); } }, [miniFig, miniName]);
   function showSensor() {
     const s = state.brand.sensor;
-    sensorLine.hidden = !s;
+    sensorLine.hidden = !s || !sensorOpen;
+    sensorBtn.hidden = !s;
+    sensorBtn.setAttribute('aria-expanded', String(sensorOpen));
     if (!s) return;
     const w = 36 / s.crop, h = 24 / s.crop;
-    camRect.setAttribute('x', 20 - w / 2); camRect.setAttribute('y', 14 - h / 2); camRect.setAttribute('width', w); camRect.setAttribute('height', h);
+    for (const r of [camRect, miniCam]) { r.setAttribute('x', 20 - w / 2); r.setAttribute('y', 14 - h / 2); r.setAttribute('width', w); r.setAttribute('height', h); }
+    miniName.textContent = s.format;
+    sensorBtn.setAttribute('aria-label', t('camera.sensorFig', { format: s.format }));
     sensorFig.setAttribute('aria-label', t('camera.sensorFig', { format: s.format }));
     sensorName.textContent = s.format;
     sensorText.textContent = s.crop === 1 ? t('camera.sensorFullText', { size: s.size }) : t('camera.sensorText', { size: s.size, crop: String(s.crop).replace('.', ',') });
@@ -94,7 +105,7 @@ export function virtualCamera(root, ctx, { modes, devices = [], light = 'dusk', 
   const modeName = el('p', { class: 'mode-row-name' });
   const modeMeaning = el('p', { class: 'mode-row-text small' });
   const modeBrand = el('p', { class: 'mode-row-text small muted' });
-  const modeRow = el('div', { class: 'mode-row' }, [modeBar.el, el('div', { class: 'mode-row-info' }, [modeTitle, modeName, modeMeaning, modeBrand])]);
+  const modeRow = el('div', { class: 'mode-row' }, [el('div', { class: 'mode-row-left' }, [modeBar.el, sensorBtn]), el('div', { class: 'mode-row-info' }, [modeTitle, modeName, modeMeaning, modeBrand])]);
   // Handys haben kein Moduswahlrad: Zeile ausblenden
   const showModeRow = () => { modeRow.hidden = state.brand.layout === 'phone'; };
   showModeRow();
@@ -222,6 +233,7 @@ export function virtualCamera(root, ctx, { modes, devices = [], light = 'dusk', 
     pickBtn,
     pickFields,
     modeRow,
+    sensorLine,
     el('div', { class: 'card camera-card' }, [dials.el, showReadout ? null : seenLine, graphicNote || null, showReadout ? readout : null]),
     acc('settings', t('camera.settingsTitle'), [lightBar, sliderBox, el('p', { class: 'muted small', style: 'margin:2px 0 0', text: t('camera.sliderHint') })]),
     ...(afterCamera ? [afterCamera] : []), // „Wo finde ich was?“ unter den Kameraeinstellungen
@@ -231,7 +243,6 @@ export function virtualCamera(root, ctx, { modes, devices = [], light = 'dusk', 
   return {
     state,
     dials,
-    sensor: sensorLine, // Sensor-Grafik: camera-view.js hängt sie in „Mehr zu …“
     limits: () => limits,
     setLight(id) { state.light = id; draw(); },
     redraw: draw,
