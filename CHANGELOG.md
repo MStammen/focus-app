@@ -680,3 +680,8 @@ Nach Vorschlägen aus einer Code-Durchsicht (Claude im Browser):
 ## 1.55.1 – Dunkelkammerlicht in der Kopfzeile (2026-11-25)
 - Lampen-Symbol oben links neben der Glühbirne öffnet das Dunkelkammerlicht von jedem Reiter aus.
 - Display-Sperre: Wake Lock wird neu angefordert, wenn das System sie aufhebt (z. B. nach App-Wechsel). Im Licht steht, ob das Display anbleibt; sonst Hinweis auf „Automatische Sperre → Nie“ am iPhone.
+
+## 1.56.0 – Stoppuhr im Timer (2026-11-25)
+- Timer hat eine dritte Art „Stoppuhr“: Start, Stopp, Weiter, Zurücksetzen, „Runde“ für Zwischenzeiten (Liste mit Abstand zur vorigen Runde und Gesamtzeit). Anzeige 0:00,0 min, ab einer Stunde h:mm:ss.
+- Läuft beim Reiterwechsel und Neuladen weiter (Startzeitpunkt in der Sitzung), Display bleibt an, solange sie läuft. Nach dem Stoppen „Ins Logbuch“ mit der gemessenen Zeit (z. B. Bulb-Belichtung).
+- „i“-Text des Timers ergänzt. Geprüft im Browser (Handygröße, Rotlicht).

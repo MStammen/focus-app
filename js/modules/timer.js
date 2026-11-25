@@ -1,4 +1,4 @@
-// Timer: Countdown und Intervall. Signale über Web Audio, Vibration, Wake Lock.
+// Timer: Countdown, Intervall und Stoppuhr. Signale über Web Audio, Vibration, Wake Lock.
 import { el, segmented, numberField, fmtSeconds, fmtShutter, button, titleWithInfo } from '../lib/ui.js';
 import { unlockAudio, signals, vibrate, vibrations } from '../lib/audio.js';
 import { getSession, setSession } from '../lib/session.js';
@@ -16,6 +16,14 @@ function digits(ms) {
   if (total < 3600) return `${Math.floor(total / 60)}:${pad(total % 60)}`;
   return `${Math.floor(total / 3600)}:${pad(Math.floor((total % 3600) / 60))}:${pad(total % 60)}`;
 }
+/** Stoppuhr: „0:12,3 min“ bzw. ab einer Stunde „1:02:03 h“. */
+function watchNodes(ms) {
+  const tenths = Math.floor(Math.max(0, ms) / 100);
+  const total = Math.floor(tenths / 10);
+  if (total < 3600) return [`${Math.floor(total / 60)}:${pad(total % 60)},${tenths % 10}`, el('span', { class: 'timer-unit', text: 'min' })];
+  return [`${Math.floor(total / 3600)}:${pad(Math.floor((total % 3600) / 60))}:${pad(total % 60)}`, el('span', { class: 'timer-unit', text: 'h' })];
+}
+const watchText = (ms) => watchNodes(ms)[0]; // ohne Einheit, für die Runden-Liste
 /** Ziffern mit Einheit dahinter: „2,0 s“, „0:30 min“, „1:05:00 h“. */
 function digitNodes(ms) {
   const s = Math.max(0, ms) / 1000;
@@ -32,12 +40,17 @@ export async function init(root, ctx) {
   let vib = ctx.getSetting('vibration', true);
   let wakeLock = null;
   let run = null; // laufender Ablauf
+  // Stoppuhr: Startzeitpunkt statt Zähler, damit sie beim Reiterwechsel weiterläuft
+  const sw = getSession('stopwatch', { startedAt: null, elapsed: 0, laps: [] });
+  const swElapsed = () => sw.elapsed + (sw.startedAt ? Date.now() - sw.startedAt : 0);
+  const saveSw = () => setSession('stopwatch', sw);
+  let swTimer = null;
 
   const head = titleWithInfo(ctx, { title: t('timer.title'), key: 'timer' });
   root.append(head.row, head.box);
   const modeBar = segmented({
     ariaLabel: t('timer.title'), active: state.mode,
-    items: [{ id: 'countdown', label: t('timer.mode.countdown') }, { id: 'interval', label: t('timer.mode.interval') }],
+    items: [{ id: 'countdown', label: t('timer.mode.countdown') }, { id: 'interval', label: t('timer.mode.interval') }, { id: 'stopwatch', label: t('timer.mode.stopwatch') }],
     onSelect: (id) => { state.mode = id; setSession('timer', state); showSetup(); modeBar.querySelectorAll('.segment').forEach((s) => s.setAttribute('aria-current', s.textContent === t(`timer.mode.${id}`) ? 'true' : 'false')); },
   });
   root.appendChild(modeBar);
@@ -48,6 +61,8 @@ export async function init(root, ctx) {
   function showSetup() {
     stage.innerHTML = '';
     modeBar.hidden = false;
+    clearInterval(swTimer);
+    if (state.mode === 'stopwatch') return showStopwatch();
     const card = el('div', { class: 'card' });
     const display = el('div', { class: 'timer-set' }, [el('div', { class: 'timer-digits', 'aria-live': 'polite' }, digitNodes(state.seconds * 1000))]);
     card.appendChild(el('div', { class: 'big-value-label', style: 'text-align:center', text: state.mode === 'interval' ? t('timer.exposure') : t('timer.set') }));
@@ -97,12 +112,50 @@ export async function init(root, ctx) {
     totalLine();
   }
 
+  // ---------- Stoppuhr ----------
+  function showStopwatch() {
+    const digitsEl = el('div', { class: 'timer-digits', role: 'timer', 'aria-live': 'off' });
+    const lapList = el('ol', { class: 'lap-list', reversed: true });
+    const buttons = el('div', { class: 'timer-bottom sw-buttons' });
+    stage.append(
+      el('div', { class: 'card sw-card' }, [digitsEl]),
+      el('p', { class: 'muted small', style: 'text-align:center;margin:4px 0 0', text: sw.startedAt && wakeLock ? t('timer.wake') : '' }),
+      lapList,
+      buttons,
+    );
+    const render = () => {
+      digitsEl.replaceChildren(...watchNodes(swElapsed()));
+    };
+    const renderLaps = () => {
+      lapList.replaceChildren(...sw.laps.map((at, i) => el('li', { class: 'lap' }, [
+        el('span', { class: 'muted', text: t('timer.lap', { n: i + 1 }) }),
+        el('span', { class: 'lap-split', text: `+${watchText(at - (sw.laps[i - 1] || 0))}` }),
+        el('strong', { text: watchText(at) }),
+      ])).reverse());
+    };
+    const renderButtons = () => {
+      const big = (b) => { b.classList.add('huge'); return b; };
+      const ms = swElapsed();
+      if (sw.startedAt) buttons.replaceChildren(big(button(t('timer.lapBtn'), { onClick: lap })), big(button(t('timer.stop'), { primary: true, onClick: stop })));
+      else if (ms > 0) buttons.replaceChildren(big(button(t('timer.reset'), { onClick: reset })), big(button(t('timer.resume'), { primary: true, onClick: go })));
+      else buttons.replaceChildren(big(button(t('timer.start'), { primary: true, onClick: go })));
+      if (!sw.startedAt && ms > 0) buttons.append(el('div', { class: 'sw-log' }, [button(t('timer.toLog'), { block: true, onClick: () => ctx.navigate(`log?new=1&source=timer&shutter=${Math.round(ms / 100) / 10}&frames=1`) })]));
+    };
+    const tickSw = () => { clearInterval(swTimer); if (sw.startedAt) swTimer = setInterval(render, 100); };
+    function go() { sw.startedAt = Date.now(); saveSw(); requestWake().then(() => { stage.innerHTML = ''; showStopwatch(); }); if (vib) vibrate(vibrations.start); }
+    function stop() { sw.elapsed = swElapsed(); sw.startedAt = null; saveSw(); releaseWake(); clearInterval(swTimer); render(); renderButtons(); stage.children[1].textContent = ''; if (vib) vibrate(vibrations.end); }
+    function lap() { sw.laps.push(swElapsed()); saveSw(); renderLaps(); if (vib) vibrate(30); }
+    function reset() { sw.elapsed = 0; sw.startedAt = null; sw.laps = []; saveSw(); render(); renderLaps(); renderButtons(); }
+    render(); renderLaps(); renderButtons(); tickSw();
+    if (sw.startedAt && !wakeLock) requestWake();
+  }
+
   // ---------- Laufen ----------
   async function requestWake() {
     try { wakeLock = await navigator.wakeLock?.request('screen'); } catch { wakeLock = null; }
   }
   function releaseWake() { try { wakeLock?.release(); } catch { /* egal */ } wakeLock = null; }
-  const onVisible = () => { if (document.visibilityState === 'visible' && run) requestWake(); };
+  const onVisible = () => { if (document.visibilityState === 'visible' && (run || sw.startedAt)) requestWake(); };
   document.addEventListener('visibilitychange', onVisible);
 
   function signal(name) {
@@ -222,6 +275,7 @@ export async function init(root, ctx) {
   showSetup();
   return () => {
     clearInterval(interval);
+    clearInterval(swTimer);
     run = null;
     releaseWake();
     document.removeEventListener('visibilitychange', onVisible);

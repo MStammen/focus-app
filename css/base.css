@@ -856,3 +856,13 @@ details.fold-card[open] > summary::after { transform: rotate(-135deg) translate(
 .safelight-tips { margin: 0; padding-left: 1.2em; }
 .safelight-tips li + li { margin-top: 6px; }
 html.safelight-on, html.safelight-on body { overflow: hidden; }
+
+/* Stoppuhr (Timer) */
+.sw-card { display: flex; justify-content: center; padding: 28px 12px; }
+.sw-buttons { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+.sw-buttons > :only-child { grid-column: 1 / -1; }
+.sw-buttons .sw-log { grid-column: 1 / -1; }
+.lap-list { list-style: none; margin: 8px 0 0; padding: 0; }
+.lap { display: grid; grid-template-columns: 1fr auto auto; gap: 14px; align-items: baseline; padding: 10px 4px; border-bottom: 1px solid var(--border); font-variant-numeric: tabular-nums; }
+.lap strong { font-weight: 400; }
+.lap-split { color: var(--fg-muted); font-size: 0.9rem; }
