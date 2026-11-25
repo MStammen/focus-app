@@ -17,11 +17,13 @@ export function openSafelight(ctx) {
   let hideTimer = null;
 
   const light = el('div', { class: 'safelight-light' });
+  const wakeLine = el('p', { class: 'safelight-hint safelight-wake' });
   const pct = el('span', { class: 'safelight-pct' });
   const btn = (text, label, onClick) => el('button', { type: 'button', class: 'safelight-btn', text, 'aria-label': label, onClick: (e) => { e.stopPropagation(); onClick(); showUi(); } });
   const ui = el('div', { class: 'safelight-ui' }, [
     el('div', { class: 'safelight-row' }, [btn('−', t('safelight.darker'), () => setLevel(level - STEP)), pct, btn('+', t('safelight.brighter'), () => setLevel(level + STEP))]),
     el('p', { class: 'safelight-hint', text: t('safelight.hint') }),
+    wakeLine,
     btn(t('safelight.close'), t('safelight.close'), close),
   ]);
   const root = el('div', { class: 'safelight', role: 'dialog', 'aria-modal': 'true', 'aria-label': t('safelight.title') }, [light, ui]);
@@ -53,7 +55,15 @@ export function openSafelight(ctx) {
   });
   root.addEventListener('pointercancel', () => { startY = null; });
 
-  async function wake() { try { wakeLock = await navigator.wakeLock?.request('screen'); } catch { wakeLock = null; } }
+  // Display an lassen. iOS hebt die Sperre z. B. beim App-Wechsel auf → bei Rückkehr neu anfordern.
+  async function wake() {
+    if (!open || document.visibilityState !== 'visible') return;
+    try {
+      wakeLock = await navigator.wakeLock?.request('screen');
+      wakeLock?.addEventListener('release', () => { wakeLock = null; if (open) setTimeout(wake, 500); });
+    } catch { wakeLock = null; }
+    wakeLine.textContent = wakeLock ? t('safelight.wakeOn') : t('safelight.wakeOff');
+  }
   const onVisible = () => { if (document.visibilityState === 'visible') wake(); };
   const onKey = (e) => { if (e.key === 'Escape') close(); else if (e.key === 'ArrowUp') setLevel(level + STEP); else if (e.key === 'ArrowDown') setLevel(level - STEP); };
   const onHash = () => close();
@@ -75,6 +85,7 @@ export function openSafelight(ctx) {
 
   document.body.appendChild(root);
   document.documentElement.classList.add('safelight-on');
+  open = { close };
   setLevel(level);
   showUi();
   wake();
@@ -89,7 +100,6 @@ export function openSafelight(ctx) {
   }
   root.tabIndex = -1;
   root.focus();
-  open = { close };
   return open;
 }
 

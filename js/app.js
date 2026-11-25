@@ -5,11 +5,12 @@ import { loadLanguage, t, applyTranslations } from './lib/i18n.js';
 import { getSetting, setSetting, onSettingChange } from './lib/storage.js';
 import { checkAccess, renderLock, tryCode } from './lib/access.js';
 import { COURSE_OPEN } from './lib/features.js';
+import { openSafelight } from './lib/safelight.js';
 
 // Reiter „Kurs“ erst zeigen, wenn er freigeschaltet ist (schlichte Leiste)
 if (!COURSE_OPEN) document.querySelector('.tab[data-route="learn"]')?.remove();
 
-export const APP_VERSION = '1.55.0';
+export const APP_VERSION = '1.55.1';
 
 const ROUTES = {
   capture:  { module: './modules/capture.js',  title: 'nav.capture' },
@@ -45,6 +46,8 @@ export function setTheme(theme) {
   redlightBtn.setAttribute('aria-pressed', String(next === 'redlight'));
   if (getSetting('theme', 'dark') !== next) setSetting('theme', next);
 }
+
+document.getElementById('safelight-open').addEventListener('click', () => openSafelight({ t, getSetting, setSetting }));
 
 redlightBtn.addEventListener('click', () => {
   setTheme(getTheme() === 'redlight' ? 'dark' : 'redlight');

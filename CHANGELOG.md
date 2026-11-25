@@ -676,3 +676,7 @@ Nach Vorschlägen aus einer Code-Durchsicht (Claude im Browser):
 - Vollbild, wo der Browser es erlaubt (Android, iPad, Desktop): obere Zeile mit Uhr verschwindet. iPhone: Safari erlaubt Webseiten kein Vollbild, die Statuszeile bleibt; Abhilfe per iOS-Farbfilter steht in den Tipps.
 - Aufruf: Timer (Knopf „Dunkelkammerlicht“ neben Ton/Vibration) und Einstellungen → Anzeige (mit Tipps unter „Mehr dazu“: nur Fotopapier, Münztest, Nicht stören, Farbfilter am iPhone).
 - Geprüft im Browser (Handygröße): Öffnen, −/+, Wischen, Antippen, Schließen, Reiterwechsel.
+
+## 1.55.1 – Dunkelkammerlicht in der Kopfzeile (2026-11-25)
+- Lampen-Symbol oben links neben der Glühbirne öffnet das Dunkelkammerlicht von jedem Reiter aus.
+- Display-Sperre: Wake Lock wird neu angefordert, wenn das System sie aufhebt (z. B. nach App-Wechsel). Im Licht steht, ob das Display anbleibt; sonst Hinweis auf „Automatische Sperre → Nie“ am iPhone.
