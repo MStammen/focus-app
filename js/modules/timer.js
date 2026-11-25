@@ -2,6 +2,7 @@
 import { el, segmented, numberField, fmtSeconds, fmtShutter, button, titleWithInfo } from '../lib/ui.js';
 import { unlockAudio, signals, vibrate, vibrations } from '../lib/audio.js';
 import { getSession, setSession } from '../lib/session.js';
+import { openSafelight } from '../lib/safelight.js';
 
 const QUICK = [1, 2, 4, 8, 15, 30, 60, 120, 240];
 const RADIUS = 110;
@@ -76,6 +77,7 @@ export async function init(root, ctx) {
     const toggles = el('div', { class: 'btn-row', style: 'justify-content:center' }, [
       el('button', { type: 'button', class: 'icon-toggle', 'aria-pressed': String(sound), text: `♪ ${t('timer.sound')}`, onClick: (e) => { sound = !sound; ctx.setSetting('sound', sound); e.currentTarget.setAttribute('aria-pressed', String(sound)); } }),
       'vibrate' in navigator ? el('button', { type: 'button', class: 'icon-toggle', 'aria-pressed': String(vib), text: `≋ ${t('timer.vibration')}`, onClick: (e) => { vib = !vib; ctx.setSetting('vibration', vib); e.currentTarget.setAttribute('aria-pressed', String(vib)); } }) : null,
+      el('button', { type: 'button', class: 'icon-toggle', text: `● ${t('safelight.title')}`, onClick: () => openSafelight(ctx) }),
     ]);
     stage.appendChild(toggles);
 

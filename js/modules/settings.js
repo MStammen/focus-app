@@ -1,7 +1,8 @@
 // Einstellungen (Spec Abschnitt 8): Stufenraster, Handy-Profil, Wasserzeichen, Countdown, Ton/Vibration,
-// Rotlicht, Daten (Export/Import/Löschen), Installation, Über.
+// Rotlicht, Dunkelkammerlicht, Daten (Export/Import/Löschen), Installation, Über.
 import { COURSE_OPEN } from '../lib/features.js';
-import { el, button, segmented, STEP_OPTIONS, numberField, downloadText, fmtNum } from '../lib/ui.js';
+import { el, button, segmented, STEP_OPTIONS, numberField, downloadText, fmtNum, moreBox } from '../lib/ui.js';
+import { openSafelight, safelightTips } from '../lib/safelight.js';
 import { getAllSettings, setSetting } from '../lib/storage.js';
 import { allEntries, putEntry, deleteEntry } from '../lib/db.js';
 import { getCustomFilms, saveCustomFilm, deleteCustomFilm, getOverrides, setOverrides, loadBuiltinFilms } from '../lib/films-store.js';
@@ -125,7 +126,11 @@ export async function init(root, ctx) {
   // ---------- Anzeige ----------
   root.appendChild(el('h2', { text: t('settings.display') }));
   const { row: redRow, sw: redSwitch } = switchRow({ label: t('settings.redlight'), hint: t('settings.redlightHint'), checked: getTheme() === 'redlight', onChange: (on) => setTheme(on ? 'redlight' : 'dark') });
-  root.appendChild(el('div', { class: 'card' }, [redRow]));
+  const safeRow = el('div', { class: 'row' }, [
+    el('span', { class: 'row-label' }, [el('span', { text: t('safelight.title') }), el('span', { class: 'row-hint', text: t('safelight.settingsHint') })]),
+    button(t('safelight.open'), { onClick: () => openSafelight(ctx) }),
+  ]);
+  root.appendChild(el('div', { class: 'card' }, [redRow, safeRow, moreBox(ctx, 'safelight', [safelightTips(ctx)])]));
   const observer = new MutationObserver(() => redSwitch.setAttribute('aria-checked', String(getTheme() === 'redlight')));
   observer.observe(document.documentElement, { attributes: true, attributeFilter: ['data-theme'] });
 

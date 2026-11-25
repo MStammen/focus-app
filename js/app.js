@@ -9,7 +9,7 @@ import { COURSE_OPEN } from './lib/features.js';
 // Reiter „Kurs“ erst zeigen, wenn er freigeschaltet ist (schlichte Leiste)
 if (!COURSE_OPEN) document.querySelector('.tab[data-route="learn"]')?.remove();
 
-export const APP_VERSION = '1.54.1';
+export const APP_VERSION = '1.55.0';
 
 const ROUTES = {
   capture:  { module: './modules/capture.js',  title: 'nav.capture' },

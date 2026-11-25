@@ -3,7 +3,7 @@
    vorgeladen, danach läuft alles offline. Neue Version = neuer CACHE-Name;
    die Liste PRECACHE muss bei neuen Dateien von Hand ergänzt werden. */
 
-const VERSION = '1.54.1';
+const VERSION = '1.55.0';
 const CACHE = `focuslab-${VERSION}`;
 
 const PRECACHE = [
@@ -43,6 +43,7 @@ const PRECACHE = [
   './js/core/film.js',
   './js/lib/ui.js',
   './js/lib/session.js',
+  './js/lib/safelight.js',
   './js/lib/audio.js',
   './js/lib/films-store.js',
   './data/films.json',

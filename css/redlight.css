@@ -18,6 +18,7 @@ html[data-theme="redlight"] {
   --info: #8a1a11;
   --overlay: #000000a6;
   --viewfinder: #000000;
+  --safelight: #ff0000;    /* Dunkelkammerlicht: nur rote Subpixel */
   --shadow-toast: none;
 }
 

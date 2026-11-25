@@ -670,3 +670,9 @@ Nach Vorschlägen aus einer Code-Durchsicht (Claude im Browser):
 
 ## 1.54.1 – Kamera: kleiner Sensor unter dem Modusrad (2026-11-24)
 - Unter dem Modusrad ein kleiner Sensor (Umriss Vollformat, grün der eigene Sensor) mit Formatname. Antippen klappt darunter die große Grafik mit Maßen und Erklärung auf, nochmal antippen schließt sie. In „Mehr zu …“ steht der Sensor nicht mehr.
+
+## 1.55.0 – Dunkelkammerlicht (2026-11-25)
+- Neu `js/lib/safelight.js`: ganzer Bildschirm in reinem Rot (Token `--safelight`, nur rote Subpixel) als Rotlicht für Schwarzweiß-Fotopapier. Helligkeit 3–100 % per Wischen hoch/runter oder −/+, wird gemerkt (`safelightLevel`). Antippen blendet die Bedienung aus und ein, sie verschwindet nach 4 s von selbst. Display bleibt an (Wake Lock). Schließen per Knopf, Esc oder Reiterwechsel.
+- Vollbild, wo der Browser es erlaubt (Android, iPad, Desktop): obere Zeile mit Uhr verschwindet. iPhone: Safari erlaubt Webseiten kein Vollbild, die Statuszeile bleibt; Abhilfe per iOS-Farbfilter steht in den Tipps.
+- Aufruf: Timer (Knopf „Dunkelkammerlicht“ neben Ton/Vibration) und Einstellungen → Anzeige (mit Tipps unter „Mehr dazu“: nur Fotopapier, Münztest, Nicht stören, Farbfilter am iPhone).
+- Geprüft im Browser (Handygröße): Öffnen, −/+, Wischen, Antippen, Schließen, Reiterwechsel.

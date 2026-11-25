@@ -19,5 +19,6 @@
   --info: #6fb3ff;
   --overlay: #000000a6;
   --viewfinder: #000000;
+  --safelight: #ff0000;    /* Dunkelkammerlicht: nur rote Subpixel */
   --shadow-toast: 0 8px 28px #000000a6;
 }
