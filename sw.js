@@ -3,7 +3,7 @@
    vorgeladen, danach läuft alles offline. Neue Version = neuer CACHE-Name;
    die Liste PRECACHE muss bei neuen Dateien von Hand ergänzt werden. */
 
-const VERSION = '1.56.0';
+const VERSION = '1.57.0';
 const CACHE = `focuslab-${VERSION}`;
 
 const PRECACHE = [
@@ -33,12 +33,15 @@ const PRECACHE = [
   './js/modules/calc-nd.js',
   './js/modules/calc-pinhole.js',
   './js/modules/calc-dof.js',
+  './js/modules/calc-focus.js',
+  './js/lib/focus-sim.js',
   './js/modules/calc-stars.js',
   './js/modules/calc-film.js',
   './js/core/exposure.js',
   './js/core/entry.js',
   './js/core/pinhole.js',
   './js/core/dof.js',
+  './js/core/focus.js',
   './js/core/stars.js',
   './js/core/film.js',
   './js/lib/ui.js',

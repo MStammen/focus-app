@@ -10,7 +10,7 @@ import { openSafelight } from './lib/safelight.js';
 // Reiter „Kurs“ erst zeigen, wenn er freigeschaltet ist (schlichte Leiste)
 if (!COURSE_OPEN) document.querySelector('.tab[data-route="learn"]')?.remove();
 
-export const APP_VERSION = '1.56.0';
+export const APP_VERSION = '1.57.0';
 
 const ROUTES = {
   capture:  { module: './modules/capture.js',  title: 'nav.capture' },

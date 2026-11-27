@@ -866,3 +866,20 @@ html.safelight-on, html.safelight-on body { overflow: hidden; }
 .lap { display: grid; grid-template-columns: 1fr auto auto; gap: 14px; align-items: baseline; padding: 10px 4px; border-bottom: 1px solid var(--border); font-variant-numeric: tabular-nums; }
 .lap strong { font-weight: 400; }
 .lap-split { color: var(--fg-muted); font-size: 0.9rem; }
+
+/* Rechner „Mattscheibe“ (calc-focus.js): Seitenansicht breit und waagerecht scrollbar, darunter der Blick auf die Mattscheibe */
+.focus-sim { margin-bottom: var(--gap); }
+.focus-scroll { overflow-x: auto; -webkit-overflow-scrolling: touch; border-radius: var(--radius); background: var(--viewfinder); }
+.focus-svg { display: block; width: 100%; height: auto; font-family: inherit; }
+.focus-side { min-width: 720px; }
+.focus-front { border-radius: var(--radius); max-width: 640px; margin: 0 auto; }
+.focus-front-head { display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px 12px; margin: 12px 0 8px; }
+.focus-front-head h2 { margin: 0; font-size: 1.05rem; font-weight: 400; }
+.focus-svg.nolabels text { display: none; }
+.focus-controls .graphic-slider { margin-bottom: 6px; }
+.focus-lab { display: flex; justify-content: space-between; gap: 12px; }
+.focus-controls .graphic-slider.off { opacity: 0.35; }
+.focus-controls .chip.quick { min-height: var(--touch); }
+html[data-theme="redlight"] .focus-svg { filter: grayscale(1) brightness(0.4) sepia(1) saturate(8) hue-rotate(-35deg); }
+.focus-result .big-value-number { font-size: clamp(1.5rem, 7.5vw, 2.6rem); white-space: nowrap; }
+.focus-result .focus-bad { color: var(--danger); }

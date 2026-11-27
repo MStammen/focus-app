@@ -685,3 +685,12 @@ Nach Vorschlägen aus einer Code-Durchsicht (Claude im Browser):
 - Timer hat eine dritte Art „Stoppuhr“: Start, Stopp, Weiter, Zurücksetzen, „Runde“ für Zwischenzeiten (Liste mit Abstand zur vorigen Runde und Gesamtzeit). Anzeige 0:00,0 min, ab einer Stunde h:mm:ss.
 - Läuft beim Reiterwechsel und Neuladen weiter (Startzeitpunkt in der Sitzung), Display bleibt an, solange sie läuft. Nach dem Stoppen „Ins Logbuch“ mit der gemessenen Zeit (z. B. Bulb-Belichtung).
 - „i“-Text des Timers ergänzt. Geprüft im Browser (Handygröße, Rotlicht).
+
+## 1.57.0 – Rechner „Mattscheibe“: Wo wird es scharf? (2026-11-27)
+- Neue Rechnerseite zwischen Schärfentiefe und Sterne, aus der letzten Seite der Seminar-Präsentation („Jetzt ihr“). Linse oder Loch; Regler für Brennweite (6–600 mm), Abstand der Figur (15 mm – 30 m), Mattscheibe (bis 2 m), Blende (1–64) und Lochdurchmesser (mit Linse: Anzeige der Öffnung f/N). Nicht gebrauchte Regler sind ausgegraut.
+- Seitenansicht maßstäblich wie im Seminar: Poster 6 m vor, Wand 2 m hinter Loch bzw. Linse. Strahlen von Scheitel, Hand und Sockel der Figur und vom Poster, Schärfentiefe grün, Fokusebene, Bildebene (Zeichen wie im Logo), F/F′. Auf dem Handy waagerecht scrollbar, startet um die Linse.
+- Darunter „Blick auf die Mattscheibe“: Bild auf dem Kopf, Unschärfe und Helligkeit aus Fleck und wirksamer Blende, Formatrahmen Handy bis 8×10″ und Wand.
+- Ergebnis: Schärfentiefe und Fokusebene (Loch: Fleck und wirksame Blende), je Motiv scharf/unscharf. Werte und Formeln unter „Mehr dazu“.
+- Format Wand: Mattscheibe fest; „Scharfstellen“ schiebt dann die Figur. Poster, Sonne und Beschriftung schaltbar. Zustand bleibt in der Sitzung.
+- Rechnen in `js/core/focus.js` (Tests `tests/focus.test.js`), Zeichnung `js/lib/focus-sim.js`, Seite `js/modules/calc-focus.js`. Rotlicht per CSS-Filter auf der Grafik.
+- Geprüft im Browser (Handy und Tablet, dunkel und Rotlicht): Umschalten Linse/Loch, Format Wand, Scharfstellen, Regler, Reiterwechsel. Auf echtem Gerät noch nicht.
