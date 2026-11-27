@@ -364,7 +364,7 @@
         "light": "Licht 1/{x} von Blende 1",
         "coc": "Zerstreuungskreis auf {fmt}: {c} mm"
       },
-      "more": "Der Raum ist fest: Poster 6 m vor Loch bzw. Linse, Wand 2 m dahinter. Längen sind maßstäblich, Höhen überhöht. | Linse: 1/f = 1/g + 1/b. Die Bildebene liegt bei b, die Mattscheibe kann woanders stehen – dann wird jeder Punkt zum Fleck. Die Fokusebene ist die Ebene vor der Linse, die genau auf der Mattscheibe scharf wird. | Scharf heißt: Der Fleck bleibt kleiner als der Zerstreuungskreis, Formatdiagonale ÷ 1500. Daraus der grüne Bereich, die Schärfentiefe. | Loch: Fleck = d · (g + s) / g, Bild = s / g, wirksame Blende = s / d. Beugung ist nicht eingerechnet. | Mit der Wand als Format steht die Mattscheibe fest; „Scharfstellen“ schiebt dann die Figur dorthin, wo sie auf der Wand scharf wird."
+      "more": "Der Raum ist fest: Poster 6 m vor Loch bzw. Linse, Wand 2 m dahinter. Beide Wände sind 4 × 4 m. Längen sind maßstäblich, Höhen überhöht. | Linse: 1/f = 1/g + 1/b. Die Bildebene liegt bei b, die Mattscheibe kann woanders stehen – dann wird jeder Punkt zum Fleck. Die Fokusebene ist die Ebene vor der Linse, die genau auf der Mattscheibe scharf wird. | Scharf heißt: Der Fleck bleibt kleiner als der Zerstreuungskreis, Formatdiagonale ÷ 1500. Daraus der grüne Bereich, die Schärfentiefe. | Loch: Fleck = d · (g + s) / g, Bild = s / g, wirksame Blende = s / d. Beugung ist nicht eingerechnet. | Mit der Wand als Format steht die Mattscheibe fest; „Scharfstellen“ schiebt dann die Figur dorthin, wo sie auf der Wand scharf wird."
     }
   },
   "timer": {

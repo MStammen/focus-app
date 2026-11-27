@@ -694,3 +694,6 @@ Nach Vorschlägen aus einer Code-Durchsicht (Claude im Browser):
 - Format Wand: Mattscheibe fest; „Scharfstellen“ schiebt dann die Figur. Poster, Sonne und Beschriftung schaltbar. Zustand bleibt in der Sitzung.
 - Rechnen in `js/core/focus.js` (Tests `tests/focus.test.js`), Zeichnung `js/lib/focus-sim.js`, Seite `js/modules/calc-focus.js`. Rotlicht per CSS-Filter auf der Grafik.
 - Geprüft im Browser (Handy und Tablet, dunkel und Rotlicht): Umschalten Linse/Loch, Format Wand, Scharfstellen, Regler, Reiterwechsel. Auf echtem Gerät noch nicht.
+
+## 1.57.1 – Mattscheibe: Wand hinten 4 × 4 m (2026-11-27)
+- Format „Wand“ auf der Bildseite jetzt 4 × 4 m wie die Wand mit dem Poster (vorher 1,2 × 0,9 m). Zerstreuungskreis dadurch 3,8 mm statt 1 mm, die Schärfentiefe auf der Wand wird entsprechend größer. „Mehr dazu“ nennt beide Wände.

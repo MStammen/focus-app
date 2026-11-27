@@ -1,7 +1,7 @@
 // Rechner „Mattscheibe“: Wo wird es scharf? Dünne Linse und Lochblende, alle Längen in mm.
 // Reine Rechenfunktionen ohne DOM, getestet in tests/focus.test.js.
 
-// Formate (Breite × Höhe in mm). „wall“ = die Zimmerwand der Camera obscura, 1,2 × 0,9 m.
+// Formate (Breite × Höhe in mm). „wall“ = die Zimmerwand der Camera obscura, 4 × 4 m (wie die Wand mit dem Poster).
 export const FOCUS_FORMATS = {
   phone: { w: 9.8, h: 7.4 },
   apsc: { w: 23.6, h: 15.6 },
@@ -9,7 +9,7 @@ export const FOCUS_FORMATS = {
   mf: { w: 70, h: 56 },
   lf4: { w: 120, h: 96 },
   lf8: { w: 245, h: 195 },
-  wall: { w: 1200, h: 900 },
+  wall: { w: 4000, h: 4000 },
 };
 
 // Ganze Blendenreihe von 1 bis 64
