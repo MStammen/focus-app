@@ -41,9 +41,8 @@ export async function init(root, ctx) {
     sim.front,
   ]));
 
-  // ---- Ergebnis ----
+  // ---- Ergebnis (wird ganz unten eingehängt, Wunsch 2026-11-27) ----
   const result = el('div', { class: 'card focus-result' });
-  root.appendChild(result);
 
   // ---- Regler ----
   function slider(key, max = STEPS) {
@@ -85,6 +84,7 @@ export async function init(root, ctx) {
     details,
     ...t('calc.focus.more').split('|').map((p) => el('p', { class: 'muted small', text: p.trim() })),
   ]));
+  root.appendChild(result);
 
   // Scharfstellen: Mattscheibe auf die Figur – bei der Wand (steht fest) wandert stattdessen die Figur
   function focusNow() {

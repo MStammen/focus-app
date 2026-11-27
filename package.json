@@ -1,6 +1,6 @@
 {
   "name": "focus-lab",
-  "version": "1.57.1",
+  "version": "1.57.2",
   "private": true,
   "description": "Begleit-App zum Fotokurs: Licht, Blende, Camera Obscura. PWA ohne Build-Schritt.",
   "type": "module",

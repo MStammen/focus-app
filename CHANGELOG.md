@@ -697,3 +697,6 @@ Nach Vorschlägen aus einer Code-Durchsicht (Claude im Browser):
 
 ## 1.57.1 – Mattscheibe: Wand hinten 4 × 4 m (2026-11-27)
 - Format „Wand“ auf der Bildseite jetzt 4 × 4 m wie die Wand mit dem Poster (vorher 1,2 × 0,9 m). Zerstreuungskreis dadurch 3,8 mm statt 1 mm, die Schärfentiefe auf der Wand wird entsprechend größer. „Mehr dazu“ nennt beide Wände.
+
+## 1.57.2 – Mattscheibe: Schärfentiefe ganz unten (2026-11-27)
+- Ergebniskarte (Schärfentiefe, Fokusebene, scharf/unscharf je Motiv) steht jetzt ganz unten, unter Reglern und „Mehr dazu“.
